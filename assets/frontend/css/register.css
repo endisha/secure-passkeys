@@ -1,0 +1,290 @@
+#passkey_app .is-greyed {
+  color: lightgray;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+#passkey_app .row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#passkey_app .col-12,
+#passkey_app .col-md-12 {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+#passkey_app .mt-3 {
+  margin-top: 1rem !important;
+}
+
+#passkey_app .input-error {
+  margin-bottom: 0.6rem !important;
+  font-size: 12px !important;
+}
+
+#passkey_app .pb-1 {
+  padding-bottom: 0.25rem;
+}
+
+#passkey_app .pt-2 {
+  padding-top: 0.5rem;
+}
+
+#passkey_app .btn {
+  display: inline-block;
+  font-weight: 400;
+  color: #fff;
+  text-align: center;
+  vertical-align: middle;
+  user-select: none;
+  background-color: #007bff;
+  border: 1px solid #007bff;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+
+#passkey_app .btn:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+#passkey_app .btn-success {
+  background-color: #53be6b;
+  border-color: #53be6b;
+}
+
+#passkey_app .btn-success:hover {
+  background-color: #218838;
+  border-color: #1e7e34;
+}
+
+#passkey_app .btn-success:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+#passkey_app .btn-danger {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+#passkey_app .btn-danger:hover {
+  background-color: #c82333;
+  border-color: #bd2130;
+}
+
+#passkey_app .btn-danger:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+#passkey_app .btn-sm {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+#passkey_app .btn-xs {
+  padding: 0.125rem 0.25rem;
+  font-size: 0.75rem;
+  line-height: initial;
+}
+
+#passkey_app .notice {
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+}
+
+#passkey_app .notice.error {
+  color: #721c24;
+  background-color: #fdf1f2;
+  border-color: #ffdbdf;
+}
+
+#passkey_app .notice.success {
+  color: #358f49;
+  background-color: #f3fff6;
+  border-color: #d6f3dd;
+}
+
+/* Labels */
+#passkey_app .label {
+  display: inline-block;
+  padding: 0.2em 0.6em;
+  font-size: 75%;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+}
+
+#passkey_app .label-danger {
+  background-color: #dc3545;
+  margin-left: 10px;
+}
+
+[dir="rtl"] #passkey_app .label-danger {
+  margin-left: 0px;
+  margin-right: 10px;
+}
+
+#passkey_app .label-success {
+  background-color: #b7eec4;
+  color: #075017;
+  margin-left: 10px;
+}
+
+[dir="rtl"] #passkey_app .label-success {
+  margin-left: 0px;
+  margin-right: 10px;
+}
+
+#passkey_app .label-xs {
+  font-size: 0.75rem;
+}
+
+#passkey_app .spinner {
+  display: inline-block;
+  border: 0.2em solid rgba(0, 0, 0, 0.1);
+  border-top: 0.2em solid #2f2f2f;
+  border-radius: 50%;
+  width: 0.5rem;
+  height: 0.5rem;
+  animation: spin-left 0.6s linear infinite;
+}
+
+[dir="rtl"] #passkey_app .spinner {
+  animation: spin-right 0.6s linear infinite;
+}
+
+#passkey_app .btn-success .spinner {
+  border: 0.2em solid rgb(179, 179, 179);
+  border-top: 0.2em solid #28a745;
+}
+
+#passkey_app .btn-danger .spinner {
+  border: 0.2em solid rgb(226 178 178 / 58%);
+  border-top: 0.2em solid #ebbfc3;
+}
+
+#passkey_app .Button-content {
+  padding-right: 10px;
+  padding-left: 0px;
+}
+
+[dir="rtl"] #passkey_app .Button-content {
+  padding-right: 0px;
+  padding-left: 10px;
+}
+
+@keyframes spin-right {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin-left {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+/* List Groups */
+#passkey_app .list-group {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#passkey_app .list-group-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: -1px;
+  border: 1px solid #ececec;
+  background-color: #fff;
+}
+
+#passkey_app .d-flex {
+  display: flex !important;
+}
+
+#passkey_app .justify-content-between {
+  justify-content: space-between !important;
+}
+
+#passkey_app .align-items-center {
+  align-items: center !important;
+}
+
+#passkey_app .input-add {
+  display: block;
+  width: 100%;
+  padding: 5px;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  margin-bottom: 5px;
+  width: 90%;
+}
+
+#passkey_app .input-add:disabled {
+  background: #eee;
+}
+
+#passkey_app .float-right {
+  float: right !important;
+}
+
+[dir="rtl"] #passkey_app .float-right {
+  float: left !important;
+}
+
+#passkey_app .text-danger {
+  color: #ba0c1d !important;
+}
+
+#passkey_app .small {
+  font-size: 80%;
+}
+
+#passkey_app .no-margin {
+  margin: 0 !important;
+}
+
+#passkey_app .register-passkey-card {
+  padding: 1rem;
+  display: block;
+  border: 1px solid #ececec;
+  background-color: #f1f5f2;
+}
+
+#passkey_app .first-item-second-items {
+  margin-bottom: 5px;
+}
+
+#passkey_app .align-items-center {
+  font-size: 0.9rem;
+}
+
+#passkey_app .btn-delete-passkey .dashicons {
+  font-size: 0.9rem;
+  line-height: inherit;
+}

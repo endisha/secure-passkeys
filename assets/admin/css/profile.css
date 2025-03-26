@@ -1,0 +1,208 @@
+.secure-passkeys.form-table .passkeys th,
+.secure-passkeys.form-table .passkeys td {
+  padding-bottom: 8px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 8px;
+}
+
+.secure-passkeys .label {
+  text-transform: uppercase;
+  font-size: 11px;
+  text-align: center;
+  padding: 3px 5px;
+  color: #fff;
+  border-radius: 3px;
+}
+
+.secure-passkeys .label.label-last-used-on {
+  background: #1bd288;
+  display: block;
+  padding: 0;
+}
+
+.secure-passkeys .authenticator-icon {
+  width: 15px;
+  background: #ffffff;
+  padding: 5px;
+  border: 1px solid #e8e8e8;
+  vertical-align: middle;
+  border-radius: 50%;
+}
+
+.secure-passkeys .notice,
+.secure-passkeys div.error {
+  background: #fff;
+  border: 1px solid #c3c4c7;
+  border-left-color: #e22121;
+  border-left-width: 4px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+  margin-bottom: 10px;
+  padding: 1px 12px;
+}
+
+.secure-passkeys .notice-success,
+.secure-passkeys div.updated {
+  border-right-color: #00a32a;
+}
+[dir="rtl"] .secure-passkeys .notice,
+[dir="rtl"] .secure-passkeys div.error,
+[dir="rtl"] .secure-passkeys div.updated {
+  border-right-width: 4px;
+  border-left-width: 1px;
+}
+[dir="rtl"] .secure-passkeys .notice-success,
+[dir="rtl"] .secure-passkeys div.updated {
+  border-right-color: #00a32a;
+  border-left-color: #c3c4c7;
+}
+
+[dir="rtl"] .secure-passkeys .notice-error,
+[dir="rtl"] .secure-passkeys div.error {
+  border-right-color: #e22121;
+  border-left-color: #c3c4c7;
+}
+
+.secure-passkeys .updated p,
+.secure-passkeys .error p {
+  font-size: 13px;
+  margin: 0.3em 0;
+}
+
+.secure-passkeys .text-active {
+  color: #358f49;
+}
+
+.secure-passkeys .text-inactive {
+  color: #d63638;
+}
+
+.secure-passkeys .register-passkey-card {
+  background: #fff;
+  border: 1px solid #c3c4c7;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.secure-passkeys .button .dashicons {
+  vertical-align: middle;
+}
+
+.secure-passkeys .button.button-cancel {
+  color: #b12222;
+  border-color: #b12222;
+  background: #fff6f6;
+}
+
+.secure-passkeys .button.add {
+  margin-bottom: 10px;
+}
+
+.secure-passkeys .register-passkey-card .regular-text {
+  padding: 4px;
+}
+
+.secure-passkeys .register-passkey-card input.disabled,
+.secure-passkeys .register-passkey-card input:disabled {
+  background: #eeee;
+  border: 1px solid #eeee;
+  padding: 5px;
+}
+
+.secure-passkeys .input-wrapper {
+  margin-top: 15px;
+}
+
+.secure-passkeys .register-passkey-card .margin-right {
+  margin-right: 5px;
+}
+
+.secure-passkeys .your-passkeys-text {
+  padding: 6px 10px;
+  display: inline-block;
+  background: #e4e4e4;
+  margin: 0 5px;
+}
+
+.secure-passkeys .your-passkeys-text.remove-margin {
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.secure-passkeys .spinner.is-active.spin {
+  margin: 0;
+  float: none;
+  height: 15px;
+  width: 15px;
+  background-size: contain;
+}
+
+.secure-passkeys .description {
+  padding: 10px;
+  display: block;
+  background: #e4e4e4;
+  margin-bottom: 10px;
+  font-size: 13px;
+}
+
+.secure-passkeys .input-error {
+  color: #d63638;
+  padding: 5px 0;
+  font-size: 13px;
+}
+
+@media screen and (max-width: 782px) {
+  .secure-passkeys .wp-list-table thead {
+    display: none !important;
+  }
+
+  .secure-passkeys .wp-list-table tbody tr {
+    display: block !important;
+    padding: 10px !important;
+  }
+
+  .secure-passkeys .wp-list-table td {
+    display: block !important;
+    width: 100% !important;
+    text-align: right !important;
+    position: relative !important;
+    padding-left: 50% !important;
+  }
+
+  .secure-passkeys .wp-list-table td::before {
+    content: attr(data-label) !important;
+    font-weight: bold !important;
+    text-align: left !important;
+    position: absolute !important;
+    left: 10px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    white-space: nowrap !important;
+  }
+
+  [dir="rtl"] .secure-passkeys .wp-list-table td {
+    text-align: left !important;
+    padding-left: initial !important;
+    padding-right: 50% !important;
+  }
+
+  [dir="rtl"] .secure-passkeys .wp-list-table td::before {
+    text-align: right !important;
+    left: initial !important;
+    right: 10px !important;
+  }
+
+  .secure-passkeys .register-passkey-card .regular-text {
+    margin-bottom: 5px;
+  }
+
+  .secure-passkeys .register-passkey-card .margin-right {
+    margin-right: 5px;
+  }
+
+  [dir="rtl"] .secure-passkeys .register-passkey-card .margin-right {
+    margin-right: initial;
+    margin-left: 5px;
+  }
+}
