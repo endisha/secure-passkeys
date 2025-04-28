@@ -1,0 +1,1171 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Secure Passkeys\n"
+"POT-Creation-Date: 2025-04-27 19:32-0400\n"
+"PO-Revision-Date: 2025-04-27 22:05-0400\n"
+"Last-Translator: Arhtur <arthur@aris.la>\n"
+"Language-Team: \n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.6\n"
+"X-Poedit-Basepath: ../..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: secure-passkeys.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: "
+"__;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.min.js\n"
+
+#: src/ajax/secure-passkeys-adminarea-ajax.php:103
+#: src/ajax/secure-passkeys-adminarea-ajax.php:110
+msgid "The passkey cannot be deleted"
+msgstr "La clé d’accès ne peut pas être supprimée"
+
+#: src/ajax/secure-passkeys-adminarea-ajax.php:125
+msgid "The passkey deleted successfully"
+msgstr "La clé d’accès a été supprimée avec succès"
+
+#: src/ajax/secure-passkeys-adminarea-ajax.php:166
+msgid "Invalid procedure"
+msgstr "Procédure non valide"
+
+#: src/ajax/secure-passkeys-adminarea-ajax.php:176
+#: src/ajax/secure-passkeys-adminarea-ajax.php:187
+msgid "A passkey cannot be updated"
+msgstr "Une clé d’accès ne peut pas être mise à jour"
+
+#: src/ajax/secure-passkeys-adminarea-ajax.php:195
+msgid "The passkey activated successfully"
+msgstr "La clé d’accès s’est activée avec succès"
+
+#: src/ajax/secure-passkeys-adminarea-ajax.php:196
+msgid "The passkey deactivated successfully"
+msgstr "La clé d’accès a été désactivée avec succès"
+
+#: src/ajax/secure-passkeys-adminarea-ajax.php:236
+#: src/ajax/secure-passkeys-adminarea-ajax.php:261
+#: src/ajax/secure-passkeys-adminarea-settings-ajax.php:121
+#: src/ajax/secure-passkeys-adminarea-settings-ajax.php:145
+msgid "You do not have permission to make this request."
+msgstr "Vous n’avez pas l’autorisation de faire cette demande."
+
+#: src/ajax/secure-passkeys-adminarea-ajax.php:238
+#: src/ajax/secure-passkeys-adminarea-settings-ajax.php:123
+#: src/ajax/secure-passkeys-frontend-ajax.php:228
+msgid "The request method must be POST."
+msgstr "La méthode de demande doit être POST."
+
+#: src/ajax/secure-passkeys-adminarea-ajax.php:240
+#: src/ajax/secure-passkeys-adminarea-settings-ajax.php:125
+#: src/ajax/secure-passkeys-frontend-ajax.php:230
+msgid "Token mismatch, please refresh the page."
+msgstr "Incompatibilité de jeton, veuillez actualiser la page."
+
+#: src/ajax/secure-passkeys-adminarea-ajax.php:269
+#: src/ajax/secure-passkeys-frontend-ajax.php:226
+#: src/ajax/secure-passkeys-frontend-ajax.php:241
+msgid "You are not allowed to make this request."
+msgstr "Vous n’êtes pas autorisé à faire cette demande."
+
+#: src/ajax/secure-passkeys-adminarea-settings-ajax.php:62
+msgid "Settings updated successfully."
+msgstr "Paramètres mis à jour avec succès."
+
+#: src/ajax/secure-passkeys-frontend-ajax.php:74
+msgid "Passkey authentication failed. Please try again."
+msgstr "Échec de l’authentification par clé d’accès. Veuillez réessayer."
+
+#: src/ajax/secure-passkeys-frontend-ajax.php:150
+#: src/utils/secure-passkeys-i18n.php:39 src/utils/secure-passkeys-i18n.php:107
+msgid "The maximum number of registered passkeys has been reached."
+msgstr "Le nombre maximum de clés d’accès enregistrées a été atteint."
+
+#: src/ajax/secure-passkeys-frontend-ajax.php:152
+msgid "This passkey is already registered. Please use a different one."
+msgstr "Cette clé d’accès est déjà enregistrée. Veuillez en utiliser un autre."
+
+#: src/ajax/secure-passkeys-frontend-ajax.php:154
+#: src/ajax/secure-passkeys-frontend-ajax.php:175
+msgid "Failed to register the passkey. Please try again later."
+msgstr ""
+"Échec de l’enregistrement de la clé d’accès. Veuillez réessayer plus tard."
+
+#: src/ajax/secure-passkeys-frontend-ajax.php:160
+#: src/utils/secure-passkeys-i18n.php:52
+msgid "Security key name must be at least 3 characters long."
+msgstr "Le nom de la clé de sécurité doit comporter au moins 3 caractères."
+
+#: src/ajax/secure-passkeys-frontend-ajax.php:162
+msgid "Security key name must be at most 30 characters long."
+msgstr "Le nom de la clé de sécurité doit comporter au plus 30 caractères."
+
+#: src/ajax/secure-passkeys-frontend-ajax.php:164
+#: src/utils/secure-passkeys-i18n.php:51 src/utils/secure-passkeys-i18n.php:117
+msgid "Please use only letters, numbers, spaces, hyphens, or underscores."
+msgstr ""
+"Veuillez utiliser uniquement des lettres, des chiffres, des espaces, des "
+"traits d’union ou des traits de soulignement."
+
+#: src/ajax/secure-passkeys-frontend-ajax.php:209
+msgid "You do not have permission to remove this passkey."
+msgstr "Vous n’êtes pas autorisé à supprimer cette clé d’accès."
+
+#: src/core/secure-passkeys-application.php:76
+#: src/includes/secure-passkeys-adminarea.php:89
+msgid "Settings"
+msgstr "Réglages"
+
+#: src/hooks/secure-passkeys-general.php:28
+#: src/includes/secure-passkeys-adminarea.php:77
+#: src/views/admin/vue/components/overview/app.vue.php:78
+#: src/views/admin/vue/components/passkeys/app.vue.php:6
+msgid "Passkeys"
+msgstr "Clés d’accès"
+
+#. Plugin Name of the plugin/theme
+#: src/includes/secure-passkeys-adminarea.php:67
+msgid "Secure Passkeys"
+msgstr "Secure Passkeys"
+
+#: src/includes/secure-passkeys-adminarea.php:71
+#: src/views/admin/vue/components/overview/app.vue.php:15
+msgid "Overview"
+msgstr "Aperçu"
+
+#: src/includes/secure-passkeys-adminarea.php:83
+#: src/views/admin/vue/components/activity/app.vue.php:3
+msgid "Activity Log"
+msgstr "Journal d'activité"
+
+#: src/models/secure-passkeys-log.php:72
+#: src/views/admin/vue/components/activity/app.vue.php:59
+msgid "Login"
+msgstr "Connexion"
+
+#: src/models/secure-passkeys-log.php:73
+#: src/views/admin/vue/components/activity/app.vue.php:62
+msgid "Register"
+msgstr "Enregistrer"
+
+#: src/models/secure-passkeys-log.php:74
+#: src/views/admin/vue/components/activity/app.vue.php:68
+msgid "Remove"
+msgstr "Supprimer"
+
+#: src/models/secure-passkeys-log.php:75 src/utils/secure-passkeys-i18n.php:80
+#: src/views/admin/vue/components/activity/app.vue.php:65
+#: src/views/admin/vue/components/passkeys/app.vue.php:266
+msgid "Delete"
+msgstr "Supprimer"
+
+#: src/models/secure-passkeys-log.php:76 src/utils/secure-passkeys-i18n.php:78
+#: src/views/admin/vue/components/activity/app.vue.php:71
+#: src/views/admin/vue/components/passkeys/app.vue.php:241
+#: src/views/admin/vue/components/passkeys/app.vue.php:255
+#: src/views/admin/vue/profile.php:206 src/views/admin/vue/profile.php:224
+msgid "Activate"
+msgstr "Activer"
+
+#: src/models/secure-passkeys-log.php:77 src/utils/secure-passkeys-i18n.php:79
+#: src/views/admin/vue/components/activity/app.vue.php:74
+#: src/views/admin/vue/components/passkeys/app.vue.php:248
+#: src/views/admin/vue/components/passkeys/app.vue.php:258
+#: src/views/admin/vue/profile.php:213 src/views/admin/vue/profile.php:227
+msgid "Deactivate"
+msgstr "Désactiver"
+
+#. translators: %1$s: Passkey name, %2$s: Authenticator name
+#: src/models/secure-passkeys-log.php:92
+#, php-format
+msgid "User logged in using the passkey (%1$s) with the authenticator (%2$s)."
+msgstr ""
+"L’utilisateur connecté à l’aide de la clé d’accès (%1$s) avec "
+"l’authentificateur (%2$s)."
+
+#. translators: %1$s: Passkey name, %2$s: Authenticator name
+#: src/models/secure-passkeys-log.php:94
+#, php-format
+msgid ""
+"Passkey registered successfully with the name (%1$s) using the authenticator "
+"(%2$s)."
+msgstr ""
+"La clé d’accès enregistrée avec succès avec le nom (%1$s) à l’aide de "
+"l’authentificateur (%2$s)."
+
+#. translators: %1$s: Passkey name, %2$s: Authenticator name
+#: src/models/secure-passkeys-log.php:96
+#, php-format
+msgid "Passkey (%1$s) associated with the authenticator (%2$s) was removed."
+msgstr ""
+"La clé d’accès (%1$s) associée à l’authentificateur (%2$s) a été supprimée."
+
+#. translators: %1$s: Passkey name, %2$s: Authenticator name
+#: src/models/secure-passkeys-log.php:98
+#, php-format
+msgid ""
+"Passkey (%1$s) associated with the authenticator (%2$s) was deleted by an "
+"administrator."
+msgstr ""
+"La clé d’accès (%1$s) associée à l’authentificateur (%2$s) a été supprimée "
+"par un administrateur."
+
+#. translators: %1$s: Passkey name, %2$s: Authenticator name
+#: src/models/secure-passkeys-log.php:100
+#, php-format
+msgid ""
+"Passkey (%1$s) associated with the authenticator (%2$s) was activated by an "
+"administrator."
+msgstr ""
+"La clé d’accès (%1$s) associée à l’authentificateur (%2$s) a été activée par "
+"un administrateur."
+
+#. translators: %1$s: Passkey name, %2$s: Authenticator name
+#: src/models/secure-passkeys-log.php:102
+#, php-format
+msgid ""
+"Passkey (%1$s) associated with the authenticator (%2$s) was deactivated by "
+"an administrator."
+msgstr ""
+"La clé d’accès (%1$s) associée à l’authentificateur (%2$s) a été désactivée "
+"par un administrateur."
+
+#: src/settings/secure-passkeys-advanced-settings.php:40
+msgid "The challenge cleanup period is not correct."
+msgstr "La période de nettoyage du défi n’est pas correcte."
+
+#: src/settings/secure-passkeys-advanced-settings.php:44
+msgid "The log cleanup period is not correct."
+msgstr "La période de nettoyage des journaux n’est pas correcte."
+
+#: src/settings/secure-passkeys-display-settings.php:47
+msgid "The theme does not exist."
+msgstr "Le thème n’existe pas."
+
+#: src/settings/secure-passkeys-display-settings.php:49
+msgid "The path associated with the theme does not exist."
+msgstr "Le chemin associé au thème n’existe pas."
+
+#: src/settings/secure-passkeys-factory.php:16
+msgid "Invalid settings."
+msgstr "Paramètres invalides."
+
+#: src/settings/secure-passkeys-general-settings.php:45
+msgid "The maximum number of passkeys per user must be greater than 0."
+msgstr ""
+"Le nombre maximal de clés d’accès par utilisateur doit être supérieur à 0."
+
+#: src/settings/secure-passkeys-general-settings.php:47
+msgid "The maximum number of passkeys must be less than 10."
+msgstr "Le nombre maximal de clés d’accès doit être inférieur à 10."
+
+#: src/settings/secure-passkeys-general-settings.php:51
+msgid "The excluded roles must be a valid role."
+msgstr "Les rôles exclus doivent être valides."
+
+#: src/settings/secure-passkeys-general-settings.php:55
+msgid ""
+"The login user verification must be required, preferred, or discouraged."
+msgstr ""
+"La vérification de l’utilisateur de connexion doit être requise, préférée ou "
+"déconseillée."
+
+#: src/settings/secure-passkeys-general-settings.php:59
+msgid "The registration timeout must be greater than 0."
+msgstr "Le délai d’enregistrement doit être supérieur à 0."
+
+#: src/settings/secure-passkeys-general-settings.php:63
+msgid "The login timeout must be greater than 0."
+msgstr "Le délai de connexion doit être supérieur à 0."
+
+#: src/utils/secure-passkeys-adminarea-helper.php:112
+#: src/views/admin/vue/components/passkeys/app.vue.php:61
+msgid "Activated"
+msgstr "Activé"
+
+#: src/utils/secure-passkeys-adminarea-helper.php:119
+#: src/views/admin/vue/components/passkeys/app.vue.php:64
+msgid "Deactivated"
+msgstr "Désactivé"
+
+#: src/utils/secure-passkeys-frontend-helper.php:57
+msgid "Default"
+msgstr "Par défaut"
+
+#: src/utils/secure-passkeys-frontend-helper.php:58
+msgid "YOOtheme (UiKit)"
+msgstr "YOOtheme (UiKit)"
+
+#. translators: %s represents a human-readable time difference (e.g., "5 minutes").
+#: src/utils/secure-passkeys-helper.php:149
+#, php-format
+msgid "%s ago"
+msgstr "il y a %s"
+
+#: src/utils/secure-passkeys-i18n.php:12 src/utils/secure-passkeys-i18n.php:48
+#: src/utils/secure-passkeys-i18n.php:105
+msgid ""
+"Your browser does not support passkeys. Try updating your browser or using "
+"another one."
+msgstr ""
+"Votre navigateur ne prend pas en charge les clés d’accès. Essayez de mettre "
+"à jour votre navigateur ou d’en utiliser un autre."
+
+#: src/utils/secure-passkeys-i18n.php:13
+msgid "Failed to fetch passkey login options."
+msgstr "Échec de la récupération des options de connexion par clé d’accès."
+
+#: src/utils/secure-passkeys-i18n.php:14
+msgid "Passkey authentication failed. Please try again if you want to proceed."
+msgstr ""
+"Échec de l’authentification par clé d’accès. Veuillez réessayer si vous "
+"souhaitez continuer."
+
+#: src/utils/secure-passkeys-i18n.php:15
+msgid ""
+"Passkey authentication cancelled. Please try again if you want to proceed."
+msgstr ""
+"Authentification par clé d’accès annulée. Veuillez réessayer si vous "
+"souhaitez continuer."
+
+#: src/utils/secure-passkeys-i18n.php:16
+msgid "You have successfully logged in with Passkey. Redirecting..."
+msgstr "Connexion réussie avec votre clé d’accès. Redirection…"
+
+#: src/utils/secure-passkeys-i18n.php:23
+msgid "Passwordless sign-in with passkeys"
+msgstr "Connexion sans mot de passe avec des clés d’accès"
+
+#: src/utils/secure-passkeys-i18n.php:24 src/utils/secure-passkeys-i18n.php:71
+msgid ""
+"Passkeys offer a secure and user-friendly authentication method, serving as "
+"an alternative or complement to traditional methods. They validate your "
+"identity through touch, facial recognition, device passwords, or PINs, and "
+"can effectively replace passwords."
+msgstr ""
+"Les clés d’accès offrent une méthode d’authentification sécurisée et "
+"conviviale, en tant qu’alternative ou complément aux méthodes "
+"traditionnelles. Elles valident votre identité par le biais du toucher, de "
+"la reconnaissance faciale, du mot de passe de l’appareil ou du code PIN, et "
+"peuvent efficacement remplacer les mots de passe."
+
+#: src/utils/secure-passkeys-i18n.php:25 src/utils/secure-passkeys-i18n.php:91
+msgid "out of"
+msgstr "de"
+
+#: src/utils/secure-passkeys-i18n.php:26 src/utils/secure-passkeys-i18n.php:92
+msgid "Add Passkey"
+msgstr "Ajouter une clé d’accès"
+
+#: src/utils/secure-passkeys-i18n.php:27 src/utils/secure-passkeys-i18n.php:93
+msgid "Add"
+msgstr "Ajouter"
+
+#: src/utils/secure-passkeys-i18n.php:28 src/utils/secure-passkeys-i18n.php:94
+msgid "Cancel"
+msgstr "Annuler"
+
+#: src/utils/secure-passkeys-i18n.php:29 src/utils/secure-passkeys-i18n.php:95
+msgid "Your Passkeys"
+msgstr "Vos clés d’accès"
+
+#: src/utils/secure-passkeys-i18n.php:30 src/utils/secure-passkeys-i18n.php:97
+msgid "Waiting for input from browser interaction ..."
+msgstr "En attente d’une action dans le navigateur…"
+
+#: src/utils/secure-passkeys-i18n.php:31 src/utils/secure-passkeys-i18n.php:98
+msgid "Added"
+msgstr "Ajouté"
+
+#: src/utils/secure-passkeys-i18n.php:32 src/utils/secure-passkeys-i18n.php:99
+msgid "Last used"
+msgstr "Dernière utilisation"
+
+#: src/utils/secure-passkeys-i18n.php:33 src/utils/secure-passkeys-i18n.php:100
+msgid "Name your security key"
+msgstr "Nommez votre clé de sécurité"
+
+#: src/utils/secure-passkeys-i18n.php:34 src/utils/secure-passkeys-i18n.php:101
+msgid ""
+"This passkey can work across multiple devices - pick a nickname that will "
+"help you identify it later.<br /> For example, the name of your password "
+"manager or account provider."
+msgstr ""
+"Cette clé d’accès peut être utilisée sur plusieurs appareils — choisissez un "
+"surnom pour la retrouver facilement plus tard.<br /> Par exemple, le nom de "
+"votre gestionnaire de mots de passe ou de votre fournisseur de compte."
+
+#: src/utils/secure-passkeys-i18n.php:35 src/utils/secure-passkeys-i18n.php:102
+msgid "Enter Security Key Name"
+msgstr "Entrez le nom de la clé de sécurité"
+
+#: src/utils/secure-passkeys-i18n.php:36 src/utils/secure-passkeys-i18n.php:103
+msgid "Inactive"
+msgstr "Inactive"
+
+#: src/utils/secure-passkeys-i18n.php:37 src/utils/secure-passkeys-i18n.php:74
+#: src/utils/secure-passkeys-i18n.php:104
+#: src/views/admin/vue/components/passkeys/app.vue.php:168
+#: src/views/admin/vue/components/passkeys/app.vue.php:214
+msgid "Active"
+msgstr "Active"
+
+#: src/utils/secure-passkeys-i18n.php:38 src/utils/secure-passkeys-i18n.php:106
+msgid "An error occurred while loading passkeys."
+msgstr "Une erreur s’est produite lors du chargement des clés d’accès."
+
+#: src/utils/secure-passkeys-i18n.php:40 src/utils/secure-passkeys-i18n.php:108
+msgid "Passkey registration failed or cancelled."
+msgstr "L’enregistrement de la clé d’accès a échoué ou a été annulé."
+
+#: src/utils/secure-passkeys-i18n.php:41 src/utils/secure-passkeys-i18n.php:109
+msgid "The security key name must be between 3 and 30 characters long."
+msgstr "Le nom de la clé de sécurité doit contenir entre 3 et 30 caractères."
+
+#: src/utils/secure-passkeys-i18n.php:42 src/utils/secure-passkeys-i18n.php:110
+msgid ""
+"You already registered this device. You don't have to register it again."
+msgstr ""
+"Vous avez déjà enregistré cet appareil. Il n’est pas nécessaire de "
+"l’enregistrer à nouveau."
+
+#: src/utils/secure-passkeys-i18n.php:44 src/utils/secure-passkeys-i18n.php:112
+msgid ""
+"Passkey registration cancelled. Please try again if you want to proceed."
+msgstr ""
+"L’enregistrement de la clé d’accès a été annulé. Veuillez réessayer si vous "
+"souhaitez continuer."
+
+#: src/utils/secure-passkeys-i18n.php:45 src/utils/secure-passkeys-i18n.php:113
+msgid "Are you sure you want to delete your passkey?"
+msgstr "Voulez-vous vraiment supprimer votre clé d’accès ?"
+
+#: src/utils/secure-passkeys-i18n.php:47 src/utils/secure-passkeys-i18n.php:114
+msgid "Passkey successfully deleted."
+msgstr "Clé d’accès supprimée avec succès."
+
+#: src/utils/secure-passkeys-i18n.php:49 src/utils/secure-passkeys-i18n.php:115
+msgid "Failed to fetch passkey registration options."
+msgstr ""
+"Échec de la récupération des options d’enregistrement de la clé d’accès."
+
+#: src/utils/secure-passkeys-i18n.php:50 src/utils/secure-passkeys-i18n.php:116
+msgid "An error occurred while saving the passkey."
+msgstr "Une erreur s’est produite lors de l’enregistrement de la clé d’accès."
+
+#: src/utils/secure-passkeys-i18n.php:53 src/utils/secure-passkeys-i18n.php:118
+msgid "Passkey successfully added."
+msgstr "Clé d’accès ajoutée avec succès."
+
+#: src/utils/secure-passkeys-i18n.php:54 src/utils/secure-passkeys-i18n.php:119
+msgid "No passkeys found."
+msgstr "Aucune clé d’accès trouvée."
+
+#: src/utils/secure-passkeys-i18n.php:61 src/utils/secure-passkeys-i18n.php:86
+msgid "Are you sure you want to delete the passkey?"
+msgstr "Voulez-vous vraiment supprimer la clé d’accès ?"
+
+#: src/utils/secure-passkeys-i18n.php:62 src/utils/secure-passkeys-i18n.php:87
+msgid "Are you sure you want to activate the passkey?"
+msgstr "Voulez-vous vraiment activer la clé d’accès ?"
+
+#: src/utils/secure-passkeys-i18n.php:63 src/utils/secure-passkeys-i18n.php:88
+msgid "Are you sure you want to deactivate the passkey?"
+msgstr "Voulez-vous vraiment désactiver la clé d’accès ?"
+
+#: src/utils/secure-passkeys-i18n.php:70
+msgid "Passwordless Secure Passkeys"
+msgstr "Clés d’accès sécurisées sans mot de passe"
+
+#: src/utils/secure-passkeys-i18n.php:72
+#: src/views/admin/vue/components/passkeys/app.vue.php:162
+#: src/views/admin/vue/components/passkeys/app.vue.php:197
+msgid "Security Key Name"
+msgstr "Nom de la clé de sécurité"
+
+#: src/utils/secure-passkeys-i18n.php:73
+#: src/views/admin/vue/components/passkeys/app.vue.php:71
+#: src/views/admin/vue/components/passkeys/app.vue.php:165
+#: src/views/admin/vue/components/passkeys/app.vue.php:202
+msgid "Authenticator"
+msgstr "Authentificateur"
+
+#: src/utils/secure-passkeys-i18n.php:75
+#: src/views/admin/vue/components/passkeys/app.vue.php:171
+#: src/views/admin/vue/components/passkeys/app.vue.php:221
+msgid "Last Used"
+msgstr "Dernière utilisation"
+
+#: src/utils/secure-passkeys-i18n.php:76
+#: src/views/admin/vue/components/activity/app.vue.php:118
+#: src/views/admin/vue/components/activity/app.vue.php:180
+#: src/views/admin/vue/components/activity/app.vue.php:215
+#: src/views/admin/vue/components/passkeys/app.vue.php:95
+#: src/views/admin/vue/components/passkeys/app.vue.php:174
+#: src/views/admin/vue/components/passkeys/app.vue.php:230
+msgid "Created Date"
+msgstr "Date de création"
+
+#: src/utils/secure-passkeys-i18n.php:77
+#: src/views/admin/vue/components/passkeys/app.vue.php:177
+#: src/views/admin/vue/components/passkeys/app.vue.php:234
+msgid "Actions"
+msgstr "Actions"
+
+#: src/utils/secure-passkeys-i18n.php:81
+#: src/views/admin/vue/components/passkeys/app.vue.php:251
+#: src/views/admin/vue/profile.php:218
+msgid "Processing..."
+msgstr "En cours..."
+
+#: src/utils/secure-passkeys-i18n.php:82
+#: src/views/admin/vue/components/passkeys/app.vue.php:269
+msgid "Deleting..."
+msgstr "Suppression en cours…"
+
+#: src/utils/secure-passkeys-i18n.php:83
+#: src/views/admin/vue/components/activity/app.vue.php:219
+#: src/views/admin/vue/components/passkeys/app.vue.php:277
+msgid "No records found."
+msgstr "Aucun enregistrement trouvé."
+
+#: src/utils/secure-passkeys-i18n.php:84
+msgid "Loading passkeys..."
+msgstr "Chargement des clés d’accès…"
+
+#: src/utils/secure-passkeys-i18n.php:85
+msgid "An unexpected error occurred."
+msgstr "Une erreur inattendue s’est produite."
+
+#: src/utils/secure-passkeys-i18n.php:89
+msgid "Failed to fetch passkeys."
+msgstr "Échec de la récupération des clés d’accès."
+
+#: src/utils/secure-passkeys-i18n.php:96
+msgid "User Passkeys"
+msgstr "Clés d’accès des utilisateurs"
+
+#: src/views/admin/vue/components/activity/app.vue.php:6
+msgid ""
+"View a detailed log of passkeys created by users, including timestamps and "
+"relevant activity history for better security monitoring."
+msgstr ""
+"Consultez un journal détaillé des clés d’accès créées par les utilisateurs, "
+"incluant les horodatages et l’historique des activités pertinentes pour un "
+"meilleur suivi de la sécurité."
+
+#: src/views/admin/vue/components/activity/app.vue.php:32
+#: src/views/admin/vue/components/activity/app.vue.php:94
+#: src/views/admin/vue/components/activity/app.vue.php:168
+#: src/views/admin/vue/components/activity/app.vue.php:187
+#: src/views/admin/vue/components/passkeys/app.vue.php:34
+#: src/views/admin/vue/components/passkeys/app.vue.php:159
+#: src/views/admin/vue/components/passkeys/app.vue.php:186
+msgid "User"
+msgstr "Utilisateur"
+
+#: src/views/admin/vue/components/activity/app.vue.php:40
+#: src/views/admin/vue/components/passkeys/app.vue.php:42
+msgid "User ID, Name, or Email"
+msgstr "ID utilisateur, nom ou e-mail"
+
+#: src/views/admin/vue/components/activity/app.vue.php:46
+#: src/views/admin/vue/components/activity/app.vue.php:174
+#: src/views/admin/vue/components/activity/app.vue.php:209
+msgid "Action"
+msgstr "Action"
+
+#: src/views/admin/vue/components/activity/app.vue.php:56
+#: src/views/admin/vue/components/activity/app.vue.php:91
+#: src/views/admin/vue/components/passkeys/app.vue.php:58
+#: src/views/admin/vue/components/passkeys/app.vue.php:81
+msgid "Any"
+msgstr "Tout"
+
+#: src/views/admin/vue/components/activity/app.vue.php:81
+msgid "Action By"
+msgstr "Par"
+
+#: src/views/admin/vue/components/activity/app.vue.php:97
+msgid "Admin"
+msgstr "Admin"
+
+#: src/views/admin/vue/components/activity/app.vue.php:104
+#: src/views/admin/vue/components/activity/app.vue.php:177
+#: src/views/admin/vue/components/activity/app.vue.php:214
+msgid "IP Address"
+msgstr "Adresse IP"
+
+#: src/views/admin/vue/components/activity/app.vue.php:135
+#: src/views/admin/vue/components/passkeys/app.vue.php:126
+msgid "Filter"
+msgstr "Filtre"
+
+#: src/views/admin/vue/components/activity/app.vue.php:143
+#: src/views/admin/vue/components/passkeys/app.vue.php:134
+msgid "Reset"
+msgstr "Réinitialiser"
+
+#: src/views/admin/vue/components/activity/app.vue.php:152
+#: src/views/admin/vue/components/passkeys/app.vue.php:143
+msgid "Count"
+msgstr "Nombre"
+
+#: src/views/admin/vue/components/activity/app.vue.php:165
+#: src/views/admin/vue/components/activity/app.vue.php:186
+#: src/views/admin/vue/components/passkeys/app.vue.php:156
+#: src/views/admin/vue/components/passkeys/app.vue.php:183
+msgid "#"
+msgstr "#"
+
+#: src/views/admin/vue/components/activity/app.vue.php:171
+#: src/views/admin/vue/components/activity/app.vue.php:200
+msgid "Description"
+msgstr "Description"
+
+#: src/views/admin/vue/components/activity/app.vue.php:196
+#: src/views/admin/vue/components/overview/app.vue.php:208
+msgid "User ID"
+msgstr "ID utilisateur"
+
+#: src/views/admin/vue/components/overview/app.vue.php:21
+msgid ""
+"Secure Passkeys is a passwordless authentication solution based on WebAuthn, "
+"enabling users to log in using device-based methods like biometrics or PIN. "
+"It eliminates the need for traditional passwords, enhancing security and and "
+"upgrade your WordPress site with Secure Passkeys for a modern, secure, and "
+"efficient authentication experience."
+msgstr ""
+"Secure Passkeys est une solution d’authentification sans mot de passe basée "
+"sur WebAuthn, permettant aux utilisateurs de se connecter à l’aide de "
+"méthodes intégrées à leurs appareils, comme la biométrie ou un code PIN. "
+"Elle élimine le besoin de mots de passe traditionnels, renforce la sécurité "
+"et modernise votre site WordPress grâce à Secure Passkeys pour offrir une "
+"expérience d’authentification moderne, sécurisée et efficace."
+
+#: src/views/admin/vue/components/overview/app.vue.php:32
+msgid "Statistics"
+msgstr "Statistiques"
+
+#: src/views/admin/vue/components/overview/app.vue.php:46
+msgid "Users"
+msgstr "Utilisateurs"
+
+#: src/views/admin/vue/components/overview/app.vue.php:94
+msgid "Activities"
+msgstr "Activités"
+
+#: src/views/admin/vue/components/overview/app.vue.php:111
+msgid "Challenges"
+msgstr "Défis"
+
+#: src/views/admin/vue/components/overview/app.vue.php:119
+msgid "Overview of Authenticators"
+msgstr "Aperçu des authentificateurs"
+
+#: src/views/admin/vue/components/overview/app.vue.php:135
+msgid "No authenticators registered."
+msgstr "Aucun authentificateur enregistré."
+
+#: src/views/admin/vue/components/overview/app.vue.php:173
+msgid "Last Login Activity"
+msgstr "Dernière activité de connexion"
+
+#: src/views/admin/vue/components/overview/app.vue.php:187
+msgid "No activities."
+msgstr "Aucune activité."
+
+#: src/views/admin/vue/components/passkeys/app.vue.php:9
+msgid "See the list of passkeys that users have created."
+msgstr "Consultez la liste des clés d’accès créées par les utilisateurs."
+
+#: src/views/admin/vue/components/passkeys/app.vue.php:48
+msgid "Status"
+msgstr "Statut"
+
+#: src/views/admin/vue/components/passkeys/app.vue.php:109
+msgid "Last Used Date"
+msgstr "Dernière date d’utilisation"
+
+#: src/views/admin/vue/components/settings/advanced-settings.vue.php:7
+#: src/views/admin/vue/components/settings/display-settings.vue.php:7
+#: src/views/admin/vue/components/settings/general-settings.vue.php:10
+#: src/views/admin/vue/components/settings/general-settings.vue.php:40
+msgid "General Settings"
+msgstr "Paramètres généraux"
+
+#: src/views/admin/vue/components/settings/advanced-settings.vue.php:13
+#: src/views/admin/vue/components/settings/display-settings.vue.php:13
+#: src/views/admin/vue/components/settings/general-settings.vue.php:16
+msgid "Display Settings"
+msgstr "Paramètres d'affichage"
+
+#: src/views/admin/vue/components/settings/advanced-settings.vue.php:19
+#: src/views/admin/vue/components/settings/advanced-settings.vue.php:37
+#: src/views/admin/vue/components/settings/display-settings.vue.php:19
+#: src/views/admin/vue/components/settings/general-settings.vue.php:22
+msgid "Advanced Settings"
+msgstr "Paramètres avancés"
+
+#: src/views/admin/vue/components/settings/advanced-settings.vue.php:39
+msgid "Manage advanced options for plugin maintenance."
+msgstr "Gérer les options avancées pour la maintenance du plugin."
+
+#: src/views/admin/vue/components/settings/advanced-settings.vue.php:49
+msgid "Delete passkey challenge records older than"
+msgstr "Supprimer les enregistrements de défis de clé d’accès plus anciens que"
+
+#: src/views/admin/vue/components/settings/advanced-settings.vue.php:66
+#: src/views/admin/vue/components/settings/advanced-settings.vue.php:102
+msgid "Never"
+msgstr "Jamais"
+
+#: src/views/admin/vue/components/settings/advanced-settings.vue.php:69
+#: src/views/admin/vue/components/settings/advanced-settings.vue.php:105
+msgid "Older than"
+msgstr "Plus ancien que"
+
+#: src/views/admin/vue/components/settings/advanced-settings.vue.php:71
+#: src/views/admin/vue/components/settings/advanced-settings.vue.php:107
+msgid "days"
+msgstr "jours"
+
+#: src/views/admin/vue/components/settings/advanced-settings.vue.php:76
+msgid ""
+"Automatically removes outdated passkey challenge records to optimize "
+"database performance. If set to \"Never\", records will not be deleted."
+msgstr ""
+"Supprime automatiquement les enregistrements de défis de clé d’accès "
+"obsolètes pour optimiser les performances de la base de données. Si réglé "
+"sur « Jamais », les enregistrements ne seront pas supprimés."
+
+#: src/views/admin/vue/components/settings/advanced-settings.vue.php:85
+msgid "Delete log records older than"
+msgstr "Supprimer les enregistrements de journal plus anciens que"
+
+#: src/views/admin/vue/components/settings/advanced-settings.vue.php:112
+msgid ""
+"(Not recommended) Automatically deletes outdated log records. If set to "
+"\"Never\", logs will not be removed."
+msgstr ""
+"(Non recommandé) Supprime automatiquement les enregistrements de journal "
+"obsolètes. Si réglé sur « Jamais », les journaux ne seront pas supprimés."
+
+#: src/views/admin/vue/components/settings/advanced-settings.vue.php:115
+msgid "This results in the loss of activity log history."
+msgstr "Cela entraîne la perte de l’historique du journal d’activité."
+
+#: src/views/admin/vue/components/settings/advanced-settings.vue.php:141
+#: src/views/admin/vue/components/settings/display-settings.vue.php:345
+#: src/views/admin/vue/components/settings/general-settings.vue.php:274
+msgid "Save Changes"
+msgstr "Enregistrer les modifications"
+
+#: src/views/admin/vue/components/settings/advanced-settings.vue.php:144
+#: src/views/admin/vue/components/settings/display-settings.vue.php:348
+#: src/views/admin/vue/components/settings/general-settings.vue.php:277
+msgid "Saving..."
+msgstr "Enregistrement en cours…"
+
+#: src/views/admin/vue/components/settings/advanced-settings.vue.php:156
+msgid "Configuring Cron Jobs"
+msgstr "Configuration des tâches Cron"
+
+#: src/views/admin/vue/components/settings/advanced-settings.vue.php:157
+msgid ""
+"To ensure these options work as expected, it is recommended to set up a cron "
+"job on your server. A cron job is a scheduled task that automatically runs "
+"at specified intervals. Here’s how you can set up a cron job:"
+msgstr ""
+"Pour garantir que ces options fonctionnent comme prévu, il est recommandé de "
+"configurer une tâche cron sur votre serveur. Une tâche cron est une tâche "
+"planifiée qui s’exécute automatiquement à intervalles réguliers. Voici "
+"comment vous pouvez configurer une tâche cron :"
+
+#: src/views/admin/vue/components/settings/advanced-settings.vue.php:161
+msgid "Log in to your web server control panel, such as cPanel or Plesk."
+msgstr ""
+"Connectez-vous à votre panneau de contrôle du serveur web, comme cPanel ou "
+"Plesk."
+
+#: src/views/admin/vue/components/settings/advanced-settings.vue.php:164
+msgid "Find the option to manage cron jobs and select it."
+msgstr "Trouvez l’option pour gérer les tâches cron et sélectionnez-la."
+
+#: src/views/admin/vue/components/settings/advanced-settings.vue.php:167
+msgid ""
+"In the “Add New Cron Job” section, specify the frequency at which you want "
+"the cron job to run, for example, every hour or every day."
+msgstr ""
+"Dans la section « Ajouter une nouvelle tâche cron », spécifiez la fréquence "
+"à laquelle vous souhaitez que la tâche cron s’exécute, par exemple, chaque "
+"heure ou chaque jour."
+
+#: src/views/admin/vue/components/settings/advanced-settings.vue.php:170
+msgid "In the “Command” field, enter the following command:"
+msgstr "Dans le champ « Commande », entrez la commande suivante :"
+
+#: src/views/admin/vue/components/settings/advanced-settings.vue.php:173
+msgid "Save the cron job."
+msgstr "Enregistrez la tâche cron."
+
+#: src/views/admin/vue/components/settings/advanced-settings.vue.php:175
+msgid "Add the following code to your \"wp-config.php\" file:"
+msgstr "Ajoutez le code suivant à votre fichier « wp-config.php » :"
+
+#: src/views/admin/vue/components/settings/display-settings.vue.php:37
+msgid "Frontend Options"
+msgstr "Options du frontend"
+
+#: src/views/admin/vue/components/settings/display-settings.vue.php:45
+msgid "Theme"
+msgstr "Thème"
+
+#: src/views/admin/vue/components/settings/display-settings.vue.php:65
+msgid ""
+"Choose a frontend theme. All themes, except \"default\", must be activated "
+"to function properly."
+msgstr ""
+"Choisissez un thème frontend. Tous les thèmes, sauf « par défaut », doivent "
+"être activés pour fonctionner correctement."
+
+#: src/views/admin/vue/components/settings/display-settings.vue.php:67
+msgid "You can add custom themes using a plugin filters."
+msgstr ""
+"Vous pouvez ajouter des thèmes personnalisés à l’aide de filtres de plugin."
+
+#: src/views/admin/vue/components/settings/display-settings.vue.php:79
+msgid ""
+"Configure the Passkey login options to be displayed on the frontend for "
+"default WordPress and third-party plugins."
+msgstr ""
+"Configurez les options de connexion par clé d’accès à afficher sur le "
+"frontend pour WordPress par défaut et les plugins tiers."
+
+#: src/views/admin/vue/components/settings/display-settings.vue.php:88
+msgid "WordPress Login Form"
+msgstr "Formulaire de connexion WordPress"
+
+#: src/views/admin/vue/components/settings/display-settings.vue.php:102
+msgid "Enable Passkey Login for default WordPress login."
+msgstr ""
+"Activer la connexion par clé d’accès pour la connexion WordPress par défaut."
+
+#: src/views/admin/vue/components/settings/display-settings.vue.php:110
+msgid ""
+"These options will work only if the respective plugins are installed and "
+"activated:"
+msgstr ""
+"Ces options ne fonctionneront que si les plugins respectifs sont installés "
+"et activés :"
+
+#: src/views/admin/vue/components/settings/display-settings.vue.php:121
+msgid "Login for WooCommerce"
+msgstr "Se connecter pour WooCommerce"
+
+#: src/views/admin/vue/components/settings/display-settings.vue.php:135
+msgid "Enable Passkey Login for WooCommerce login page."
+msgstr ""
+"Activer la connexion par clé d’accès pour la page de connexion WooCommerce."
+
+#. translators: %s represents the name of the required plugin (e.g., "WooCommerce").
+#. translators: %s represents the name of the required plugin (e.g., "MemberPress").
+#. translators: %s represents the name of the required plugin (e.g., "Easy Digital Downloads").
+#: src/views/admin/vue/components/settings/display-settings.vue.php:141
+#: src/views/admin/vue/components/settings/display-settings.vue.php:173
+#: src/views/admin/vue/components/settings/display-settings.vue.php:202
+#, php-format
+msgid "The %s plugin must be installed and activated to work correctly."
+msgstr ""
+"Le plugin %s doit être installé et activé pour fonctionner correctement."
+
+#: src/views/admin/vue/components/settings/display-settings.vue.php:153
+msgid "Login for MemberPress"
+msgstr "Se connecter pour MemberPress"
+
+#: src/views/admin/vue/components/settings/display-settings.vue.php:167
+msgid "Enable Passkey Login for MemberPress login form."
+msgstr ""
+"Activer la connexion par clé d’accès pour le formulaire de connexion "
+"MemberPress."
+
+#: src/views/admin/vue/components/settings/display-settings.vue.php:182
+msgid "Login for Easy Digital Downloads"
+msgstr "Se connecter pour Easy Digital Downloads"
+
+#: src/views/admin/vue/components/settings/display-settings.vue.php:196
+msgid "Enable Passkey Login for Easy Digital Downloads login form."
+msgstr ""
+"Activer la connexion par clé d’accès pour le formulaire de connexion Easy "
+"Digital Downloads."
+
+#: src/views/admin/vue/components/settings/display-settings.vue.php:215
+msgid ""
+"Use the following shortcodes to embed the passkey login and registration "
+"forms on your frontend pages. These shortcodes are typically only necessary "
+"if you need to manually embed the forms on custom pages. By default, the "
+"login form handles various options automatically, and you may not need to "
+"manage it unless you're working with a custom page."
+msgstr ""
+"Utilisez les shortcodes suivants pour intégrer les formulaires de connexion "
+"et d’enregistrement par clé d’accès sur vos pages frontend. Ces shortcodes "
+"sont généralement nécessaires uniquement si vous devez intégrer manuellement "
+"les formulaires sur des pages personnalisées. Par défaut, le formulaire de "
+"connexion gère automatiquement diverses options, et vous n’aurez peut-être "
+"pas à les gérer, sauf si vous travaillez avec une page personnalisée."
+
+#: src/views/admin/vue/components/settings/display-settings.vue.php:223
+msgid "Login Short Code"
+msgstr "Shortcode de connexion"
+
+#: src/views/admin/vue/components/settings/display-settings.vue.php:237
+msgid ""
+"This shortcode to embed the \"Login via Passkey\" login button,this allows "
+"users to log in using their passkey credentials."
+msgstr ""
+"Ce shortcode permet d’intégrer le bouton « Connexion via clé d’accès », ce "
+"qui permet aux utilisateurs de se connecter en utilisant leurs identifiants "
+"de clé d’accès."
+
+#: src/views/admin/vue/components/settings/display-settings.vue.php:239
+msgid "If the user is already logged in, the form will not be displayed."
+msgstr "Si l’utilisateur est déjà connecté, le formulaire ne sera pas affiché."
+
+#: src/views/admin/vue/components/settings/display-settings.vue.php:248
+msgid "Register Short Code"
+msgstr "Shortcode d’enregistrement"
+
+#: src/views/admin/vue/components/settings/display-settings.vue.php:262
+msgid ""
+"This shortcode to embed the passkey registration form. This allows logged-in "
+"users to create and manage their passkey credentials."
+msgstr ""
+"Ce shortcode permet d’intégrer le formulaire d’enregistrement de clé "
+"d’accès. Cela permet aux utilisateurs connectés de créer et gérer leurs "
+"identifiants de clé d’accès."
+
+#: src/views/admin/vue/components/settings/display-settings.vue.php:264
+msgid "If the user is not logged in, the form will not be displayed."
+msgstr ""
+"Si l’utilisateur n’est pas connecté, le formulaire ne sera pas affiché."
+
+#: src/views/admin/vue/components/settings/display-settings.vue.php:275
+msgid "Adminarea Options"
+msgstr "Options de l’interface d’administration"
+
+#: src/views/admin/vue/components/settings/display-settings.vue.php:277
+msgid "Configure the options available in the admin area."
+msgstr "Configurez les options disponibles dans l’interface d’administration."
+
+#: src/views/admin/vue/components/settings/display-settings.vue.php:286
+msgid "Display Passkeys in Users List"
+msgstr "Afficher les clés d’accès dans la liste des utilisateurs"
+
+#: src/views/admin/vue/components/settings/display-settings.vue.php:300
+msgid ""
+"Enable this option to show the passkeys as a column in the users list in the "
+"adminarea."
+msgstr ""
+"Activez cette option pour afficher les clés d’accès en tant que colonne dans "
+"la liste des utilisateurs de l’interface d’administration."
+
+#: src/views/admin/vue/components/settings/display-settings.vue.php:307
+msgid "Display Passkeys in Edit User/Profile"
+msgstr "Afficher les clés d’accès dans Modifier l’utilisateur / profil"
+
+#: src/views/admin/vue/components/settings/display-settings.vue.php:321
+msgid ""
+"Enable this option to show the passkeys on the Edit User and Profile page in "
+"the adminarea."
+msgstr ""
+"Activez cette option pour afficher les clés d’accès sur la page « Modifier "
+"l’utilisateur et le profil » dans l’interface d’administration."
+
+#: src/views/admin/vue/components/settings/general-settings.vue.php:42
+msgid "Configure the Passkey for each user."
+msgstr "Configurer la clé d’accès pour chaque utilisateur."
+
+#: src/views/admin/vue/components/settings/general-settings.vue.php:51
+msgid "Maximum Passkeys per User"
+msgstr "Maximum de clés d’accès par utilisateur"
+
+#: src/views/admin/vue/components/settings/general-settings.vue.php:65
+msgid ""
+"Enable or disable the restriction for the maximum number of passkeys per "
+"user."
+msgstr ""
+"Activez ou désactivez la restriction du nombre maximum de clés d’accès par "
+"utilisateur."
+
+#: src/views/admin/vue/components/settings/general-settings.vue.php:67
+msgid "If disabled, users can register an unlimited number of passkeys."
+msgstr ""
+"Si désactivé, les utilisateurs peuvent enregistrer un nombre illimité de "
+"clés d’accès."
+
+#: src/views/admin/vue/components/settings/general-settings.vue.php:78
+msgid "Number of Passkeys"
+msgstr "Nombre de clés d’accès"
+
+#: src/views/admin/vue/components/settings/general-settings.vue.php:91
+msgid "Set the maximum number of passkeys a user can register (if enabled)."
+msgstr ""
+"Définissez le nombre maximum de clés d’accès qu’un utilisateur peut "
+"enregistrer (si activé)."
+
+#: src/views/admin/vue/components/settings/general-settings.vue.php:98
+msgid "Excluded User Roles"
+msgstr "Rôles d’utilisateur exclus"
+
+#: src/views/admin/vue/components/settings/general-settings.vue.php:120
+msgid "Select user roles to exclude from passkey registration and login."
+msgstr ""
+"Sélectionnez les rôles d’utilisateur à exclure de l’enregistrement et de la "
+"connexion par clé d’accès."
+
+#: src/views/admin/vue/components/settings/general-settings.vue.php:123
+msgid ""
+"Users with these roles will not be able to log in, and the passkey "
+"registration form will not appear on the profile or registration shortcode."
+msgstr ""
+"Les utilisateurs avec ces rôles ne pourront pas se connecter, et le "
+"formulaire d’enregistrement de clé d’accès n’apparaîtra pas sur le profil ou "
+"le shortcode d’enregistrement."
+
+#: src/views/admin/vue/components/settings/general-settings.vue.php:134
+msgid ""
+"Configure the WebAuthn and Passkeys login and registration options., we "
+"recommend using the default settings unless you have a good understanding of "
+"WebAuthn configuration."
+msgstr ""
+"Configurez les options de connexion et d’enregistrement WebAuthn et clés "
+"d’accès. Nous vous recommandons d’utiliser les paramètres par défaut, sauf "
+"si vous avez une bonne compréhension de la configuration de WebAuthn."
+
+#: src/views/admin/vue/components/settings/general-settings.vue.php:145
+msgid "Exclude Existing Credentials"
+msgstr "Exclure les identifiants existants"
+
+#: src/views/admin/vue/components/settings/general-settings.vue.php:159
+msgid ""
+"Enable this option to prevent users from registering passkeys that are "
+"already registered (Recommended: enabled)."
+msgstr ""
+"Activez cette option pour empêcher les utilisateurs d’enregistrer des clés "
+"d’accès déjà enregistrées (Recommandé : activé)."
+
+#: src/views/admin/vue/components/settings/general-settings.vue.php:166
+msgid "Registration Timeout"
+msgstr "Délai d’enregistrement"
+
+#: src/views/admin/vue/components/settings/general-settings.vue.php:179
+msgid "Set the expiration timeout for passkey registration (in minutes)."
+msgstr ""
+"Définissez le délai d’expiration pour l’enregistrement de la clé d’accès (en "
+"minutes)."
+
+#: src/views/admin/vue/components/settings/general-settings.vue.php:186
+msgid "Login Timeout"
+msgstr "Délai de connexion"
+
+#: src/views/admin/vue/components/settings/general-settings.vue.php:199
+msgid "Set the expiration timeout for passkey login (in minutes)."
+msgstr ""
+"Définissez le délai d’expiration pour la connexion par clé d’accès (en "
+"minutes)."
+
+#: src/views/admin/vue/components/settings/general-settings.vue.php:208
+msgid "Enable User Verifications"
+msgstr "Activer la vérification des utilisateurs"
+
+#: src/views/admin/vue/components/settings/general-settings.vue.php:222
+msgid ""
+"Choose the level of user verification required during passkey registration "
+"(Recommended: enabled)."
+msgstr ""
+"Choisissez le niveau de vérification des utilisateurs requis lors de "
+"l’enregistrement de la clé d’accès (Recommandé : activé)."
+
+#: src/views/admin/vue/components/settings/general-settings.vue.php:229
+msgid "Login User Verification"
+msgstr "Vérification de l’utilisateur lors de la connexion"
+
+#: src/views/admin/vue/components/settings/general-settings.vue.php:240
+msgid "Required"
+msgstr "Requis"
+
+#: src/views/admin/vue/components/settings/general-settings.vue.php:243
+msgid "Preferred"
+msgstr "Préféré"
+
+#: src/views/admin/vue/components/settings/general-settings.vue.php:246
+msgid "Discouraged"
+msgstr "Déconseillé"
+
+#: src/views/admin/vue/components/settings/general-settings.vue.php:250
+msgid "Choose the level of user verification required during passkey login."
+msgstr ""
+"Choisissez le niveau de vérification des utilisateurs requis lors de la "
+"connexion par clé d’accès."
+
+#: src/views/admin/vue/components/shared/pagination.vue.php:9
+msgid "records"
+msgstr "enregistrements"
+
+#: src/views/admin/vue/components/shared/pagination.vue.php:12
+msgid "Page"
+msgstr "Page"
+
+#: src/views/admin/vue/components/shared/pagination.vue.php:14
+msgid "of"
+msgstr "de"
+
+#: src/views/admin/vue/components/shared/pagination.vue.php:21
+msgid "Previous page"
+msgstr "Page précédente"
+
+#: src/views/frontend/default/login.default.php:14
+#: src/views/frontend/default/login.edd.php:14
+#: src/views/frontend/default/login.memberpress.php:14
+#: src/views/frontend/default/login.shortcode.php:14
+#: src/views/frontend/default/login.woocommerce.php:14
+#: src/views/frontend/yootheme/login.edd.php:14
+#: src/views/frontend/yootheme/login.memberpress.php:14
+#: src/views/frontend/yootheme/login.shortcode.php:14
+#: src/views/frontend/yootheme/login.woocommerce.php:14
+msgid "Login via Passkey.."
+msgstr "Se connecter avec la clé d’accès.."
+
+#: src/views/frontend/default/login.default.php:15
+#: src/views/frontend/default/login.edd.php:15
+#: src/views/frontend/default/login.memberpress.php:15
+#: src/views/frontend/default/login.shortcode.php:15
+#: src/views/frontend/default/login.woocommerce.php:15
+#: src/views/frontend/yootheme/login.edd.php:15
+#: src/views/frontend/yootheme/login.memberpress.php:15
+#: src/views/frontend/yootheme/login.shortcode.php:15
+#: src/views/frontend/yootheme/login.woocommerce.php:15
+msgid "Login via Passkey"
+msgstr "Se connecter avec la clé d’accès"
+
+#. Plugin URI of the plugin/theme
+msgid "https://endisha.ly/"
+msgstr "https://endisha.ly/"
+
+#. Description of the plugin/theme
+msgid ""
+"Secure Passkeys is a powerful WordPress plugin that enables passwordless "
+"authentication using WebAuthn technology."
+msgstr ""
+"Secure Passkeys est un plugin WordPress puissant qui permet "
+"l’authentification sans mot de passe en utilisant la technologie WebAuthn."
+
+#. Author of the plugin/theme
+msgid "Mohamed Endisha"
+msgstr "Mohamed Endisha"
+
+#. Author URI of the plugin/theme
+msgid "https://endisha.ly"
+msgstr "https://endisha.ly"
