@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Secure Passkeys\n"
 "POT-Creation-Date: 2025-04-27 19:32-0400\n"
-"PO-Revision-Date: 2025-04-27 22:05-0400\n"
+"PO-Revision-Date: 2025-04-28 18:33-0400\n"
 "Last-Translator: Arhtur <arthur@aris.la>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -143,7 +143,7 @@ msgstr "Journal d'activité"
 #: src/models/secure-passkeys-log.php:72
 #: src/views/admin/vue/components/activity/app.vue.php:59
 msgid "Login"
-msgstr "Connexion"
+msgstr "Se connecter"
 
 #: src/models/secure-passkeys-log.php:73
 #: src/views/admin/vue/components/activity/app.vue.php:62
@@ -234,7 +234,7 @@ msgstr ""
 
 #: src/settings/secure-passkeys-advanced-settings.php:40
 msgid "The challenge cleanup period is not correct."
-msgstr "La période de nettoyage du défi n’est pas correcte."
+msgstr "La période de nettoyage des tentatives n'est pas correcte."
 
 #: src/settings/secure-passkeys-advanced-settings.php:44
 msgid "The log cleanup period is not correct."
@@ -659,7 +659,7 @@ msgstr "Activités"
 
 #: src/views/admin/vue/components/overview/app.vue.php:111
 msgid "Challenges"
-msgstr "Défis"
+msgstr "Tentatives"
 
 #: src/views/admin/vue/components/overview/app.vue.php:119
 msgid "Overview of Authenticators"
@@ -715,7 +715,8 @@ msgstr "Gérer les options avancées pour la maintenance du plugin."
 
 #: src/views/admin/vue/components/settings/advanced-settings.vue.php:49
 msgid "Delete passkey challenge records older than"
-msgstr "Supprimer les enregistrements de défis de clé d’accès plus anciens que"
+msgstr ""
+"Supprimer les enregistrements des tentatives de clé d'accès plus anciens que"
 
 #: src/views/admin/vue/components/settings/advanced-settings.vue.php:66
 #: src/views/admin/vue/components/settings/advanced-settings.vue.php:102
@@ -725,7 +726,7 @@ msgstr "Jamais"
 #: src/views/admin/vue/components/settings/advanced-settings.vue.php:69
 #: src/views/admin/vue/components/settings/advanced-settings.vue.php:105
 msgid "Older than"
-msgstr "Plus ancien que"
+msgstr "Plus de"
 
 #: src/views/admin/vue/components/settings/advanced-settings.vue.php:71
 #: src/views/admin/vue/components/settings/advanced-settings.vue.php:107
@@ -737,9 +738,9 @@ msgid ""
 "Automatically removes outdated passkey challenge records to optimize "
 "database performance. If set to \"Never\", records will not be deleted."
 msgstr ""
-"Supprime automatiquement les enregistrements de défis de clé d’accès "
-"obsolètes pour optimiser les performances de la base de données. Si réglé "
-"sur « Jamais », les enregistrements ne seront pas supprimés."
+"Supprime automatiquement les enregistrements des tentatives de connexion par "
+"clé d'accès obsolètes pour optimiser les performances de la base de données. "
+"Si réglé sur « Jamais », les enregistrements ne seront pas supprimés."
 
 #: src/views/admin/vue/components/settings/advanced-settings.vue.php:85
 msgid "Delete log records older than"
@@ -850,8 +851,7 @@ msgstr "Formulaire de connexion WordPress"
 
 #: src/views/admin/vue/components/settings/display-settings.vue.php:102
 msgid "Enable Passkey Login for default WordPress login."
-msgstr ""
-"Activer la connexion par clé d’accès pour la connexion WordPress par défaut."
+msgstr "Activer la connexion par clé d'accès par défaut pour WordPress."
 
 #: src/views/admin/vue/components/settings/display-settings.vue.php:110
 msgid ""
@@ -863,7 +863,7 @@ msgstr ""
 
 #: src/views/admin/vue/components/settings/display-settings.vue.php:121
 msgid "Login for WooCommerce"
-msgstr "Se connecter pour WooCommerce"
+msgstr "Connexion à  WooCommerce"
 
 #: src/views/admin/vue/components/settings/display-settings.vue.php:135
 msgid "Enable Passkey Login for WooCommerce login page."
@@ -883,7 +883,7 @@ msgstr ""
 
 #: src/views/admin/vue/components/settings/display-settings.vue.php:153
 msgid "Login for MemberPress"
-msgstr "Se connecter pour MemberPress"
+msgstr "Connexion à MemberPress"
 
 #: src/views/admin/vue/components/settings/display-settings.vue.php:167
 msgid "Enable Passkey Login for MemberPress login form."
@@ -893,7 +893,7 @@ msgstr ""
 
 #: src/views/admin/vue/components/settings/display-settings.vue.php:182
 msgid "Login for Easy Digital Downloads"
-msgstr "Se connecter pour Easy Digital Downloads"
+msgstr "Connexion à Easy Digital Downloads"
 
 #: src/views/admin/vue/components/settings/display-settings.vue.php:196
 msgid "Enable Passkey Login for Easy Digital Downloads login form."
@@ -925,9 +925,9 @@ msgid ""
 "This shortcode to embed the \"Login via Passkey\" login button,this allows "
 "users to log in using their passkey credentials."
 msgstr ""
-"Ce shortcode permet d’intégrer le bouton « Connexion via clé d’accès », ce "
-"qui permet aux utilisateurs de se connecter en utilisant leurs identifiants "
-"de clé d’accès."
+"Ce shortcode permet d’intégrer le bouton « Se connecter avec la clé "
+"d’accès », ce qui permet aux utilisateurs de se connecter en utilisant leurs "
+"identifiants de clé d’accès."
 
 #: src/views/admin/vue/components/settings/display-settings.vue.php:239
 msgid "If the user is already logged in, the form will not be displayed."
