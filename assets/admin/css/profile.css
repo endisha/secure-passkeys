@@ -103,6 +103,10 @@
   padding: 4px;
 }
 
+.secure-passkeys .register-passkey-card .multiline-text {
+  white-space: pre-line;
+}
+
 .secure-passkeys .register-passkey-card input.disabled,
 .secure-passkeys .register-passkey-card input:disabled {
   background: #eeee;

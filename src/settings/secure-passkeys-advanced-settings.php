@@ -25,6 +25,7 @@ class Secure_Passkeys_Advanced_Settings extends Secure_Passkeys_Settings
         return [
             'challenge_cleanup_days',
             'log_cleanup_days',
+            'stop_log_records_enabled',
         ];
     }
 
@@ -32,6 +33,7 @@ class Secure_Passkeys_Advanced_Settings extends Secure_Passkeys_Settings
     {
         $challenge_cleanup_days = intval($_POST['settings']['challenge_cleanup_days'] ?? 0);
         $log_cleanup_days = intval($_POST['settings']['log_cleanup_days'] ?? 0);
+        $stop_log_records_enabled = intval($_POST['settings']['stop_log_records_enabled'] ?? 0);
 
         $challenge_cleanup_days_periods = apply_filters('secure_passkeys_challenge_cleanup_allowed_days_periods', [0, 30, 60, 90]);
         $log_cleanup_days_periods = apply_filters('secure_passkeys_log_cleanup_allowed_days_periods', [0, 30, 60, 90]);
@@ -46,7 +48,8 @@ class Secure_Passkeys_Advanced_Settings extends Secure_Passkeys_Settings
 
         $data = [
             'challenge_cleanup_days' => $challenge_cleanup_days,
-            'log_cleanup_days' => $log_cleanup_days
+            'log_cleanup_days' => $log_cleanup_days,
+            'stop_log_records_enabled' => $stop_log_records_enabled
         ];
 
         Secure_Passkeys_Helper::update_option($data);

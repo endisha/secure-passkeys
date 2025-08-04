@@ -47,6 +47,11 @@ class Secure_Passkeys_Log extends Secure_Passkeys_Model
         ?int $webauthn_id = null,
         ?string $ip_address = null
     ) {
+
+        if (Secure_Passkeys_Helper::is_stop_log_records_enabled()) {
+            return false;
+        }
+
         if (is_null($ip_address)) {
             $ip_address = Secure_Passkeys_Helper::get_ip_address();
         }

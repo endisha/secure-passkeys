@@ -42,7 +42,6 @@ defined('ABSPATH') || exit;
 
   <table class="form-table" :class="{'loading-blur': isLoading}" width="100%">
     <tbody>
-      <!-- Challenge Cleanup Settings -->
       <tr>
         <th style="width: 200px">
           <label for="challenge_cleanup_days" class="inline-label">
@@ -114,6 +113,31 @@ defined('ABSPATH') || exit;
               <span style="text-decoration: underline"
                 ><?php esc_html_e('This results in the loss of activity log history.', 'secure-passkeys'); ?></span
               >
+            </p>
+          </label>
+        </td>
+      </tr>
+
+      <tr>
+        <th style="width: 200px">
+          <label for="stop_log_records_enabled" class="inline-label">
+            <?php esc_html_e('Disable Activity Log Recording', 'secure-passkeys'); ?>
+          </label>
+        </th>
+        <td>
+          <label for="stop_log_records_enabled">
+            <input
+              name="stop_log_records_enabled"
+              type="checkbox"
+              id="stop_log_records_enabled"
+              v-model="settings.stop_log_records_enabled"
+              true-value="1"
+              false-value="0"
+              :disabled="submitting || isLoading"
+            />
+            <?php esc_html_e('Disable the creation of new activity log records.', 'secure-passkeys'); ?>
+            <p class="help">
+              <?php esc_html_e('This will prevent new activity log records from being created.', 'secure-passkeys'); ?>
             </p>
           </label>
         </td>

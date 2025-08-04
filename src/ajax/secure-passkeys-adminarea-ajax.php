@@ -215,7 +215,6 @@ class Secure_Passkeys_Adminarea_Ajax
 
         array_map(function ($record) {
             $aaguid_friendly_name = Secure_Passkeys_Webauthn_Helper::get_friendly_name($record->aaguid);
-            $record->is_active = intval($record->is_active);
             $record->localized_log_type = Secure_Passkeys_Log::get_localized_log_type($record->log_type);
             $record->description = Secure_Passkeys_Log::get_log_line($record->log_type, $record->security_key_name, $aaguid_friendly_name);
             $record->user = Secure_Passkeys_Helper::get_user_object_by_id(intval($record->user_id));

@@ -25,6 +25,7 @@ class Secure_Passkeys_Display_Settings extends Secure_Passkeys_Settings
             'display_passkey_login_woocommerce_enabled',
             'display_passkey_login_memberpress_enabled',
             'display_passkey_login_edd_enabled',
+            'display_passkey_login_ultimate_member_enabled',
             'display_passkey_users_list_enabled',
             'display_passkey_edit_user_enabled',
         ];
@@ -37,6 +38,7 @@ class Secure_Passkeys_Display_Settings extends Secure_Passkeys_Settings
         $display_passkey_login_woocommerce_enabled = intval($_POST['settings']['display_passkey_login_woocommerce_enabled'] ?? 1);
         $display_passkey_login_memberpress_enabled = intval($_POST['settings']['display_passkey_login_memberpress_enabled'] ?? 1);
         $display_passkey_login_edd_enabled = intval($_POST['settings']['display_passkey_login_edd_enabled'] ?? 1);
+        $display_passkey_login_ultimate_member_enabled = intval($_POST['settings']['display_passkey_login_ultimate_member_enabled'] ?? 1);
         $display_passkey_users_list_enabled = intval($_POST['settings']['display_passkey_users_list_enabled'] ?? 1);
         $display_passkey_edit_user_enabled = intval($_POST['settings']['display_passkey_edit_user_enabled'] ?? 1);
 
@@ -55,6 +57,7 @@ class Secure_Passkeys_Display_Settings extends Secure_Passkeys_Settings
             'display_passkey_login_woocommerce_enabled' => $display_passkey_login_woocommerce_enabled,
             'display_passkey_login_memberpress_enabled' => $display_passkey_login_memberpress_enabled,
             'display_passkey_login_edd_enabled' => $display_passkey_login_edd_enabled,
+            'display_passkey_login_ultimate_member_enabled' => $display_passkey_login_ultimate_member_enabled,
             'display_passkey_users_list_enabled' => $display_passkey_users_list_enabled,
             'display_passkey_edit_user_enabled' => $display_passkey_edit_user_enabled,
         ];

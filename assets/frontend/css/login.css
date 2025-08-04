@@ -90,3 +90,14 @@
 .secure-passkey-login-woocommerce-wrapper .wc-block-components-notice-banner {
   padding: 10px !important;
 }
+
+/* Ultimate Member */
+.secure-passkey-login-ultimate-member-wrapper .is-error {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.secure-passkey-login-ultimate-member-wrapper .is-success {
+  margin-top: 10px !important;
+  margin-bottom: 10px !important;
+}

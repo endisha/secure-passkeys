@@ -205,6 +205,35 @@ defined('ABSPATH') || exit;
           </div>
         </td>
       </tr>
+      <tr>
+        <th style="width: 200px">
+          <label for="display_passkey_login_ultimate_member_enabled" class="inline-label">
+            <?php esc_html_e('Login for Ultimate Member', 'secure-passkeys'); ?>
+          </label>
+        </th>
+        <td>
+          <label for="display_passkey_login_ultimate_member_enabled">
+            <input
+              name="display_passkey_login_ultimate_member_enabled"
+              type="checkbox"
+              id="display_passkey_login_ultimate_member_enabled"
+              v-model="settings.display_passkey_login_ultimate_member_enabled"
+              true-value="1"
+              false-value="0"
+              :disabled="submitting || isLoading"
+            />
+            <?php esc_html_e('Enable Passkey Login for Ultimate Member login form.', 'secure-passkeys'); ?>
+          </label>
+          <div>
+            <p class="help">
+              <?php
+              // translators: %s represents the name of the required plugin (e.g., "Ultimate Member").
+              printf(esc_html__('The %s plugin must be installed and activated to work correctly.', 'secure-passkeys'), 'Ultimate Member');
+              ?>
+            </p>
+          </div>
+        </td>
+      </tr>
     </tbody>
   </table>
 

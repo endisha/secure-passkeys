@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Secure Passkeys\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-25 18:00+0200\n"
-"PO-Revision-Date: 2025-02-25 18:00+0200\n"
+"POT-Creation-Date: 2025-08-04 12:17+0200\n"
+"PO-Revision-Date: 2025-08-04 12:17+0200\n"
 "Last-Translator: \n"
 "Language-Team: Arabic\n"
 "Language: ar\n"
@@ -45,28 +45,28 @@ msgstr "تم تفعيل مفتاح المرور بنجاح"
 msgid "The passkey deactivated successfully"
 msgstr "تم تعطيل مفتاح المرور بنجاح"
 
-#: src/ajax/secure-passkeys-adminarea-ajax.php:236
-#: src/ajax/secure-passkeys-adminarea-ajax.php:261
+#: src/ajax/secure-passkeys-adminarea-ajax.php:235
+#: src/ajax/secure-passkeys-adminarea-ajax.php:260
 #: src/ajax/secure-passkeys-adminarea-settings-ajax.php:121
 #: src/ajax/secure-passkeys-adminarea-settings-ajax.php:145
 msgid "You do not have permission to make this request."
 msgstr "ليس لديك صلاحيات لتقديم هذا الطلب."
 
-#: src/ajax/secure-passkeys-adminarea-ajax.php:238
+#: src/ajax/secure-passkeys-adminarea-ajax.php:237
 #: src/ajax/secure-passkeys-adminarea-settings-ajax.php:123
-#: src/ajax/secure-passkeys-frontend-ajax.php:228
+#: src/ajax/secure-passkeys-frontend-ajax.php:239
 msgid "The request method must be POST."
 msgstr "يجب أن تكون طريقة الطلب POST."
 
-#: src/ajax/secure-passkeys-adminarea-ajax.php:240
+#: src/ajax/secure-passkeys-adminarea-ajax.php:239
 #: src/ajax/secure-passkeys-adminarea-settings-ajax.php:125
-#: src/ajax/secure-passkeys-frontend-ajax.php:230
+#: src/ajax/secure-passkeys-frontend-ajax.php:241
 msgid "Token mismatch, please refresh the page."
 msgstr "رمز الصفحة غير مطابق ، يرجى تحديث الصفحة."
 
-#: src/ajax/secure-passkeys-adminarea-ajax.php:269
-#: src/ajax/secure-passkeys-frontend-ajax.php:226
-#: src/ajax/secure-passkeys-frontend-ajax.php:241
+#: src/ajax/secure-passkeys-adminarea-ajax.php:268
+#: src/ajax/secure-passkeys-frontend-ajax.php:237
+#: src/ajax/secure-passkeys-frontend-ajax.php:252
 msgid "You are not allowed to make this request."
 msgstr "لا يمكنك تقديم هذا الطلب."
 
@@ -74,39 +74,39 @@ msgstr "لا يمكنك تقديم هذا الطلب."
 msgid "Settings updated successfully."
 msgstr "تم تحديث الإعدادات بنجاح."
 
-#: src/ajax/secure-passkeys-frontend-ajax.php:74
+#: src/ajax/secure-passkeys-frontend-ajax.php:75
 msgid "Passkey authentication failed. Please try again."
 msgstr "فشلت مصادقة مفتاح المرور. يرجى المحاولة مرة أخرى."
 
-#: src/ajax/secure-passkeys-frontend-ajax.php:150
+#: src/ajax/secure-passkeys-frontend-ajax.php:159
 #: src/utils/secure-passkeys-i18n.php:39 src/utils/secure-passkeys-i18n.php:107
 msgid "The maximum number of registered passkeys has been reached."
 msgstr "تم الوصول إلى الحد الأقصى لعدد مفاتيح المرور المسجلة."
 
-#: src/ajax/secure-passkeys-frontend-ajax.php:152
+#: src/ajax/secure-passkeys-frontend-ajax.php:161
 msgid "This passkey is already registered. Please use a different one."
 msgstr "مفتاح المرور هذا مسجل بالفعل. يرجى استخدام مفتاح مرور آخر."
 
-#: src/ajax/secure-passkeys-frontend-ajax.php:154
-#: src/ajax/secure-passkeys-frontend-ajax.php:175
+#: src/ajax/secure-passkeys-frontend-ajax.php:163
+#: src/ajax/secure-passkeys-frontend-ajax.php:186
 msgid "Failed to register the passkey. Please try again later."
 msgstr "فشل تسجيل مفتاح المرور. يرجى المحاولة مرة أخرى لاحقاً."
 
-#: src/ajax/secure-passkeys-frontend-ajax.php:160
+#: src/ajax/secure-passkeys-frontend-ajax.php:170
 #: src/utils/secure-passkeys-i18n.php:52
 msgid "Security key name must be at least 3 characters long."
 msgstr "يجب أن يكون اسم مفتاح الأمان مكوناً من 3 أحرف على الأقل."
 
-#: src/ajax/secure-passkeys-frontend-ajax.php:162
+#: src/ajax/secure-passkeys-frontend-ajax.php:172
 msgid "Security key name must be at most 30 characters long."
 msgstr "يجب ألا يزيد طول اسم مفتاح الأمان عن 30 حرفاً على الأكثر."
 
-#: src/ajax/secure-passkeys-frontend-ajax.php:164
+#: src/ajax/secure-passkeys-frontend-ajax.php:174
 #: src/utils/secure-passkeys-i18n.php:51 src/utils/secure-passkeys-i18n.php:117
 msgid "Please use only letters, numbers, spaces, hyphens, or underscores."
 msgstr "يُرجى استخدام الأحرف والأرقام والمسافات والواصلات والشرطات السفلية فقط."
 
-#: src/ajax/secure-passkeys-frontend-ajax.php:209
+#: src/ajax/secure-passkeys-frontend-ajax.php:220
 msgid "You do not have permission to remove this passkey."
 msgstr "ليس لديك إذن لإزالة مفتاح المرور هذا."
 
@@ -136,28 +136,28 @@ msgstr "نظرة عامة"
 msgid "Activity Log"
 msgstr "سجل النشاط"
 
-#: src/models/secure-passkeys-log.php:72
+#: src/models/secure-passkeys-log.php:77
 #: src/views/admin/vue/components/activity/app.vue.php:59
 msgid "Login"
 msgstr "دخول"
 
-#: src/models/secure-passkeys-log.php:73
+#: src/models/secure-passkeys-log.php:78
 #: src/views/admin/vue/components/activity/app.vue.php:62
 msgid "Register"
 msgstr "تسجيل"
 
-#: src/models/secure-passkeys-log.php:74
+#: src/models/secure-passkeys-log.php:79
 #: src/views/admin/vue/components/activity/app.vue.php:68
 msgid "Remove"
 msgstr "إزالة"
 
-#: src/models/secure-passkeys-log.php:75 src/utils/secure-passkeys-i18n.php:80
+#: src/models/secure-passkeys-log.php:80 src/utils/secure-passkeys-i18n.php:80
 #: src/views/admin/vue/components/activity/app.vue.php:65
 #: src/views/admin/vue/components/passkeys/app.vue.php:266
 msgid "Delete"
 msgstr "حذف"
 
-#: src/models/secure-passkeys-log.php:76 src/utils/secure-passkeys-i18n.php:78
+#: src/models/secure-passkeys-log.php:81 src/utils/secure-passkeys-i18n.php:78
 #: src/views/admin/vue/components/activity/app.vue.php:71
 #: src/views/admin/vue/components/passkeys/app.vue.php:241
 #: src/views/admin/vue/components/passkeys/app.vue.php:255
@@ -165,7 +165,7 @@ msgstr "حذف"
 msgid "Activate"
 msgstr "تفعيل"
 
-#: src/models/secure-passkeys-log.php:77 src/utils/secure-passkeys-i18n.php:79
+#: src/models/secure-passkeys-log.php:82 src/utils/secure-passkeys-i18n.php:79
 #: src/views/admin/vue/components/activity/app.vue.php:74
 #: src/views/admin/vue/components/passkeys/app.vue.php:248
 #: src/views/admin/vue/components/passkeys/app.vue.php:258
@@ -173,40 +173,40 @@ msgstr "تفعيل"
 msgid "Deactivate"
 msgstr "تعطيل"
 
-#: src/models/secure-passkeys-log.php:92
+#: src/models/secure-passkeys-log.php:97
 #, php-format
 msgid "User logged in using the passkey (%1$s) with the authenticator (%2$s)."
 msgstr ""
 "قام المستخدم بتسجيل الدخول باستخدام مفتاح المرور (%1$s) عن طريق المصادقة "
 "(%2$s)."
 
-#: src/models/secure-passkeys-log.php:94
+#: src/models/secure-passkeys-log.php:99
 #, php-format
 msgid ""
 "Passkey registered successfully with the name (%1$s) using the authenticator "
 "(%2$s)."
 msgstr "تم تسجيل مفتاح المرور بنجاح مع الاسم (%1$s) باستخدام المصادقة (%2$s)."
 
-#: src/models/secure-passkeys-log.php:96
+#: src/models/secure-passkeys-log.php:101
 #, php-format
 msgid "Passkey (%1$s) associated with the authenticator (%2$s) was removed."
 msgstr "تمت إزالة مفتاح المرور (%1$s) المرتبط بالمصادقة (%2$s)."
 
-#: src/models/secure-passkeys-log.php:98
+#: src/models/secure-passkeys-log.php:103
 #, php-format
 msgid ""
 "Passkey (%1$s) associated with the authenticator (%2$s) was deleted by an "
 "administrator."
 msgstr "تم حذف مفتاح المرور (‫%1$s) المرتبط بالمصادقة (%2$s) من قبل المسؤول."
 
-#: src/models/secure-passkeys-log.php:100
+#: src/models/secure-passkeys-log.php:105
 #, php-format
 msgid ""
 "Passkey (%1$s) associated with the authenticator (%2$s) was activated by an "
 "administrator."
 msgstr "تم تنشيط مفتاح المرور (‫%1$s) المرتبط بالمصادقة (%2$s) من قبل المسؤول."
 
-#: src/models/secure-passkeys-log.php:102
+#: src/models/secure-passkeys-log.php:107
 #, php-format
 msgid ""
 "Passkey (%1$s) associated with the authenticator (%2$s) was deactivated by an "
@@ -214,19 +214,19 @@ msgid ""
 msgstr ""
 "تم إلغاء تنشيط مفتاح المرور (‫%1$s) المرتبط بالمصادقة (%2$s) من قبل المسؤول."
 
-#: src/settings/secure-passkeys-advanced-settings.php:40
+#: src/settings/secure-passkeys-advanced-settings.php:42
 msgid "The challenge cleanup period is not correct."
 msgstr "الفترة الزمنية المحددة لمسح التحديات غير صحيحة."
 
-#: src/settings/secure-passkeys-advanced-settings.php:44
+#: src/settings/secure-passkeys-advanced-settings.php:46
 msgid "The log cleanup period is not correct."
 msgstr "الفترة الزمنية المحددة لمسح النشاطات غير صحيحة."
 
-#: src/settings/secure-passkeys-display-settings.php:47
+#: src/settings/secure-passkeys-display-settings.php:49
 msgid "The theme does not exist."
 msgstr "السمة غير موجودة."
 
-#: src/settings/secure-passkeys-display-settings.php:49
+#: src/settings/secure-passkeys-display-settings.php:51
 msgid "The path associated with the theme does not exist."
 msgstr "المسار المرتبط بالسمة غير موجودة."
 
@@ -234,28 +234,28 @@ msgstr "المسار المرتبط بالسمة غير موجودة."
 msgid "Invalid settings."
 msgstr "إعدادات غير صحيحة."
 
-#: src/settings/secure-passkeys-general-settings.php:45
+#: src/settings/secure-passkeys-general-settings.php:47
 msgid "The maximum number of passkeys per user must be greater than 0."
 msgstr "يجب أن يكون الحد الأقصى لعدد مفاتيح المرور لكل مستخدم أكبر من 0."
 
-#: src/settings/secure-passkeys-general-settings.php:47
+#: src/settings/secure-passkeys-general-settings.php:49
 msgid "The maximum number of passkeys must be less than 10."
 msgstr "الحد الأقصى لعدد مفاتيح المرور يجب أن يكون أقل من 10."
 
-#: src/settings/secure-passkeys-general-settings.php:51
+#: src/settings/secure-passkeys-general-settings.php:53
 msgid "The excluded roles must be a valid role."
 msgstr "أحد المجموعات المستبعدة ليست مجموعة صحيحة."
 
-#: src/settings/secure-passkeys-general-settings.php:55
+#: src/settings/secure-passkeys-general-settings.php:57
 msgid "The login user verification must be required, preferred, or discouraged."
 msgstr ""
 "يجب أن يكون التحقق من تسجيل الدخول للمستخدم مطلوبًا أو مفضلًا أو غير مستحسن."
 
-#: src/settings/secure-passkeys-general-settings.php:59
+#: src/settings/secure-passkeys-general-settings.php:61
 msgid "The registration timeout must be greater than 0."
 msgstr "يجب أن تكون مهلة التسجيل أكبر من 0."
 
-#: src/settings/secure-passkeys-general-settings.php:63
+#: src/settings/secure-passkeys-general-settings.php:65
 msgid "The login timeout must be greater than 0."
 msgstr "يجب أن تكون مهلة تسجيل الدخول أكبر من 0."
 
@@ -277,7 +277,7 @@ msgstr "الإفتراضي"
 msgid "YOOtheme (UiKit)"
 msgstr "‫YOOtheme (UiKit)"
 
-#: src/utils/secure-passkeys-helper.php:149
+#: src/utils/secure-passkeys-helper.php:148
 #, php-format
 msgid "%s ago"
 msgstr "منذ %s"
@@ -365,12 +365,13 @@ msgstr "قم بتسمية مفتاح الأمان الخاص بك"
 #: src/utils/secure-passkeys-i18n.php:34 src/utils/secure-passkeys-i18n.php:101
 msgid ""
 "This passkey can work across multiple devices - pick a nickname that will "
-"help you identify it later.<br /> For example, the name of your password "
-"manager or account provider."
+"help you identify it later.\n"
+" For example, the name of your password manager or account provider."
 msgstr ""
 "يمكن لهذا المفتاح أن يعمل عبر أجهزة متعددة - اختر اسمًا مستعارًا يساعدك في "
-"التعرف عليه لاحقًا.<br /> على سبيل المثال، اسم مدير كلمات المرور أو مزود "
-"الحساب الخاص بك‬."
+"التعرف عليه لاحقًا.\n"
+"‬\n"
+"‫على سبيل المثال، اسم مدير كلمات المرور أو مزود الحساب الخاص بك‬."
 
 #: src/utils/secure-passkeys-i18n.php:35 src/utils/secure-passkeys-i18n.php:102
 msgid "Enter Security Key Name"
@@ -680,26 +681,26 @@ msgstr "إعدادات متقدمة"
 msgid "Manage advanced options for plugin maintenance."
 msgstr "إدارة الخيارات المتقدمة لصيانة الإضافة."
 
-#: src/views/admin/vue/components/settings/advanced-settings.vue.php:49
+#: src/views/admin/vue/components/settings/advanced-settings.vue.php:48
 msgid "Delete passkey challenge records older than"
 msgstr "حذف سجلات تحديات مفاتيح المرور الأقدم من"
 
-#: src/views/admin/vue/components/settings/advanced-settings.vue.php:66
-#: src/views/admin/vue/components/settings/advanced-settings.vue.php:102
+#: src/views/admin/vue/components/settings/advanced-settings.vue.php:65
+#: src/views/admin/vue/components/settings/advanced-settings.vue.php:101
 msgid "Never"
 msgstr "أبدا"
 
-#: src/views/admin/vue/components/settings/advanced-settings.vue.php:69
-#: src/views/admin/vue/components/settings/advanced-settings.vue.php:105
+#: src/views/admin/vue/components/settings/advanced-settings.vue.php:68
+#: src/views/admin/vue/components/settings/advanced-settings.vue.php:104
 msgid "Older than"
 msgstr "أقدم من"
 
-#: src/views/admin/vue/components/settings/advanced-settings.vue.php:71
-#: src/views/admin/vue/components/settings/advanced-settings.vue.php:107
+#: src/views/admin/vue/components/settings/advanced-settings.vue.php:70
+#: src/views/admin/vue/components/settings/advanced-settings.vue.php:106
 msgid "days"
 msgstr "أيام"
 
-#: src/views/admin/vue/components/settings/advanced-settings.vue.php:76
+#: src/views/admin/vue/components/settings/advanced-settings.vue.php:75
 msgid ""
 "Automatically removes outdated passkey challenge records to optimize database "
 "performance. If set to \"Never\", records will not be deleted."
@@ -707,11 +708,11 @@ msgstr ""
 "حذف تلقائي لسجلات التحدي لمفاتيح المرور القديمة لتحسين أداء قاعدة البيانات. "
 "إذا تم الضبط على \"أبداً\"، لن يتم حذف السجلات."
 
-#: src/views/admin/vue/components/settings/advanced-settings.vue.php:85
+#: src/views/admin/vue/components/settings/advanced-settings.vue.php:84
 msgid "Delete log records older than"
 msgstr "حذف سجلات النشاطات الأقدم من"
 
-#: src/views/admin/vue/components/settings/advanced-settings.vue.php:112
+#: src/views/admin/vue/components/settings/advanced-settings.vue.php:111
 msgid ""
 "(Not recommended) Automatically deletes outdated log records. If set to "
 "\"Never\", logs will not be removed."
@@ -719,27 +720,39 @@ msgstr ""
 "(غير مستحسن) حذف تلقائي لسجلات النشاطات القديمة (الدخول, التسجيل وغيرها). إذا "
 "تم ضبطه على “أبدًا”، فلن تتم إزالة السجلات."
 
-#: src/views/admin/vue/components/settings/advanced-settings.vue.php:115
+#: src/views/admin/vue/components/settings/advanced-settings.vue.php:114
 msgid "This results in the loss of activity log history."
 msgstr "يؤدي هذا إلى فقدان ومسح سجل النشاطات."
 
-#: src/views/admin/vue/components/settings/advanced-settings.vue.php:141
-#: src/views/admin/vue/components/settings/display-settings.vue.php:345
-#: src/views/admin/vue/components/settings/general-settings.vue.php:274
+#: src/views/admin/vue/components/settings/advanced-settings.vue.php:124
+msgid "Disable Activity Log Recording"
+msgstr "تعطيل سجلات النشاط"
+
+#: src/views/admin/vue/components/settings/advanced-settings.vue.php:138
+msgid "Disable the creation of new activity log records."
+msgstr "منع إنشاء سجلات نشاط جديدة."
+
+#: src/views/admin/vue/components/settings/advanced-settings.vue.php:140
+msgid "This will prevent new activity log records from being created."
+msgstr "سيؤدي هذا إلى منع إنشاء سجلات نشاط جديدة."
+
+#: src/views/admin/vue/components/settings/advanced-settings.vue.php:165
+#: src/views/admin/vue/components/settings/display-settings.vue.php:374
+#: src/views/admin/vue/components/settings/general-settings.vue.php:299
 msgid "Save Changes"
 msgstr "حفظ التغييرات"
 
-#: src/views/admin/vue/components/settings/advanced-settings.vue.php:144
-#: src/views/admin/vue/components/settings/display-settings.vue.php:348
-#: src/views/admin/vue/components/settings/general-settings.vue.php:277
+#: src/views/admin/vue/components/settings/advanced-settings.vue.php:168
+#: src/views/admin/vue/components/settings/display-settings.vue.php:377
+#: src/views/admin/vue/components/settings/general-settings.vue.php:302
 msgid "Saving..."
 msgstr "جاري الحفظ…"
 
-#: src/views/admin/vue/components/settings/advanced-settings.vue.php:156
+#: src/views/admin/vue/components/settings/advanced-settings.vue.php:180
 msgid "Configuring Cron Jobs"
 msgstr "تكوين مهام Cron"
 
-#: src/views/admin/vue/components/settings/advanced-settings.vue.php:157
+#: src/views/admin/vue/components/settings/advanced-settings.vue.php:181
 msgid ""
 "To ensure these options work as expected, it is recommended to set up a cron "
 "job on your server. A cron job is a scheduled task that automatically runs at "
@@ -749,17 +762,17 @@ msgstr ""
 "بك. مهمة cron هي مهمة مجدولة يتم تشغيلها تلقائيًا على فترات زمنية محددة. إليك "
 "كيفية إعداد مهمة cron:"
 
-#: src/views/admin/vue/components/settings/advanced-settings.vue.php:161
+#: src/views/admin/vue/components/settings/advanced-settings.vue.php:185
 msgid "Log in to your web server control panel, such as cPanel or Plesk."
 msgstr ""
 "قم بتسجيل الدخول إلى لوحة التحكم الخاصة بخادم الويب الخاص بك، مثل cPanel أو "
 "Plesk."
 
-#: src/views/admin/vue/components/settings/advanced-settings.vue.php:164
+#: src/views/admin/vue/components/settings/advanced-settings.vue.php:188
 msgid "Find the option to manage cron jobs and select it."
 msgstr "ابحث عن خيار إدارة مهام cron jobs وحدده."
 
-#: src/views/admin/vue/components/settings/advanced-settings.vue.php:167
+#: src/views/admin/vue/components/settings/advanced-settings.vue.php:191
 msgid ""
 "In the “Add New Cron Job” section, specify the frequency at which you want "
 "the cron job to run, for example, every hour or every day."
@@ -767,15 +780,15 @@ msgstr ""
 "في قسم “إضافة مهمة Cron Job جديدة”، حدد التردد الذي تريد تشغيل مهمة Cron Job "
 "به، على سبيل المثال، كل دقيقة."
 
-#: src/views/admin/vue/components/settings/advanced-settings.vue.php:170
+#: src/views/admin/vue/components/settings/advanced-settings.vue.php:194
 msgid "In the “Command” field, enter the following command:"
 msgstr "في حقل “Command”، أدخل الأمر التالي:"
 
-#: src/views/admin/vue/components/settings/advanced-settings.vue.php:173
+#: src/views/admin/vue/components/settings/advanced-settings.vue.php:197
 msgid "Save the cron job."
 msgstr "احفظ مهمة cron job."
 
-#: src/views/admin/vue/components/settings/advanced-settings.vue.php:175
+#: src/views/admin/vue/components/settings/advanced-settings.vue.php:199
 msgid "Add the following code to your \"wp-config.php\" file:"
 msgstr "أضف الكود التالي إلى ملف “wp-config.php”:"
 
@@ -833,6 +846,7 @@ msgstr ""
 #: src/views/admin/vue/components/settings/display-settings.vue.php:141
 #: src/views/admin/vue/components/settings/display-settings.vue.php:173
 #: src/views/admin/vue/components/settings/display-settings.vue.php:202
+#: src/views/admin/vue/components/settings/display-settings.vue.php:231
 #, php-format
 msgid "The %s plugin must be installed and activated to work correctly."
 msgstr "يجب تثبيت المكون الإضافي %s وتفعيله ليعمل بشكل صحيح."
@@ -856,7 +870,17 @@ msgstr ""
 "تمكين الدخول بمفتاح المرور لصفحة تسجيل الدخول بإستخدام نموذج دخول Easy "
 "Digital Downloads."
 
-#: src/views/admin/vue/components/settings/display-settings.vue.php:215
+#: src/views/admin/vue/components/settings/display-settings.vue.php:211
+msgid "Login for Ultimate Member"
+msgstr "تسجيل الدخول لـ Ultimate Member"
+
+#: src/views/admin/vue/components/settings/display-settings.vue.php:225
+msgid "Enable Passkey Login for Ultimate Member login form."
+msgstr ""
+"تمكين الدخول بمفتاح المرور لصفحة تسجيل الدخول بإستخدام نموذج دخول Ultimate "
+"Member."
+
+#: src/views/admin/vue/components/settings/display-settings.vue.php:244
 msgid ""
 "Use the following shortcodes to embed the passkey login and registration "
 "forms on your frontend pages. These shortcodes are typically only necessary "
@@ -870,11 +894,11 @@ msgstr ""
 "مخصصة. بشكل افتراضي، يتعامل نموذج تسجيل الدخول مع العديد من الخيارات تلقائيًا، "
 "وقد لا تحتاج إلى إدارة هذا الأمر ما لم تكن تعمل مع صفحة مخصصة."
 
-#: src/views/admin/vue/components/settings/display-settings.vue.php:223
+#: src/views/admin/vue/components/settings/display-settings.vue.php:252
 msgid "Login Short Code"
 msgstr "رمز شفرة تسجيل الدخول"
 
-#: src/views/admin/vue/components/settings/display-settings.vue.php:237
+#: src/views/admin/vue/components/settings/display-settings.vue.php:266
 msgid ""
 "This shortcode to embed the \"Login via Passkey\" login button,this allows "
 "users to log in using their passkey credentials."
@@ -882,15 +906,15 @@ msgstr ""
 "رمز الشفرة هذا لإدراج زر “الدخول عبر مفتاح المرور”، مما يتيح للمستخدمين تسجيل "
 "الدخول باستخدام بيانات اعتماد المفتاح المرور الخاصة بهم."
 
-#: src/views/admin/vue/components/settings/display-settings.vue.php:239
+#: src/views/admin/vue/components/settings/display-settings.vue.php:268
 msgid "If the user is already logged in, the form will not be displayed."
 msgstr "إذا كان المستخدم قد قام بتسجيل الدخول بالفعل، فلن يتم عرض زر الدخول."
 
-#: src/views/admin/vue/components/settings/display-settings.vue.php:248
+#: src/views/admin/vue/components/settings/display-settings.vue.php:277
 msgid "Register Short Code"
 msgstr "رمز شفرة تسجيل إنشاء رموز المرور"
 
-#: src/views/admin/vue/components/settings/display-settings.vue.php:262
+#: src/views/admin/vue/components/settings/display-settings.vue.php:291
 msgid ""
 "This shortcode to embed the passkey registration form. This allows logged-in "
 "users to create and manage their passkey credentials."
@@ -898,23 +922,23 @@ msgstr ""
 "هذا الرمز المختصر لتضمين نموذج تسجيل مفتاح المرور. يسمح هذا للمستخدمين "
 "المسجلين بإنشاء وإدارة بيانات اعتماد مفتاح المرور الخاصة بهم."
 
-#: src/views/admin/vue/components/settings/display-settings.vue.php:264
+#: src/views/admin/vue/components/settings/display-settings.vue.php:293
 msgid "If the user is not logged in, the form will not be displayed."
 msgstr "إذا لم يقم المستخدم بتسجيل الدخول، فلن يتم عرض النموذج."
 
-#: src/views/admin/vue/components/settings/display-settings.vue.php:275
+#: src/views/admin/vue/components/settings/display-settings.vue.php:304
 msgid "Adminarea Options"
 msgstr "خيارات الواجهة الخلفية والادارة"
 
-#: src/views/admin/vue/components/settings/display-settings.vue.php:277
+#: src/views/admin/vue/components/settings/display-settings.vue.php:306
 msgid "Configure the options available in the admin area."
 msgstr "قم بتكوين الخيارات المتاحة في منطقة الادارة."
 
-#: src/views/admin/vue/components/settings/display-settings.vue.php:286
+#: src/views/admin/vue/components/settings/display-settings.vue.php:315
 msgid "Display Passkeys in Users List"
 msgstr "عرض مفاتيح المرور في قائمة المستخدمين"
 
-#: src/views/admin/vue/components/settings/display-settings.vue.php:300
+#: src/views/admin/vue/components/settings/display-settings.vue.php:329
 msgid ""
 "Enable this option to show the passkeys as a column in the users list in the "
 "adminarea."
@@ -922,11 +946,11 @@ msgstr ""
 "قم بتمكين هذا الخيار لإظهار مفاتيح المرور كعمود في قائمة المستخدمين في منطقة "
 "الإدارة."
 
-#: src/views/admin/vue/components/settings/display-settings.vue.php:307
+#: src/views/admin/vue/components/settings/display-settings.vue.php:336
 msgid "Display Passkeys in Edit User/Profile"
 msgstr "عرض مفاتيح المرور في صفحة تعديل المستخدم/الملف الشخصي"
 
-#: src/views/admin/vue/components/settings/display-settings.vue.php:321
+#: src/views/admin/vue/components/settings/display-settings.vue.php:350
 msgid ""
 "Enable this option to show the passkeys on the Edit User and Profile page in "
 "the adminarea."
@@ -980,7 +1004,23 @@ msgstr ""
 "يظهر نموذج تسجيل مفتاح المرور في الملف الشخصي أو عند استخدام الرمز المختصر "
 "shortscode لتسجيل مفتاح المرور."
 
-#: src/views/admin/vue/components/settings/general-settings.vue.php:134
+#: src/views/admin/vue/components/settings/general-settings.vue.php:131
+msgid "Auto Generate Security Key Name"
+msgstr "إنشاء اسم مفتاح الأمان تلقائياً"
+
+#: src/views/admin/vue/components/settings/general-settings.vue.php:145
+msgid "Enable or disable the automatic generation of a security key name."
+msgstr "تمكين أو تعطيل الإنشاء التلقائي لاسم مفتاح الأمان."
+
+#: src/views/admin/vue/components/settings/general-settings.vue.php:147
+msgid ""
+"If enabled, users will not be prompted to enter a security key name manually "
+"when registering a passkey."
+msgstr ""
+"في حالة التمكين، لن تتم مطالبة المستخدمين بإدخال اسم مفتاح الأمان يدوياً عند "
+"عملية تسجيل مفتاح مرور."
+
+#: src/views/admin/vue/components/settings/general-settings.vue.php:159
 msgid ""
 "Configure the WebAuthn and Passkeys login and registration options., we "
 "recommend using the default settings unless you have a good understanding of "
@@ -990,11 +1030,11 @@ msgstr ""
 "باستخدام الإعدادات الافتراضية ما لم تكن لديك معرفة جيدة بإعدادات تكوين "
 "WebAuthn."
 
-#: src/views/admin/vue/components/settings/general-settings.vue.php:145
+#: src/views/admin/vue/components/settings/general-settings.vue.php:170
 msgid "Exclude Existing Credentials"
 msgstr "استبعاد بيانات الاعتماد الموجودة"
 
-#: src/views/admin/vue/components/settings/general-settings.vue.php:159
+#: src/views/admin/vue/components/settings/general-settings.vue.php:184
 msgid ""
 "Enable this option to prevent users from registering passkeys that are "
 "already registered (Recommended: enabled)."
@@ -1002,27 +1042,27 @@ msgstr ""
 "قم بتمكين هذا الخيار لمنع المستخدمين من تسجيل مفاتيح المرور المسجلة بالفعل "
 "(موصى به: ممكّن)."
 
-#: src/views/admin/vue/components/settings/general-settings.vue.php:166
+#: src/views/admin/vue/components/settings/general-settings.vue.php:191
 msgid "Registration Timeout"
 msgstr "وقت مهلة التسجيل"
 
-#: src/views/admin/vue/components/settings/general-settings.vue.php:179
+#: src/views/admin/vue/components/settings/general-settings.vue.php:204
 msgid "Set the expiration timeout for passkey registration (in minutes)."
 msgstr "تعيين مهلة انتهاء صلاحية تسجيل مفتاح المرور (بالدقائق)."
 
-#: src/views/admin/vue/components/settings/general-settings.vue.php:186
+#: src/views/admin/vue/components/settings/general-settings.vue.php:211
 msgid "Login Timeout"
 msgstr "وقت مهلة الدخول"
 
-#: src/views/admin/vue/components/settings/general-settings.vue.php:199
+#: src/views/admin/vue/components/settings/general-settings.vue.php:224
 msgid "Set the expiration timeout for passkey login (in minutes)."
 msgstr "تعيين مهلة انتهاء صلاحية الدخول بمفتاح المرور (بالدقائق)."
 
-#: src/views/admin/vue/components/settings/general-settings.vue.php:208
+#: src/views/admin/vue/components/settings/general-settings.vue.php:233
 msgid "Enable User Verifications"
 msgstr "التحقق من المستخدم"
 
-#: src/views/admin/vue/components/settings/general-settings.vue.php:222
+#: src/views/admin/vue/components/settings/general-settings.vue.php:247
 msgid ""
 "Choose the level of user verification required during passkey registration "
 "(Recommended: enabled)."
@@ -1030,23 +1070,23 @@ msgstr ""
 "اختر مستوى التحقق من المستخدم المطلوب أثناء تسجيل مفتاح المرور (موصى به: "
 "ممكّن)."
 
-#: src/views/admin/vue/components/settings/general-settings.vue.php:229
+#: src/views/admin/vue/components/settings/general-settings.vue.php:254
 msgid "Login User Verification"
 msgstr "التحقق من تسجيل الدخول للمستخدم"
 
-#: src/views/admin/vue/components/settings/general-settings.vue.php:240
+#: src/views/admin/vue/components/settings/general-settings.vue.php:265
 msgid "Required"
 msgstr "إجباري"
 
-#: src/views/admin/vue/components/settings/general-settings.vue.php:243
+#: src/views/admin/vue/components/settings/general-settings.vue.php:268
 msgid "Preferred"
 msgstr "مفضل"
 
-#: src/views/admin/vue/components/settings/general-settings.vue.php:246
+#: src/views/admin/vue/components/settings/general-settings.vue.php:271
 msgid "Discouraged"
 msgstr "معطل"
 
-#: src/views/admin/vue/components/settings/general-settings.vue.php:250
+#: src/views/admin/vue/components/settings/general-settings.vue.php:275
 msgid "Choose the level of user verification required during passkey login."
 msgstr ""
 "اختر مستوى التحقق من المستخدم المطلوب أثناء تسجيل الدخول باستخدام كلمة المرور."
@@ -1071,10 +1111,12 @@ msgstr "الصفحة السابقة"
 #: src/views/frontend/default/login.edd.php:14
 #: src/views/frontend/default/login.memberpress.php:14
 #: src/views/frontend/default/login.shortcode.php:14
+#: src/views/frontend/default/login.ultimate_member.php:14
 #: src/views/frontend/default/login.woocommerce.php:14
 #: src/views/frontend/yootheme/login.edd.php:14
 #: src/views/frontend/yootheme/login.memberpress.php:14
 #: src/views/frontend/yootheme/login.shortcode.php:14
+#: src/views/frontend/yootheme/login.ultimate_member.php:14
 #: src/views/frontend/yootheme/login.woocommerce.php:14
 msgid "Login via Passkey.."
 msgstr "جاري الدخول باستخدام مفتاح المرور.."
@@ -1083,10 +1125,12 @@ msgstr "جاري الدخول باستخدام مفتاح المرور.."
 #: src/views/frontend/default/login.edd.php:15
 #: src/views/frontend/default/login.memberpress.php:15
 #: src/views/frontend/default/login.shortcode.php:15
+#: src/views/frontend/default/login.ultimate_member.php:15
 #: src/views/frontend/default/login.woocommerce.php:15
 #: src/views/frontend/yootheme/login.edd.php:15
 #: src/views/frontend/yootheme/login.memberpress.php:15
 #: src/views/frontend/yootheme/login.shortcode.php:15
+#: src/views/frontend/yootheme/login.ultimate_member.php:15
 #: src/views/frontend/yootheme/login.woocommerce.php:15
 msgid "Login via Passkey"
 msgstr "الدخول باستخدام مفتاح المرور"

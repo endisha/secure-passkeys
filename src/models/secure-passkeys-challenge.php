@@ -82,7 +82,7 @@ class Secure_Passkeys_Challenge extends Secure_Passkeys_Model
 
     public function mark_as_used_challenge(string $challenge): void
     {
-        $this->update(['challenge' => $challenge], ['used_at' => (new DateTime())->format('Y-m-d H:i:s')]);
+        $this->update(['used_at' => (new DateTime())->format('Y-m-d H:i:s')], ['challenge' => $challenge]);
     }
 
     public function is_challenge_exists(?string $challenge)

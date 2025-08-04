@@ -25,6 +25,7 @@ class Secure_Passkeys_Frontend
         add_action('woocommerce_login_form_end', [$this, 'add_to_woocommerce_login_page']);
         add_action('edd_login_fields_after', [$this, 'add_to_edd_login_page']);
         add_action('mepr-login-form-after-submit', [$this, 'add_to_memberpress_login_page']);
+        add_action('um_after_login_fields', [$this, 'add_to_ultimate_member_login_page'], 10005);
 
         add_action('wp_enqueue_scripts', [$this, 'enqueue_register_script']);
         add_shortcode('secure_passkeys_register_form', [$this, 'render_shortcode_register_form']);
@@ -66,7 +67,7 @@ class Secure_Passkeys_Frontend
 
     public function add_to_woocommerce_login_page()
     {
-        if (!Secure_Passkeys_Helper::get_option('display_passkey_login_woocommerce_enabled', 1)) {
+        if (!Secure_Passkeys_Helper::get_option('display_passkey_login_woocommerce_enabled', 0)) {
             return;
         }
 
@@ -83,7 +84,7 @@ class Secure_Passkeys_Frontend
 
     public function add_to_memberpress_login_page()
     {
-        if (!Secure_Passkeys_Helper::get_option('display_passkey_login_memberpress_enabled', 1)) {
+        if (!Secure_Passkeys_Helper::get_option('display_passkey_login_memberpress_enabled', 0)) {
             return;
         }
 
@@ -100,7 +101,7 @@ class Secure_Passkeys_Frontend
 
     public function add_to_edd_login_page()
     {
-        if (!Secure_Passkeys_Helper::get_option('display_passkey_login_edd_enabled', 1)) {
+        if (!Secure_Passkeys_Helper::get_option('display_passkey_login_edd_enabled', 0)) {
             return;
         }
 
@@ -115,7 +116,25 @@ class Secure_Passkeys_Frontend
         return Secure_Passkeys_Frontend_Helper::include_view_frontend_file('login.edd');
     }
 
-    public function render_shortcode_login_form()
+    public function add_to_ultimate_member_login_page()
+    {
+        if (!Secure_Passkeys_Helper::get_option('display_passkey_login_ultimate_member_enabled', 0)) {
+            return;
+        }
+
+        if (is_user_logged_in()) {
+            return;
+        }
+
+        wp_enqueue_script($this->login_handle);
+
+        wp_enqueue_style($this->login_handle);
+
+        return Secure_Passkeys_Frontend_Helper::include_view_frontend_file('login.ultimate_member');
+    }
+
+
+    public function render_shortcode_login_form($atts)
     {
         if (is_user_logged_in()) {
             return;
@@ -125,7 +144,14 @@ class Secure_Passkeys_Frontend
 
         wp_enqueue_style($this->login_handle);
 
-        return Secure_Passkeys_Frontend_Helper::include_view_frontend_file('login.shortcode', [], true);
+        $custom_atts = apply_filters('secure_passkeys_login_form_shortcode_atts', [
+            'extra_wrapper_classes' => '',
+            'extra_button_classes' => ''
+        ]);
+
+        $atts = shortcode_atts($custom_atts, $atts, 'secure_passkeys_login_form');
+
+        return Secure_Passkeys_Frontend_Helper::include_view_frontend_file('login.shortcode', $atts, true);
     }
 
     public function enqueue_register_script()

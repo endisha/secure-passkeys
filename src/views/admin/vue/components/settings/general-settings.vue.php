@@ -124,6 +124,31 @@ defined('ABSPATH') || exit;
           </p>
         </td>
       </tr>
+      
+      <tr>
+        <th>
+          <label for="auto_generate_security_key_name" class="inline-label"
+            ><?php esc_html_e('Auto Generate Security Key Name', 'secure-passkeys'); ?></label
+          >
+        </th>
+        <td>
+          <label for="auto_generate_security_key_name">
+            <input
+              name="auto_generate_security_key_name"
+              type="checkbox"
+              id="auto_generate_security_key_name"
+              v-model="settings.auto_generate_security_key_name"
+              true-value="1"
+              false-value="0"
+              :disabled="submitting || isLoading"
+            />
+            <?php esc_html_e('Enable or disable the automatic generation of a security key name.', 'secure-passkeys'); ?>
+            <p class="help">
+              <?php esc_html_e('If enabled, users will not be prompted to enter a security key name manually when registering a passkey.', 'secure-passkeys'); ?>
+            </p>
+          </label>
+        </td>
+      </tr>
     </tbody>
   </table>
 

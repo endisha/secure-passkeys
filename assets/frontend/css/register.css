@@ -288,3 +288,7 @@
   font-size: 0.9rem;
   line-height: inherit;
 }
+
+#passkey_app .multiline-text {
+  white-space: pre-line;
+}

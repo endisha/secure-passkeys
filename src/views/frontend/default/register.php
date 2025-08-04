@@ -69,7 +69,7 @@ defined('ABSPATH') || exit;
         <p class="small">
           <strong>{{ i18n.security_key_name }}</strong>
           <br />
-          <span v-html="i18n.security_key_description"></span>
+          <span v-text="i18n.security_key_description" class="multiline-text"></span>
         </p>
         <div class="input-wrapper">
           <input

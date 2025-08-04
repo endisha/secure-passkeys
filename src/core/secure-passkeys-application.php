@@ -18,7 +18,7 @@ class Secure_Passkeys_Application
 
         register_activation_hook(SECURE_PASSKEYS_PLUGIN_FILE, [$this, 'register_default_settings']);
 
-        register_deactivation_hook(SECURE_PASSKEYS_PLUGIN_FILE, [$this, 'unregister']);
+        register_deactivation_hook(SECURE_PASSKEYS_PLUGIN_FILE, [$this, 'unregister_jobs']);
 
         add_action('activated_plugin', [$this, 'activation']);
 
@@ -124,13 +124,13 @@ class Secure_Passkeys_Application
     {
         $jobs = Secure_Passkeys_Loader::folder_loader(SECURE_PASSKEYS_JOBS_DIR, SECURE_PASSKEYS_PLUGIN_DIR);
 
-        if (!empty($jobs)) {
-            foreach ($jobs as $instance) {
-                if ($instance instanceof Secure_Passkeys_Scheduler) {
-                    if (method_exists($instance, 'boot')) {
-                        $instance->boot();
-                    }
-                }
+        if (empty($jobs)) {
+            return;
+        }
+
+        foreach ($jobs as $instance) {
+            if ($instance instanceof Secure_Passkeys_Scheduler && method_exists($instance, 'boot')) {
+                $instance->boot();
             }
         }
     }
@@ -138,15 +138,17 @@ class Secure_Passkeys_Application
     /**
      * Unregister jobs
      */
-    public function unregister()
+    public function unregister_jobs()
     {
         $jobs = Secure_Passkeys_Loader::folder_loader(SECURE_PASSKEYS_JOBS_DIR, SECURE_PASSKEYS_PLUGIN_DIR);
 
-        if (!empty($jobs)) {
-            foreach ($jobs as $instance) {
-                if ($instance instanceof Secure_Passkeys_Scheduler) {
-                    $instance->unregister();
-                }
+        if (empty($jobs)) {
+            return;
+        }
+
+        foreach ($jobs as $instance) {
+            if ($instance instanceof Secure_Passkeys_Scheduler) {
+                $instance->unregister();
             }
         }
     }

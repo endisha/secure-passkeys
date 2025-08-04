@@ -2,6 +2,7 @@
 
 namespace Secure_Passkeys\Ajax;
 
+use DateTime;
 use Exception;
 use Secure_Passkeys\Actions\Secure_Passkeys_Web_Authn_Enable_Action;
 use Secure_Passkeys\Actions\Secure_Passkeys_Web_Authn_Enable_Options_Action;
@@ -140,7 +141,15 @@ class Secure_Passkeys_Frontend_Ajax
         ];
         $user_id = get_current_user_id();
         $challenge = sanitize_text_field(wp_unslash($_POST['challenge'] ?? ''));
-        $security_key_name = sanitize_text_field(wp_unslash($_POST['security_key_name'] ?? ''));
+
+        $is_auto_generate_security_key_name_enabled = Secure_Passkeys_Helper::is_auto_generate_security_key_name_enabled();
+
+        if (!$is_auto_generate_security_key_name_enabled) {
+            $security_key_name = sanitize_text_field(wp_unslash($_POST['security_key_name'] ?? ''));
+        } else {
+            $security_key_name = (new DateTime())->format('YmdHis');
+            $security_key_name = apply_filters('secure_passkeys_auto_generate_security_key_name', 'Passkey-' . $security_key_name, $user_id, $security_key_name);
+        }
 
         try {
             (new Secure_Passkeys_Challenge())->verify_challenge_or_throw_exception($challenge, 'registration');
@@ -154,14 +163,16 @@ class Secure_Passkeys_Frontend_Ajax
             wp_send_json_error(__('Failed to register the passkey. Please try again later.', 'secure-passkeys'));
         }
 
-        if (empty($security_key_name)) {
-            wp_send_json_error('EMPTY_SECURITY_KEY_NAME');
-        } elseif (mb_strlen($security_key_name) < 3) {
-            wp_send_json_error(__('Security key name must be at least 3 characters long.', 'secure-passkeys'));
-        } elseif (mb_strlen($security_key_name) > 30) {
-            wp_send_json_error(__('Security key name must be at most 30 characters long.', 'secure-passkeys'));
-        } elseif (!preg_match('/^[A-Za-z0-9\s\-_]+$/', $security_key_name)) {
-            wp_send_json_error(__('Please use only letters, numbers, spaces, hyphens, or underscores.', 'secure-passkeys'));
+        if (!$is_auto_generate_security_key_name_enabled) {
+            if (empty($security_key_name)) {
+                wp_send_json_error('EMPTY_SECURITY_KEY_NAME');
+            } elseif (mb_strlen($security_key_name) < 3) {
+                wp_send_json_error(__('Security key name must be at least 3 characters long.', 'secure-passkeys'));
+            } elseif (mb_strlen($security_key_name) > 30) {
+                wp_send_json_error(__('Security key name must be at most 30 characters long.', 'secure-passkeys'));
+            } elseif (!preg_match('/^[A-Za-z0-9\s\-_]+$/', $security_key_name)) {
+                wp_send_json_error(__('Please use only letters, numbers, spaces, hyphens, or underscores.', 'secure-passkeys'));
+            }
         }
 
         try {

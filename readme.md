@@ -27,6 +27,7 @@ Secure Passkeys integrates effortlessly into WordPress, allowing users to regist
     * WooCommerce login page
     * MemberPress login form
     * Easy Digital Downloads login form
+    * Ultimate Member login form
 * **Admin Management:**  Administrators can delete, activate, or deactivate users directly from plugin settings or user profiles.
 * **Activity Logging:**  Monitor activity logs and track last login/registration of passkeys.
 * **Multiple Passkeys:** Supports multiple passkey registrations per user, with the option to set a registration limit or allow unlimited registrations.
