@@ -143,4 +143,42 @@ class Secure_Passkeys_Adminarea_Helper
 
         return '';
     }
+
+    public static function show_enable_passkeys_notice()
+    {
+        $title = __('Simplify your sign-in.', 'secure-passkeys');
+        $title = '<strong>' . $title . '</strong><br>';
+        $title = apply_filters('secure_passkeys_enable_passkeys_notice_title', $title);
+
+        $profile_url = esc_url(admin_url('profile.php').'#passkey-app');
+        $profile_url = apply_filters('secure_passkeys_enable_passkeys_notice_profile_url', $profile_url);
+
+        $link_text = __('Enable passkeys', 'secure-passkeys');
+        $link = '<br><a href="' . $profile_url . '">' . $link_text . '</a>';
+
+        $message = sprintf(
+            /* translators: %1$s is the title, %2$s is the clickable enable passkeys link */
+            __('%1$s Use your fingerprint or other biometric methods with passkeys to securely and conveniently verify your login. %2$s in your profile settings.', 'secure-passkeys'),
+            $title,
+            $link
+        );
+
+        $allowed_tags = [
+            'a' => [
+                'href' => [],
+                'title' => [],
+                'target' => [],
+            ],
+            'strong' => [],
+            'br' => [],
+        ];
+
+        $escaped_message = wp_kses($message, $allowed_tags);
+        $escaped_message = apply_filters('secure_passkeys_enable_passkeys_notice_message', $escaped_message);
+
+        $alert = '<div class="notice notice-warning is-dismissible"><p>' . $escaped_message . '</p></div>';
+        $alert = apply_filters('secure_passkeys_enable_passkeys_notice_alert', $alert);
+
+        return $alert;
+    }
 }

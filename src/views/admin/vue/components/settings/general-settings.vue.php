@@ -99,23 +99,27 @@ defined('ABSPATH') || exit;
           </label>
         </th>
         <td>
-          <select
+          <div
             id="excluded_roles_registration_login"
-            name="excluded_roles_registration_login[]"
-            class="regular-small"
-            v-model="settings.excluded_roles_registration_login"
+            class="checkbox-group"
             :disabled="submitting || isLoading"
-            style="width: 200px"
-            multiple
           >
-            <option
+            <div
               v-for="(label, key) in defaults.roles || {}"
-              :value="key"
               :key="key"
+              style="margin-bottom: 2px"
             >
-              {{ label }}
-            </option>
-          </select>
+              <label>
+                <input
+                  type="checkbox"
+                  :value="key"
+                  v-model="settings.excluded_roles_registration_login"
+                  :disabled="submitting || isLoading"
+                />
+                {{ label }}
+              </label>
+            </div>
+          </div>
           <p class="description">
             <?php esc_html_e('Select user roles to exclude from passkey registration and login.', 'secure-passkeys'); ?>
           </p>
@@ -147,6 +151,31 @@ defined('ABSPATH') || exit;
               <?php esc_html_e('If enabled, users will not be prompted to enter a security key name manually when registering a passkey.', 'secure-passkeys'); ?>
             </p>
           </label>
+        </td>
+      </tr>
+
+      <tr>
+        <th>
+            <label for="show_enable_passkeys_notice" class="inline-label">
+                <?php esc_html_e('Show Enable Passkeys Notice', 'secure-passkeys'); ?>
+            </label>
+        </th>
+        <td>
+            <label for="show_enable_passkeys_notice">
+                <input
+                    name="show_enable_passkeys_notice"
+                    type="checkbox"
+                    id="show_enable_passkeys_notice"
+                    v-model="settings.show_enable_passkeys_notice"
+                    true-value="1"
+                    false-value="0"
+                    :disabled="submitting || isLoading"
+                />
+                <?php esc_html_e('Enable or disable showing the passkeys reminder in the WordPress admin area (wp-admin) for users who have not yet enabled passkeys.', 'secure-passkeys'); ?>
+                <p class="help">
+                    <?php esc_html_e('If disabled, the notice will not appear even if the user has not enabled passkeys.', 'secure-passkeys'); ?>
+                </p>
+            </label>
         </td>
       </tr>
     </tbody>

@@ -32,7 +32,7 @@ class Secure_Passkeys_Application
 
         add_action('init', [$this, 'load_i18n']);
 
-        add_action('plugins_loaded', [$this, 'load_ajax']);
+        add_action('init', [$this, 'load_ajax']);
     }
 
     /**

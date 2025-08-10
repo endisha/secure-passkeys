@@ -173,11 +173,28 @@ class Secure_Passkeys_Helper
         return $fingerprintHash;
     }
 
+    public static function maximum_passkeys_count(): int
+    {
+        $max = apply_filters('secure_passkeys_maximum_passkeys_count', 10);
+
+        return (int) $max;
+    }
+
     public static function is_auto_generate_security_key_name_enabled(): int
     {
         $enabled = apply_filters(
             'secure_passkeys_auto_generate_security_key_name_enabled',
             self::get_option('auto_generate_security_key_name', 0)
+        );
+
+        return intval($enabled);
+    }
+
+    public static function is_show_enable_passkeys_notice_enabled(): int
+    {
+        $enabled = apply_filters(
+            'secure_passkeys_show_enable_passkeys_notice_enabled',
+            self::get_option('show_enable_passkeys_notice', 0)
         );
 
         return intval($enabled);
@@ -236,6 +253,7 @@ class Secure_Passkeys_Helper
             'registration_maximum_passkeys_per_user' => 3,
             'excluded_roles_registration_login' => [],
             'auto_generate_security_key_name' => 0,
+            'show_enable_passkeys_notice' => 0,
             'registration_timeout' => 5,
             'registration_exclude_credentials_enabled' => 1,
             'registration_user_verification_enabled' => 1,

@@ -23,6 +23,7 @@ class Secure_Passkeys_General_Settings extends Secure_Passkeys_Settings
             'registration_maximum_passkeys_per_user',
             'excluded_roles_registration_login',
             'auto_generate_security_key_name',
+            'show_enable_passkeys_notice',
             'registration_timeout',
             'registration_exclude_credentials_enabled',
             'registration_user_verification_enabled',
@@ -37,6 +38,7 @@ class Secure_Passkeys_General_Settings extends Secure_Passkeys_Settings
         $registration_maximum_passkeys_per_user = intval($_POST['settings']['registration_maximum_passkeys_per_user'] ?? 3);
         $excluded_roles_registration_login = map_deep(wp_unslash($_POST['settings']['excluded_roles_registration_login'] ?? []), 'sanitize_text_field');
         $auto_generate_security_key_name = intval($_POST['settings']['auto_generate_security_key_name'] ?? 0);
+        $show_enable_passkeys_notice = intval($_POST['settings']['show_enable_passkeys_notice'] ?? 1);
         $registration_timeout = intval($_POST['settings']['registration_timeout'] ?? 0);
         $registration_exclude_credentials_enabled = intval($_POST['settings']['registration_exclude_credentials_enabled'] ?? 1);
         $registration_user_verification_enabled = intval($_POST['settings']['registration_user_verification_enabled'] ?? 1);
@@ -45,7 +47,7 @@ class Secure_Passkeys_General_Settings extends Secure_Passkeys_Settings
 
         if ($registration_maximum_passkeys_enabled && $registration_maximum_passkeys_per_user <= 0) {
             return new WP_Error('error', __('The maximum number of passkeys per user must be greater than 0.', 'secure-passkeys'));
-        } elseif ($registration_maximum_passkeys_enabled && $registration_maximum_passkeys_per_user > 10) {
+        } elseif ($registration_maximum_passkeys_enabled && $registration_maximum_passkeys_per_user > Secure_Passkeys_Helper::maximum_passkeys_count()) {
             return new WP_Error('error', __('The maximum number of passkeys must be less than 10.', 'secure-passkeys'));
         }
 
@@ -70,6 +72,7 @@ class Secure_Passkeys_General_Settings extends Secure_Passkeys_Settings
             'registration_maximum_passkeys_per_user' => $registration_maximum_passkeys_per_user,
             'excluded_roles_registration_login' => $excluded_roles_registration_login,
             'auto_generate_security_key_name' => $auto_generate_security_key_name,
+            'show_enable_passkeys_notice' => $show_enable_passkeys_notice,
             'registration_timeout' => $registration_timeout,
             'registration_exclude_credentials_enabled' => $registration_exclude_credentials_enabled,
             'registration_user_verification_enabled' => $registration_user_verification_enabled,

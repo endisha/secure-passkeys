@@ -4,18 +4,25 @@ namespace Secure_Passkeys\Ajax;
 
 use Secure_Passkeys\Settings\Secure_Passkeys_Factory;
 use Secure_Passkeys\Utils\Secure_Passkeys_Helper;
+use Secure_Passkeys\Utils\Secure_Passkeys_Settings_Helper;
 
 defined('ABSPATH') || exit;
 
 class Secure_Passkeys_Adminarea_Settings_Ajax
 {
+    protected $settings_factory;
+
     public function __construct()
     {
-        $callback_action = $this->get_callback_action();
+        $settings_action = sanitize_key($_POST['action'] ?? '');
+        $callback_action = Secure_Passkeys_Settings_Helper::get_callback_action($settings_action);
 
         if (!empty($callback_action)) {
-            add_action($callback_action['hook_name'], $callback_action['callback']);
+            add_action($callback_action['hook_name'], [$this, $callback_action['callback']]);
         }
+
+        $settings_key = Secure_Passkeys_Settings_Helper::get_settings_key($settings_action);
+        $this->settings_factory = Secure_Passkeys_Factory::create($settings_key);
     }
 
     public function get()
@@ -24,16 +31,14 @@ class Secure_Passkeys_Adminarea_Settings_Ajax
 
         $this->throw_error_if_invalid_access_to_action();
 
-        $settings_key = $this->get_settings_key();
-
-        $settings_component = Secure_Passkeys_Factory::create($settings_key);
+        $settings_component = $this->settings_factory;
 
         if (is_wp_error($settings_component)) {
             wp_send_json_error($settings_component);
         }
 
         wp_send_json_success([
-            'data' => $this->return_settings_data($settings_component->get()),
+            'data' => Secure_Passkeys_Settings_Helper::return_settings_data($settings_component->get()),
             'defaults' => $settings_component->defaults()
         ]);
     }
@@ -44,9 +49,7 @@ class Secure_Passkeys_Adminarea_Settings_Ajax
 
         $this->throw_error_if_invalid_access_to_action();
 
-        $settings_key = $this->get_settings_key();
-
-        $settings_component = Secure_Passkeys_Factory::create($settings_key);
+        $settings_component = $this->settings_factory;
 
         if (is_wp_error($settings_component)) {
             wp_send_json_error(['message' => $settings_component->get_error_message()]);
@@ -60,55 +63,9 @@ class Secure_Passkeys_Adminarea_Settings_Ajax
 
         wp_send_json_success([
             'message' => __('Settings updated successfully.', 'secure-passkeys'),
-            'data' => $this->return_settings_data(array_keys($settings)),
+            'data' => Secure_Passkeys_Settings_Helper::return_settings_data(array_keys($settings)),
             'defaults' => $settings_component->defaults()
         ]);
-    }
-
-    private function get_settings_key()
-    {
-        $settings_key = '';
-
-        $settings_action = sanitize_key($_POST['action'] ?? '');
-
-        if (!empty($settings_action) && preg_match('/^secure_passkeys_(get|update)_([a-zA-Z0-9_]+)_settings$/', $settings_action, $matches)) {
-            $settings_key = $matches[2];
-        }
-
-        return sanitize_key($settings_key);
-    }
-
-    private function get_callback_action()
-    {
-        $action = [];
-
-        if (!empty(sanitize_key($_POST['action'] ?? ''))) {
-            $settings_key = sanitize_key($_POST['action'] ?? '');
-            if (strpos($settings_key, 'secure_passkeys_get') !== false) {
-                $action['hook_name'] = 'wp_ajax_'.$settings_key;
-                $action['callback'] = [$this, 'get'];
-            } elseif (strpos($settings_key, 'secure_passkeys_update') !== false) {
-                $action['hook_name'] = 'wp_ajax_'.$settings_key;
-                $action['callback'] = [$this, 'save'];
-            }
-        }
-
-        return $action;
-    }
-
-    private function return_settings_data(array $options = [])
-    {
-        $settings = Secure_Passkeys_Helper::get_option(null, []);
-
-        if (!is_array($settings)) {
-            $settings = [];
-        }
-
-        if (!empty($options)) {
-            $settings = array_intersect_key($settings, array_flip($options));
-        }
-
-        return $settings;
     }
 
     private function throw_error_if_invalid_request()

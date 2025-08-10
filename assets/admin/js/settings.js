@@ -8,6 +8,7 @@ var generalSetings = Vue.component("general-settings", {
         registration_maximum_passkeys_per_user: 3,
         excluded_roles_registration_login: [],
         auto_generate_security_key_name: 0,
+        show_enable_passkeys_notice: 0,
         registration_timeout: 5,
         registration_exclude_credentials_enabled: 1,
         registration_user_verification_enabled: 1,

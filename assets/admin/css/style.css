@@ -174,7 +174,6 @@ div.warning {
   padding: 1px 12px;
 }
 
-.notice,
 div.error {
   border-left-color: #d63638;
 }

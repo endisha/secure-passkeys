@@ -29,6 +29,7 @@ Secure Passkeys integrates effortlessly into WordPress, allowing users to regist
     * Easy Digital Downloads login form
     * Ultimate Member login form
 * **Admin Management:**  Administrators can delete, activate, or deactivate users directly from plugin settings or user profiles.
+* **Passkeys Reminder Notice:**  New option to enable or disable the passkeys reminder notice in the WordPress admin area for users who have not yet enabled passkeys.
 * **Activity Logging:**  Monitor activity logs and track last login/registration of passkeys.
 * **Multiple Passkeys:** Supports multiple passkey registrations per user, with the option to set a registration limit or allow unlimited registrations.
 * **Role Restrictions:** Restrict and exclude specific user roles from using passkey authentication.

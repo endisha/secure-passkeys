@@ -15,6 +15,7 @@ class Secure_Passkeys_General
         add_action('deleted_user', [$this, 'delete_passkey']);
         add_filter('manage_users_columns', [$this, 'users_passkey_column']);
         add_action('manage_users_custom_column', [$this, 'users_passkey_value'], 10, 3);
+        add_action('admin_notices', [$this, 'show_enable_passkeys_notice']);
     }
 
     public function delete_passkey($user_id)
@@ -42,5 +43,30 @@ class Secure_Passkeys_General
         }
 
         return $value;
+    }
+
+    public function show_enable_passkeys_notice()
+    {
+        if (!is_user_logged_in()) {
+            return;
+        }
+
+        if (!Secure_Passkeys_Helper::is_show_enable_passkeys_notice_enabled()) {
+            return;
+        }
+
+        $user_id = get_current_user_id();
+
+        if (Secure_Passkeys_Helper::is_user_in_excluded_roles($user_id)) {
+            return;
+        }
+
+        $passkeys_count = (new Secure_Passkeys_WebAuthn())->get_count_by_user_id($user_id);
+
+        if ($passkeys_count > 0) {
+            return;
+        }
+
+        echo Secure_Passkeys_Adminarea_Helper::show_enable_passkeys_notice();
     }
 }

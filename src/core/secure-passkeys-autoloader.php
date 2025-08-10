@@ -26,9 +26,15 @@ class Secure_Passkeys_Autoloader
     private function get_class_file(string $class): string
     {
         $class_file = strtolower(str_replace('_', '-', $class));
-        $class_file = str_replace('\\', DIRECTORY_SEPARATOR, $class_file);
-        $class_file = str_replace(SECURE_PASSKEYS_PLUGIN_BASENAME . '/', '', $class_file);
+        $class_file = str_replace('\\', '/', $class_file);
+        $basename = strtolower(str_replace('\\', '/', SECURE_PASSKEYS_PLUGIN_BASENAME . '/'));
 
-        return SECURE_PASSKEYS_PLUGIN_DIR . '/src/' . $class_file . '.php';
+        if (strpos($class_file, $basename) === 0) {
+            $class_file = substr($class_file, strlen($basename));
+        }
+
+        $class_file = str_replace('/', DIRECTORY_SEPARATOR, $class_file);
+
+        return SECURE_PASSKEYS_PLUGIN_DIR . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . $class_file . '.php';
     }
 }
