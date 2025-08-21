@@ -70,7 +70,6 @@ class Secure_Passkeys_Frontend_Ajax
             (new Secure_Passkeys_Challenge())->mark_as_used_challenge($challenge);
 
             (new Secure_Passkeys_Web_Authn_Sign_In_Action())->execute($data->user_id);
-
         } catch (Exception $e) {
             wp_send_json_error(__('Passkey authentication failed. Please try again.', 'secure-passkeys'));
         }
@@ -241,6 +240,8 @@ class Secure_Passkeys_Frontend_Ajax
             $message = __('Token mismatch, please refresh the page.', 'secure-passkeys');
         }
 
+        $message = apply_filters('secure_passkeys_frontend_invalid_request_error_message', $message);
+
         if (!empty($message)) {
             wp_send_json_error($message);
         }
@@ -249,7 +250,10 @@ class Secure_Passkeys_Frontend_Ajax
     private function throw_error_if_has_not_permission()
     {
         if (Secure_Passkeys_Helper::is_user_in_excluded_roles(get_current_user_id())) {
-            wp_send_json_error(__('You are not allowed to make this request.', 'secure-passkeys'));
+            $message = __('You are not allowed to make this request.', 'secure-passkeys');
+            $message = apply_filters('secure_passkeys_frontend_invalid_permission_error_message', $message);
+
+            wp_send_json_error($message);
         }
     }
 }

@@ -67,7 +67,13 @@ class Secure_Passkeys_Adminarea_Ajax
         $filters = map_deep(wp_unslash($_POST['filters'] ?? []), 'sanitize_text_field');
 
         $records = (new Secure_Passkeys_WebAuthn())->get_all_paginate([
-            'id', 'user_id', 'is_active', 'security_key_name', 'aaguid', 'last_used_at', 'created_at'
+            'id',
+            'user_id',
+            'is_active',
+            'security_key_name',
+            'aaguid',
+            'last_used_at',
+            'created_at'
         ], 20, $filters);
 
         array_map(function ($record) {
@@ -193,7 +199,7 @@ class Secure_Passkeys_Adminarea_Ajax
         (new Secure_Passkeys_Log())->add_record($log_type, $user_id, $record->security_key_name, $admin_id, $record->aaguid, $record->id);
 
         $message = $is_active_value ? __('The passkey activated successfully', 'secure-passkeys')
-        : __('The passkey deactivated successfully', 'secure-passkeys');
+            : __('The passkey deactivated successfully', 'secure-passkeys');
 
         wp_send_json_success([
             'message' => $message
@@ -210,7 +216,14 @@ class Secure_Passkeys_Adminarea_Ajax
         $filters = map_deep(wp_unslash($_POST['filters'] ?? []), 'sanitize_text_field');
 
         $records = (new Secure_Passkeys_Log())->get_all_paginate([
-            'id', 'user_id', 'security_key_name', 'aaguid', 'admin_id', 'log_type', 'ip_address', 'created_at'
+            'id',
+            'user_id',
+            'security_key_name',
+            'aaguid',
+            'admin_id',
+            'log_type',
+            'ip_address',
+            'created_at'
         ], 20, $filters);
 
         array_map(function ($record) {
@@ -226,12 +239,10 @@ class Secure_Passkeys_Adminarea_Ajax
 
     private function throw_error_if_invalid_request()
     {
-        $is_admin_requst = Secure_Passkeys_Helper::check_is_admin_request();
-
         $message = '';
         $missing_nonce = false;
 
-        if (!$is_admin_requst || !wp_doing_ajax()) {
+        if (!wp_doing_ajax()) {
             $message = __('You do not have permission to make this request.', 'secure-passkeys');
         } elseif ('POST' !== strtoupper(sanitize_text_field(wp_unslash($_SERVER['REQUEST_METHOD'] ?? '')))) {
             $message = __('The request method must be POST.', 'secure-passkeys');
@@ -239,6 +250,8 @@ class Secure_Passkeys_Adminarea_Ajax
             $message = __('Token mismatch, please refresh the page.', 'secure-passkeys');
             $missing_nonce = true;
         }
+
+        $message = apply_filters('secure_passkeys_adminarea_invalid_request_error_message', $message);
 
         if (!empty($message)) {
             wp_send_json_error(['missing_nonce' => $missing_nonce, 'message' => $message]);
@@ -256,16 +269,20 @@ class Secure_Passkeys_Adminarea_Ajax
         $has_permission = apply_filters('secure_passkeys_adminarea_check_permission', current_user_can('edit_user', $user_id));
 
         if ($should_check && !$has_permission) {
-            wp_send_json_error([
-                'message' => __('You do not have permission to make this request.', 'secure-passkeys')
-            ]);
+            $message = __('You do not have permission to make this request.', 'secure-passkeys');
+            $message = apply_filters('secure_passkeys_adminarea_invalid_access_error_message', $message);
+
+            wp_send_json_error(['message' => $message]);
         }
     }
 
     private function throw_error_if_has_not_permission($user_id)
     {
         if (Secure_Passkeys_Helper::is_user_in_excluded_roles($user_id)) {
-            wp_send_json_error(__('You are not allowed to make this request.', 'secure-passkeys'));
+            $message = __('You are not allowed to make this request.', 'secure-passkeys');
+            $message = apply_filters('secure_passkeys_adminarea_invalid_permission_error_message', $message);
+
+            wp_send_json_error($message);
         }
     }
 }

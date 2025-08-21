@@ -70,17 +70,17 @@ class Secure_Passkeys_Adminarea_Settings_Ajax
 
     private function throw_error_if_invalid_request()
     {
-        $is_admin_requst = strpos(sanitize_text_field(wp_unslash($_SERVER['HTTP_REFERER'] ?? '')), admin_url()) !== false;
-
         $message = '';
 
-        if (!$is_admin_requst || !wp_doing_ajax()) {
+        if (!wp_doing_ajax()) {
             $message = __('You do not have permission to make this request.', 'secure-passkeys');
         } elseif ('POST' !== strtoupper(sanitize_text_field(wp_unslash($_SERVER['REQUEST_METHOD'] ?? '')))) {
             $message = __('The request method must be POST.', 'secure-passkeys');
         } elseif (!Secure_Passkeys_Helper::verify_nonce(sanitize_text_field(wp_unslash($_POST['nonce'] ?? '')))) {
             $message = __('Token mismatch, please refresh the page.', 'secure-passkeys');
         }
+
+        $message = apply_filters('secure_passkeys_adminarea_invalid_request_error_message', $message);
 
         if (!empty($message)) {
             wp_send_json_error(['missing_nonce' => true, 'message' => $message]);
@@ -93,14 +93,15 @@ class Secure_Passkeys_Adminarea_Settings_Ajax
 
         $should_check = apply_filters('secure_passkeys_adminarea_should_check_access', true);
 
-        $capability = apply_filters('secure_passkeys_admin_menu_capability', 'manage_options');
+        $capability = apply_filters('secure_passkeys_adminarea_menu_capability', 'manage_options');
 
         $has_permission = apply_filters('secure_passkeys_adminarea_check_settings_permission', current_user_can($capability, $user_id));
 
         if ($should_check && !$has_permission) {
-            wp_send_json_error([
-                'message' => __('You do not have permission to make this request.', 'secure-passkeys')
-            ]);
+            $message = __('You do not have permission to make this request.', 'secure-passkeys');
+            $message = apply_filters('secure_passkeys_adminarea_invalid_access_error_message', $message);
+
+            wp_send_json_error(['message' => $message]);
         }
     }
 }
