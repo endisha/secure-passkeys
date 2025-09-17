@@ -13,7 +13,7 @@ class Secure_Passkeys_WebAuthn extends Secure_Passkeys_Model
 
     public function paginate_filters()
     {
-        return[
+        return [
             'user_id' => 'int',
             'is_active' => 'int',
             'aaguid' => 'string',
@@ -24,24 +24,18 @@ class Secure_Passkeys_WebAuthn extends Secure_Passkeys_Model
 
     public function get_count()
     {
-        return (int) $this->db->get_var(
-            $this->db->prepare("
-                SELECT COUNT(*) AS `count` FROM $this->table
-            ")
-        );
+        return (int) $this->db->get_var("SELECT COUNT(*) as `count` FROM {$this->table}");
     }
 
     public function get_unique_usesr_count()
     {
         $users_table = $this->db->base_prefix . 'users';
 
-        return (int) $this->db->get_var(
-            $this->db->prepare("
-                SELECT COUNT(DISTINCT {$users_table}.ID) as `unique_user_count`
-                FROM {$this->table}
-                JOIN {$users_table} ON {$users_table}.ID = {$this->table}.user_id
-            ")
-        );
+        return (int) $this->db->get_var("
+            SELECT COUNT(DISTINCT {$users_table}.ID) as `unique_user_count`
+            FROM {$this->table}
+            JOIN {$users_table} ON {$users_table}.ID = {$this->table}.user_id
+        ");
     }
 
     public function remove_by_user_id(int $id, int $user_id)
@@ -60,14 +54,12 @@ class Secure_Passkeys_WebAuthn extends Secure_Passkeys_Model
 
     public function get_authenticators()
     {
-        $results = $this->db->get_results(
-            $this->db->prepare("
-                SELECT `aaguid`, COUNT(*) as `count`
-                FROM $this->table
-                GROUP BY `aaguid`
-                ORDER BY `count` DESC, `aaguid` DESC
-            ")
-        );
+        $results = $this->db->get_results("
+            SELECT `aaguid`, COUNT(*) as `count`
+            FROM $this->table
+            GROUP BY `aaguid`
+            ORDER BY `count` DESC, `aaguid` DESC
+        ");
 
         $authenticators = [];
         foreach ($results as $item) {
