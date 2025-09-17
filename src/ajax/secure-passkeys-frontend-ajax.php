@@ -15,6 +15,7 @@ use Secure_Passkeys\Exceptions\Secure_Passkeys_Web_Authn_Reach_Maximum_Credentia
 use Secure_Passkeys\Models\Secure_Passkeys_Challenge;
 use Secure_Passkeys\Models\Secure_Passkeys_Log;
 use Secure_Passkeys\Models\Secure_Passkeys_WebAuthn;
+use Secure_Passkeys\Utils\Secure_Passkeys_Ajax_Helper;
 use Secure_Passkeys\Utils\Secure_Passkeys_Helper;
 use Secure_Passkeys\Utils\Secure_Passkeys_Webauthn_Helper;
 
@@ -37,7 +38,7 @@ class Secure_Passkeys_Frontend_Ajax
      */
     public function get_login_options()
     {
-        $this->throw_error_if_invalid_request();
+        Secure_Passkeys_Ajax_Helper::validate_frontend_ajax_request();
 
         $challenge = (new Secure_Passkeys_Challenge())->generate_challenge('authentication');
 
@@ -51,7 +52,7 @@ class Secure_Passkeys_Frontend_Ajax
      */
     public function login()
     {
-        $this->throw_error_if_invalid_request();
+        Secure_Passkeys_Ajax_Helper::validate_frontend_ajax_request();
 
         $params = [
             'rawId' => sanitize_text_field(wp_unslash($_POST['rawId'] ?? '')),
@@ -88,9 +89,9 @@ class Secure_Passkeys_Frontend_Ajax
      */
     public function get_registered_passkeys_list()
     {
-        $this->throw_error_if_invalid_request();
+        Secure_Passkeys_Ajax_Helper::validate_frontend_ajax_request();
 
-        $this->throw_error_if_has_not_permission();
+        Secure_Passkeys_Ajax_Helper::validate_frontend_user_permission();
 
         $user_id = get_current_user_id();
 
@@ -112,9 +113,9 @@ class Secure_Passkeys_Frontend_Ajax
      */
     public function get_register_options()
     {
-        $this->throw_error_if_invalid_request();
+        Secure_Passkeys_Ajax_Helper::validate_frontend_ajax_request();
 
-        $this->throw_error_if_has_not_permission();
+        Secure_Passkeys_Ajax_Helper::validate_frontend_user_permission();
 
         $user_id = get_current_user_id();
 
@@ -130,9 +131,9 @@ class Secure_Passkeys_Frontend_Ajax
      */
     public function register_passkey()
     {
-        $this->throw_error_if_invalid_request();
+        Secure_Passkeys_Ajax_Helper::validate_frontend_ajax_request();
 
-        $this->throw_error_if_has_not_permission();
+        Secure_Passkeys_Ajax_Helper::validate_frontend_user_permission();
 
         $params = [
             'rawId' => sanitize_text_field(wp_unslash($_POST['rawId'] ?? '')),
@@ -200,9 +201,9 @@ class Secure_Passkeys_Frontend_Ajax
      */
     public function remove_passkey(): void
     {
-        $this->throw_error_if_invalid_request();
+        Secure_Passkeys_Ajax_Helper::validate_frontend_ajax_request();
 
-        $this->throw_error_if_has_not_permission();
+        Secure_Passkeys_Ajax_Helper::validate_frontend_user_permission();
 
         $id = intval($_POST['id'] ?? 0);
         $user_id = get_current_user_id();
@@ -222,38 +223,5 @@ class Secure_Passkeys_Frontend_Ajax
         (new Secure_Passkeys_Log())->add_record('remove', $user_id, $passkey->security_key_name, null, $passkey->aaguid);
 
         wp_send_json_success([]);
-    }
-
-    private function throw_error_if_invalid_request()
-    {
-        $is_admin_requst = Secure_Passkeys_Helper::check_is_admin_request();
-
-        switch_to_locale($is_admin_requst ? get_user_locale() : get_locale());
-
-        $message = '';
-
-        if (!wp_doing_ajax()) {
-            $message = __('You are not allowed to make this request.', 'secure-passkeys');
-        } elseif ('POST' !== strtoupper(sanitize_text_field(wp_unslash($_SERVER['REQUEST_METHOD'] ?? '')))) {
-            $message = __('The request method must be POST.', 'secure-passkeys');
-        } elseif (!Secure_Passkeys_Helper::verify_nonce(sanitize_text_field(wp_unslash($_POST['nonce'] ?? '')))) {
-            $message = __('Token mismatch, please refresh the page.', 'secure-passkeys');
-        }
-
-        $message = apply_filters('secure_passkeys_frontend_invalid_request_error_message', $message);
-
-        if (!empty($message)) {
-            wp_send_json_error($message);
-        }
-    }
-
-    private function throw_error_if_has_not_permission()
-    {
-        if (Secure_Passkeys_Helper::is_user_in_excluded_roles(get_current_user_id())) {
-            $message = __('You are not allowed to make this request.', 'secure-passkeys');
-            $message = apply_filters('secure_passkeys_frontend_invalid_permission_error_message', $message);
-
-            wp_send_json_error($message);
-        }
     }
 }

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Secure Passkeys\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-09 22:42+0200\n"
-"PO-Revision-Date: 2025-08-09 22:42+0200\n"
+"POT-Creation-Date: 2025-09-17 16:01+0200\n"
+"PO-Revision-Date: 2025-09-17 16:02+0200\n"
 "Last-Translator: \n"
 "Language-Team: Arabic\n"
 "Language: ar\n"
@@ -12,65 +12,40 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.7\n"
 "X-Poedit-Basepath: ../..\n"
 "X-Poedit-KeywordsList: __;esc_html__;esc_html_e;esc_attr__\n"
 "X-Loco-Version: 2.3.0; wp-5.2.3\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: assets\n"
 
-#: src/ajax/secure-passkeys-adminarea-ajax.php:103
-#: src/ajax/secure-passkeys-adminarea-ajax.php:110
+#: src/ajax/secure-passkeys-adminarea-ajax.php:117
+#: src/ajax/secure-passkeys-adminarea-ajax.php:124
 msgid "The passkey cannot be deleted"
 msgstr "لا يمكن حذف مفتاح المرور"
 
-#: src/ajax/secure-passkeys-adminarea-ajax.php:125
+#: src/ajax/secure-passkeys-adminarea-ajax.php:139
 msgid "The passkey deleted successfully"
 msgstr "تم حذف مفتاح المرور بنجاح"
 
-#: src/ajax/secure-passkeys-adminarea-ajax.php:166
+#: src/ajax/secure-passkeys-adminarea-ajax.php:180
 msgid "Invalid procedure"
 msgstr "إجراء غير صحيح"
 
-#: src/ajax/secure-passkeys-adminarea-ajax.php:176
-#: src/ajax/secure-passkeys-adminarea-ajax.php:187
+#: src/ajax/secure-passkeys-adminarea-ajax.php:190
+#: src/ajax/secure-passkeys-adminarea-ajax.php:203
 msgid "A passkey cannot be updated"
 msgstr "لا يمكن تحديث مفتاح المرور"
 
-#: src/ajax/secure-passkeys-adminarea-ajax.php:195
+#: src/ajax/secure-passkeys-adminarea-ajax.php:211
 msgid "The passkey activated successfully"
 msgstr "تم تفعيل مفتاح المرور بنجاح"
 
-#: src/ajax/secure-passkeys-adminarea-ajax.php:196
+#: src/ajax/secure-passkeys-adminarea-ajax.php:212
 msgid "The passkey deactivated successfully"
 msgstr "تم تعطيل مفتاح المرور بنجاح"
 
-#: src/ajax/secure-passkeys-adminarea-ajax.php:235
-#: src/ajax/secure-passkeys-adminarea-ajax.php:260
-#: src/ajax/secure-passkeys-adminarea-settings-ajax.php:77
-#: src/ajax/secure-passkeys-adminarea-settings-ajax.php:101
-msgid "You do not have permission to make this request."
-msgstr "ليس لديك صلاحيات لتقديم هذا الطلب."
-
-#: src/ajax/secure-passkeys-adminarea-ajax.php:237
-#: src/ajax/secure-passkeys-adminarea-settings-ajax.php:79
-#: src/ajax/secure-passkeys-frontend-ajax.php:239
-msgid "The request method must be POST."
-msgstr "يجب أن تكون طريقة الطلب POST."
-
-#: src/ajax/secure-passkeys-adminarea-ajax.php:239
-#: src/ajax/secure-passkeys-adminarea-settings-ajax.php:81
-#: src/ajax/secure-passkeys-frontend-ajax.php:241
-msgid "Token mismatch, please refresh the page."
-msgstr "رمز الصفحة غير مطابق ، يرجى تحديث الصفحة."
-
-#: src/ajax/secure-passkeys-adminarea-ajax.php:268
-#: src/ajax/secure-passkeys-frontend-ajax.php:237
-#: src/ajax/secure-passkeys-frontend-ajax.php:252
-msgid "You are not allowed to make this request."
-msgstr "لا يمكنك تقديم هذا الطلب."
-
-#: src/ajax/secure-passkeys-adminarea-settings-ajax.php:64
+#: src/ajax/secure-passkeys-adminarea-settings-ajax.php:66
 msgid "Settings updated successfully."
 msgstr "تم تحديث الإعدادات بنجاح."
 
@@ -117,7 +92,7 @@ msgstr "إعدادات"
 
 #: src/hooks/secure-passkeys-general.php:29
 #: src/includes/secure-passkeys-adminarea.php:77
-#: src/views/admin/vue/components/overview/app.vue.php:78
+#: src/views/admin/vue/components/overview/app.vue.php:66
 #: src/views/admin/vue/components/passkeys/app.vue.php:6
 msgid "Passkeys"
 msgstr "مفاتيح المرور"
@@ -285,6 +260,31 @@ msgid ""
 msgstr ""
 "‫%1$s استخدم البصمة أو طرق التحقق البيومترية الأخرى مع مفاتيح المرور للتحقق من "
 "تسجيل دخولك بشكل آمن. %2$s في إعدادات ملفك الشخصي."
+
+#: src/utils/secure-passkeys-ajax-helper.php:15
+#: src/utils/secure-passkeys-ajax-helper.php:47
+#: src/utils/secure-passkeys-ajax-helper.php:65
+#: src/utils/secure-passkeys-ajax-helper.php:77
+msgid "You do not have permission to make this request."
+msgstr "ليس لديك صلاحيات لتقديم هذا الطلب."
+
+#: src/utils/secure-passkeys-ajax-helper.php:17
+#: src/utils/secure-passkeys-ajax-helper.php:79
+#: src/utils/secure-passkeys-ajax-helper.php:102
+msgid "The request method must be POST."
+msgstr "يجب أن تكون طريقة الطلب POST."
+
+#: src/utils/secure-passkeys-ajax-helper.php:19
+#: src/utils/secure-passkeys-ajax-helper.php:81
+#: src/utils/secure-passkeys-ajax-helper.php:104
+msgid "Token mismatch, please refresh the page."
+msgstr "رمز الصفحة غير مطابق ، يرجى تحديث الصفحة."
+
+#: src/utils/secure-passkeys-ajax-helper.php:33
+#: src/utils/secure-passkeys-ajax-helper.php:100
+#: src/utils/secure-passkeys-ajax-helper.php:117
+msgid "You are not allowed to make this request."
+msgstr "لا يمكنك تقديم هذا الطلب."
 
 #: src/utils/secure-passkeys-frontend-helper.php:57
 msgid "Default"
@@ -612,16 +612,16 @@ msgid "Description"
 msgstr "الوصف"
 
 #: src/views/admin/vue/components/activity/app.vue.php:196
-#: src/views/admin/vue/components/overview/app.vue.php:208
+#: src/views/admin/vue/components/overview/app.vue.php:178
 msgid "User ID"
 msgstr "رقم المستخدم"
 
-#: src/views/admin/vue/components/overview/app.vue.php:21
+#: src/views/admin/vue/components/overview/app.vue.php:20
 msgid ""
 "Secure Passkeys is a passwordless authentication solution based on WebAuthn, "
 "enabling users to log in using device-based methods like biometrics or PIN. "
-"It eliminates the need for traditional passwords, enhancing security and and "
-"upgrade your WordPress site with Secure Passkeys for a modern, secure, and "
+"It eliminates the need for traditional passwords, enhancing security and "
+"upgrading your WordPress site with Secure Passkeys for a modern, secure, and "
 "efficient authentication experience."
 msgstr ""
 "مفاتيح المرور الآمنة تسمح للمستخدمين بتسجيل الدخول بدون كلمة مرور وذلك "
@@ -630,35 +630,35 @@ msgstr ""
 "الحاجة إلى كلمات المرور التقليدية، ويعزز الأمان. قم بترقية أمان موقعك والسماح "
 "للمستخدمين باستخدام مفاتيح المرور للحصول على تجربة مصادقة حديثة وآمنة وفعالة."
 
-#: src/views/admin/vue/components/overview/app.vue.php:32
+#: src/views/admin/vue/components/overview/app.vue.php:29
 msgid "Statistics"
 msgstr "الإحصائيات"
 
-#: src/views/admin/vue/components/overview/app.vue.php:46
+#: src/views/admin/vue/components/overview/app.vue.php:40
 msgid "Users"
 msgstr "المستخدمين"
 
-#: src/views/admin/vue/components/overview/app.vue.php:94
+#: src/views/admin/vue/components/overview/app.vue.php:79
 msgid "Activities"
 msgstr "الأنشطة"
 
-#: src/views/admin/vue/components/overview/app.vue.php:111
+#: src/views/admin/vue/components/overview/app.vue.php:93
 msgid "Challenges"
 msgstr "التحديات"
 
-#: src/views/admin/vue/components/overview/app.vue.php:119
+#: src/views/admin/vue/components/overview/app.vue.php:100
 msgid "Overview of Authenticators"
 msgstr "نظرة عامة على المصادقات"
 
-#: src/views/admin/vue/components/overview/app.vue.php:135
+#: src/views/admin/vue/components/overview/app.vue.php:114
 msgid "No authenticators registered."
 msgstr "لم يتم تسجيل أي مصادقات."
 
-#: src/views/admin/vue/components/overview/app.vue.php:173
+#: src/views/admin/vue/components/overview/app.vue.php:148
 msgid "Last Login Activity"
 msgstr "آخر نشاط تسجيل الدخول"
 
-#: src/views/admin/vue/components/overview/app.vue.php:187
+#: src/views/admin/vue/components/overview/app.vue.php:160
 msgid "No activities."
 msgstr "لا يوجد أنشطة."
 

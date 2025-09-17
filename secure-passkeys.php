@@ -6,7 +6,7 @@
  * Description: Secure Passkeys is a powerful WordPress plugin that enables passwordless authentication using WebAuthn technology.
  * Author: Mohamed Endisha
  * Author URI: https://endisha.ly
- * Version: 1.2.1
+ * Version: 1.2.2
  * Text Domain: secure-passkeys
  * Domain Path: /src/languages/
  * Requires at least: 6.0
@@ -17,7 +17,7 @@
 
 defined('ABSPATH') || exit;
 
-define('SECURE_PASSKEYS_VERSION', '1.2.1');
+define('SECURE_PASSKEYS_VERSION', '1.2.2');
 define('SECURE_PASSKEYS_PLUGIN_FILE', __FILE__);
 define('SECURE_PASSKEYS_PLUGIN_DIR', __DIR__);
 define('SECURE_PASSKEYS_AUTOLOADER', __DIR__ . '/src/core/secure-passkeys-autoloader.php');

@@ -116,11 +116,6 @@ class Secure_Passkeys_Challenge extends Secure_Passkeys_Model
 
     public function get_count()
     {
-        return (int) $this->db->get_var(
-            $this->db->prepare("
-                SELECT COUNT(*) as `count`
-                FROM {$this->table}
-            ")
-        );
+        return (int) $this->db->get_var("SELECT COUNT(*) as `count` FROM {$this->table}");
     }
 }
