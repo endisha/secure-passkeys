@@ -22,7 +22,11 @@ class Secure_Passkeys_Web_Authn_Sign_In_Action extends Secure_Passkeys_Web_Authn
 
         wp_set_auth_cookie($user_id, true);
 
-        do_action('wp_login', $user->user_login, $user);
+        $enabled = apply_filters('secure_passkeys_web_authn_validate_user_sign_in_enable_wp_login', false, $user);
+
+        if ($enabled) {
+            do_action('wp_login', $user->user_login, $user);
+        }
 
         do_action('secure_passkeys_web_authn_sign_in', $user);
 
