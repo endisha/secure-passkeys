@@ -35,8 +35,8 @@ class Secure_Passkeys_Advanced_Settings extends Secure_Passkeys_Settings
         $log_cleanup_days = intval($_POST['settings']['log_cleanup_days'] ?? 0);
         $stop_log_records_enabled = intval($_POST['settings']['stop_log_records_enabled'] ?? 0);
 
-        $challenge_cleanup_days_periods = apply_filters('secure_passkeys_challenge_cleanup_allowed_days_periods', [0, 30, 60, 90]);
-        $log_cleanup_days_periods = apply_filters('secure_passkeys_log_cleanup_allowed_days_periods', [0, 30, 60, 90]);
+        $challenge_cleanup_days_periods = apply_filters('secure_passkeys_challenge_cleanup_allowed_days_periods', [0, 30, 60, 90, 180, 365]);
+        $log_cleanup_days_periods = apply_filters('secure_passkeys_log_cleanup_allowed_days_periods', [0, 30, 60, 90, 180, 365]);
 
         if (!in_array($challenge_cleanup_days, $challenge_cleanup_days_periods)) {
             return new WP_Error('error', __('The challenge cleanup period is not correct.', 'secure-passkeys'));
