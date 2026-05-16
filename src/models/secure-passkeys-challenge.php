@@ -23,9 +23,9 @@ class Secure_Passkeys_Challenge extends Secure_Passkeys_Model
         $fingerprint = Secure_Passkeys_Helper::generate_fingerprint();
 
         if ($challenge_type === 'registration') {
-            $minutes = intval(Secure_Passkeys_Helper::get_option('login_timeout', 5));
-        } else {
             $minutes = intval(Secure_Passkeys_Helper::get_option('registration_timeout', 5));
+        } else {
+            $minutes = intval(Secure_Passkeys_Helper::get_option('login_timeout', 5));
         }
 
         $date = (new DateTime())->add(new DateInterval('PT' . $minutes . 'M'));
