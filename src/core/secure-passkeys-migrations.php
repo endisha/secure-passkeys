@@ -6,7 +6,7 @@ defined('ABSPATH') || exit;
 
 class Secure_Passkeys_Migrations
 {
-    public function booting(string $path): void
+    public function booting(string $path = ''): void
     {
         $file = $this->file();
         if (!is_null($file)) {
@@ -22,12 +22,7 @@ class Secure_Passkeys_Migrations
         $sql = '';
         $dir = glob("{$plugin}/database/*.sql");
         foreach ($dir as $file) {
-            $filename = esc_sql(basename($file, ".sql"));
-            $table_name = $table_prefix . $filename;
-            $table_name = esc_sql($table_name);
-            if ($wpdb->get_var($wpdb->prepare("SHOW TABLES LIKE %s", $table_name)) != $table_name) {
-                $sql .= file_get_contents($file);
-            }
+            $sql .= file_get_contents($file);
         }
         return $sql;
     }
@@ -43,20 +38,7 @@ class Secure_Passkeys_Migrations
 
     public function file(): ?string
     {
-        $file = null;
-        $backtrace = debug_backtrace();
-        foreach ($backtrace as $entry) {
-            if ($entry['function'] == 'activate_plugin') {
-                if (isset($entry['args'][0]) && SECURE_PASSKEYS_PLUGIN_FILE_BASENAME === $entry['args'][0]) {
-                    $plugin = SECURE_PASSKEYS_PLUGIN_FILE;
-                    if (file_exists($plugin)) {
-                        $file = $plugin;
-                    }
-                    break;
-                }
-            }
-        }
-        return $file;
+        return defined('SECURE_PASSKEYS_PLUGIN_FILE') ? SECURE_PASSKEYS_PLUGIN_FILE : null;
     }
 
     private function replacement(string $query): string

@@ -6,21 +6,16 @@ defined('ABSPATH') || exit;
 
 class Secure_Passkeys_Settings_Helper
 {
-    public static function get_callback_action($settings_key)
+    public static function get_allowed_actions(): array
     {
-        $action = [];
-
-        if (!empty($settings_key)) {
-            if (strpos($settings_key, 'secure_passkeys_get') !== false) {
-                $action['hook_name'] = 'wp_ajax_'.$settings_key;
-                $action['callback'] = 'get';
-            } elseif (strpos($settings_key, 'secure_passkeys_update') !== false) {
-                $action['hook_name'] = 'wp_ajax_'.$settings_key;
-                $action['callback'] = 'save';
-            }
-        }
-
-        return $action;
+        return apply_filters('secure_passkeys_adminarea_settings_allowed_actions', [
+            'secure_passkeys_get_general_settings' => 'get',
+            'secure_passkeys_get_display_settings' => 'get',
+            'secure_passkeys_get_advanced_settings' => 'get',
+            'secure_passkeys_update_general_settings' => 'save',
+            'secure_passkeys_update_display_settings' => 'save',
+            'secure_passkeys_update_advanced_settings' => 'save',
+        ]);
     }
 
     public static function get_settings_key($settings_action)

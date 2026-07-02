@@ -6,6 +6,20 @@ defined('ABSPATH') || exit;
 
 class Secure_Passkeys_Ajax_Helper
 {
+    public static function validate_rate_limit(string $action, int $limit, int $seconds)
+    {
+        $limit = apply_filters('secure_passkeys_frontend_rate_limit', $limit, $action);
+
+        $seconds = apply_filters('secure_passkeys_frontend_rate_limit_window', $seconds, $action);
+
+        if (!Secure_Passkeys_Helper::rate_limit($action, $limit, $seconds)) {
+            $message = __('Too many requests. Please try again later.', 'secure-passkeys');
+            $message = apply_filters('secure_passkeys_frontend_rate_limit_error_message', $message);
+
+            wp_send_json_error($message);
+        }
+    }
+
     public static function validate_adminarea_ajax_request()
     {
         $message = '';

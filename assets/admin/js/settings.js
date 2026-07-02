@@ -9,11 +9,14 @@ var generalSetings = Vue.component("general-settings", {
         excluded_roles_registration_login: [],
         auto_generate_security_key_name: 0,
         show_enable_passkeys_notice: 0,
+        login_rate_limiting_max_attempts: 10,
+        login_rate_limiting_window_minutes: 1,
         registration_timeout: 5,
         registration_exclude_credentials_enabled: 1,
         registration_user_verification_enabled: 1,
         login_timeout: 5,
         login_user_verification: "required",
+        login_remember_me: 1,
       },
       defaults: {
         roles: {},
@@ -59,7 +62,7 @@ var generalSetings = Vue.component("general-settings", {
             }
           }
         },
-        "JSON"
+        "JSON",
       );
     },
     updateSettings() {
@@ -95,7 +98,7 @@ var generalSetings = Vue.component("general-settings", {
             }
           }
         },
-        "JSON"
+        "JSON",
       );
     },
   },
@@ -160,7 +163,7 @@ var displaySettings = Vue.component("display-settings", {
             }
           }
         },
-        "JSON"
+        "JSON",
       );
     },
     updateSettings() {
@@ -196,7 +199,7 @@ var displaySettings = Vue.component("display-settings", {
             }
           }
         },
-        "JSON"
+        "JSON",
       );
     },
   },
@@ -254,7 +257,7 @@ var advancedSettings = Vue.component("advanced-settings", {
             }
           }
         },
-        "JSON"
+        "JSON",
       );
     },
     updateSettings() {
@@ -290,7 +293,7 @@ var advancedSettings = Vue.component("advanced-settings", {
             }
           }
         },
-        "JSON"
+        "JSON",
       );
     },
   },

@@ -4,26 +4,18 @@ namespace Secure_Passkeys\Ajax;
 
 use Secure_Passkeys\Settings\Secure_Passkeys_Factory;
 use Secure_Passkeys\Utils\Secure_Passkeys_Ajax_Helper;
-use Secure_Passkeys\Utils\Secure_Passkeys_Helper;
 use Secure_Passkeys\Utils\Secure_Passkeys_Settings_Helper;
 
 defined('ABSPATH') || exit;
 
 class Secure_Passkeys_Adminarea_Settings_Ajax
 {
-    protected $settings_factory;
-
     public function __construct()
     {
-        $settings_action = sanitize_key($_POST['action'] ?? '');
-        $callback_action = Secure_Passkeys_Settings_Helper::get_callback_action($settings_action);
-
-        if (!empty($callback_action)) {
-            add_action($callback_action['hook_name'], [$this, $callback_action['callback']]);
+        $allowed_actions = Secure_Passkeys_Settings_Helper::get_allowed_actions();
+        foreach ($allowed_actions as $action => $callback) {
+            add_action('wp_ajax_' . $action, [$this, $callback]);
         }
-
-        $settings_key = Secure_Passkeys_Settings_Helper::get_settings_key($settings_action);
-        $this->settings_factory = Secure_Passkeys_Factory::create($settings_key);
     }
 
     public function get()
@@ -32,7 +24,9 @@ class Secure_Passkeys_Adminarea_Settings_Ajax
 
         Secure_Passkeys_Ajax_Helper::ensure_has_admin_access();
 
-        $settings_component = $this->settings_factory;
+        $settings_action = sanitize_key($_POST['action'] ?? '');
+        $settings_key = Secure_Passkeys_Settings_Helper::get_settings_key($settings_action);
+        $settings_component = Secure_Passkeys_Factory::create($settings_key);
 
         if (is_wp_error($settings_component)) {
             wp_send_json_error($settings_component);
@@ -50,7 +44,9 @@ class Secure_Passkeys_Adminarea_Settings_Ajax
 
         Secure_Passkeys_Ajax_Helper::ensure_has_admin_access();
 
-        $settings_component = $this->settings_factory;
+        $settings_action = sanitize_key($_POST['action'] ?? '');
+        $settings_key = Secure_Passkeys_Settings_Helper::get_settings_key($settings_action);
+        $settings_component = Secure_Passkeys_Factory::create($settings_key);
 
         if (is_wp_error($settings_component)) {
             wp_send_json_error(['message' => $settings_component->get_error_message()]);

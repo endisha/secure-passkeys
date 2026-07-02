@@ -76,19 +76,25 @@ abstract class Secure_Passkeys_Model
     /**
      * Paginate data
      */
-    public function get_all_paginate(array $columns = [], int $per_page = 10, array $filter_params = [])
+    public function get_all_paginate(array $columns = [], int $per_page = 10, array $filter_params = [], int $page = 1)
     {
         $per_page = $per_page > 0 ? $per_page : $this->per_page;
-
-        $page = isset($_REQUEST['page']) ? intval($_REQUEST['page']) : 1;
+        $page = $page > 0 ? $page : 1;
 
         $query = [];
         $query['params'] = [];
         // Count
         $query['sql']['count'][] = "SELECT count(*) as `count` FROM `{$this->table}`";
         // Columns
-        $columns = !empty($columns) ? implode(',', $columns) : '*';
-        $query['sql']['select'][] = "SELECT {$columns} FROM `{$this->table}`";
+        if (!empty($columns)) {
+            $sanitized_columns = array_map(function ($col) {
+                return "`" . esc_sql(preg_replace('/[^a-zA-Z0-9_]/', '', $col)) . "`";
+            }, $columns);
+            $columns_str = implode(',', $sanitized_columns);
+        } else {
+            $columns_str = '*';
+        }
+        $query['sql']['select'][] = "SELECT {$columns_str} FROM `{$this->table}`";
         // Apply Filters
         if (!empty($filter_params)) {
             $sub_queries = $this->apply_paginate_filters($filter_params);

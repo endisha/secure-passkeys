@@ -4,11 +4,15 @@ namespace Secure_Passkeys\Actions;
 
 use Secure_Passkeys\Utils\Secure_Passkeys_Helper;
 
+defined('ABSPATH') || exit;
+
 class Secure_Passkeys_Web_Authn_Enable_Options_Action extends Secure_Passkeys_Web_Authn_Action
 {
     public function execute(int $user_id, string $challenge): array
     {
         $username = Secure_Passkeys_Helper::get_user_full_name($user_id);
+
+        $user_handle = Secure_Passkeys_Helper::get_generated_user_handle($user_id);
 
         $options = [
             'challenge' => $challenge,
@@ -17,7 +21,7 @@ class Secure_Passkeys_Web_Authn_Enable_Options_Action extends Secure_Passkeys_We
                 'name' => $this->get_relying_party_id(),
             ],
             'user' => [
-                'id' => base64_encode($user_id),
+                'id' => base64_encode($user_handle),
                 'name' => $username,
                 'displayName' => $username,
             ],

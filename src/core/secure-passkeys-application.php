@@ -33,6 +33,8 @@ class Secure_Passkeys_Application
         add_action('init', [$this, 'load_i18n']);
 
         add_action('init', [$this, 'load_ajax']);
+
+        add_action('plugins_loaded', [$this, 'check_version_and_upgrade']);
     }
 
     /**
@@ -87,6 +89,20 @@ class Secure_Passkeys_Application
             wp_safe_redirect($this->get_plugin_settings_url());
             exit;
         }
+    }
+
+    /**
+     * Check if the database needs to be upgraded.
+     */
+    public function check_version_and_upgrade(): void
+    {
+        if (!Secure_Passkeys_Helper::is_upgrade_plugin_version()) {
+            return;
+        }
+
+        (new Secure_Passkeys_Migrations())->booting();
+
+        Secure_Passkeys_Helper::upgrade_plugin_version();
     }
 
     /**

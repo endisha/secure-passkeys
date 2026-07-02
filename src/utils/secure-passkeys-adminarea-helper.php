@@ -17,9 +17,17 @@ class Secure_Passkeys_Adminarea_Helper
     {
         global $current_screen;
 
-        $user_id = $current_screen->id === 'profile' ? get_current_user_id() : intval($_GET['user_id'] ?? 0);
+        if ($current_screen && $current_screen->id === 'profile') {
+            return get_current_user_id();
+        }
 
-        return intval($user_id);
+        $user_id = intval($_GET['user_id'] ?? 0);
+
+        if ($user_id && !current_user_can('edit_user', $user_id)) {
+            return 0;
+        }
+
+        return $user_id;
     }
 
     public static function get_page_resource_key(array $resources, string $hook)
@@ -131,7 +139,6 @@ class Secure_Passkeys_Adminarea_Helper
         $file = apply_filters('secure_passkeys_include_view_adminarea_file', $file, $template, $data);
 
         if (file_exists(realpath($file))) {
-            extract($data);
             if (!$load) {
                 return include realpath($file);
             }
@@ -150,7 +157,7 @@ class Secure_Passkeys_Adminarea_Helper
         $title = '<strong>' . $title . '</strong><br>';
         $title = apply_filters('secure_passkeys_enable_passkeys_notice_title', $title);
 
-        $profile_url = esc_url(admin_url('profile.php').'#passkey-app');
+        $profile_url = esc_url(admin_url('profile.php') . '#passkey-app');
         $profile_url = apply_filters('secure_passkeys_enable_passkeys_notice_profile_url', $profile_url);
 
         $link_text = __('Enable passkeys', 'secure-passkeys');
@@ -179,6 +186,6 @@ class Secure_Passkeys_Adminarea_Helper
         $alert = '<div class="notice notice-warning is-dismissible"><p>' . $escaped_message . '</p></div>';
         $alert = apply_filters('secure_passkeys_enable_passkeys_notice_alert', $alert);
 
-        return $alert;
+        return wp_kses_post($alert);
     }
 }

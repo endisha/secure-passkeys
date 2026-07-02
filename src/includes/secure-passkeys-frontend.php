@@ -41,9 +41,16 @@ class Secure_Passkeys_Frontend
 
         wp_register_style($this->login_handle, Secure_Passkeys_Frontend_Helper::get_css_assets_url('login.css'), [], SECURE_PASSKEYS_VERSION);
 
+        $redirect_to = !empty($_REQUEST['redirect_to'])
+            ? esc_url_raw(wp_unslash($_REQUEST['redirect_to']))
+            : (did_action('login_enqueue_scripts') ? admin_url() : '');
+
+        $redirect_to = apply_filters('secure_passkeys_login_redirect_to', $redirect_to);
+
         wp_localize_script($this->login_handle, 'secure_passkeys_object', [
             'url' => admin_url('admin-ajax.php'),
             'nonce' => wp_create_nonce(SECURE_PASSKEYS_NONCE),
+            'redirect_to' => $redirect_to,
             'i18n' => Secure_Passkeys_I18n::get_login_localization()
         ]);
     }
@@ -164,7 +171,7 @@ class Secure_Passkeys_Frontend
             return;
         }
 
-        wp_register_script($this->register_handle.'-vue', Secure_Passkeys_Frontend_Helper::get_js_assets_url('vue.js'), [], SECURE_PASSKEYS_VERSION, true);
+        wp_register_script($this->register_handle . '-vue', Secure_Passkeys_Frontend_Helper::get_js_assets_url('vue.js'), [], SECURE_PASSKEYS_VERSION, true);
 
         wp_register_script($this->register_handle, Secure_Passkeys_Frontend_Helper::get_js_assets_url('webauthn.register.js'), [], SECURE_PASSKEYS_VERSION, true);
 
@@ -195,7 +202,7 @@ class Secure_Passkeys_Frontend
             return;
         }
 
-        wp_enqueue_script($this->register_handle.'-vue');
+        wp_enqueue_script($this->register_handle . '-vue');
 
         wp_enqueue_script($this->register_handle);
 

@@ -2,6 +2,10 @@
 
 namespace Secure_Passkeys\Actions;
 
+use Secure_Passkeys\Utils\Secure_Passkeys_Helper;
+
+defined('ABSPATH') || exit;
+
 class Secure_Passkeys_Web_Authn_Sign_In_Action extends Secure_Passkeys_Web_Authn_Action
 {
     public function execute(int $user_id): bool
@@ -20,7 +24,12 @@ class Secure_Passkeys_Web_Authn_Sign_In_Action extends Secure_Passkeys_Web_Authn
 
         wp_set_current_user($user_id, $user->user_login);
 
-        wp_set_auth_cookie($user_id, true);
+        $remember = (bool) apply_filters(
+            'secure_passkeys_login_remember_me',
+            Secure_Passkeys_Helper::get_option('login_remember_me', 1)
+        );
+
+        wp_set_auth_cookie($user_id, $remember);
 
         $enabled = apply_filters('secure_passkeys_web_authn_validate_user_sign_in_enable_wp_login', false, $user);
 

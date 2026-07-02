@@ -3,22 +3,13 @@ defined('ABSPATH') || exit;
 ?>
 <div v-cloak>
   <nav class="nav-tab-wrapper">
-    <a
-      :href="'admin.php?page=secure-passkeys-settings#/'"
-      class="nav-tab nav-tab-active"
-    >
+    <a :href="'admin.php?page=secure-passkeys-settings#/'" class="nav-tab nav-tab-active">
       <?php esc_html_e('General Settings', 'secure-passkeys'); ?>
     </a>
-    <a
-      :href="'admin.php?page=secure-passkeys-settings#/display-settings'"
-      class="nav-tab"
-    >
+    <a :href="'admin.php?page=secure-passkeys-settings#/display-settings'" class="nav-tab">
       <?php esc_html_e('Display Settings', 'secure-passkeys'); ?>
     </a>
-    <a
-      :href="'admin.php?page=secure-passkeys-settings#/advanced-settings'"
-      class="nav-tab"
-    >
+    <a :href="'admin.php?page=secure-passkeys-settings#/advanced-settings'" class="nav-tab">
       <?php esc_html_e('Advanced Settings', 'secure-passkeys'); ?>
     </a>
   </nav>
@@ -47,21 +38,14 @@ defined('ABSPATH') || exit;
     <tbody>
       <tr>
         <th style="width: 200px">
-          <label for="name" class="inline-label"
-            ><?php esc_html_e('Maximum Passkeys per User', 'secure-passkeys'); ?></label
-          >
+          <label for="name"
+            class="inline-label"><?php esc_html_e('Maximum Passkeys per User', 'secure-passkeys'); ?></label>
         </th>
         <td>
           <label for="registration_maximum_passkeys_enabled">
-            <input
-              name="registration_maximum_passkeys_enabled"
-              type="checkbox"
-              id="registration_maximum_passkeys_enabled"
-              v-model="settings.registration_maximum_passkeys_enabled"
-              true-value="1"
-              false-value="0"
-              :disabled="submitting || isLoading"
-            />
+            <input name="registration_maximum_passkeys_enabled" type="checkbox"
+              id="registration_maximum_passkeys_enabled" v-model="settings.registration_maximum_passkeys_enabled"
+              true-value="1" false-value="0" :disabled="submitting || isLoading" />
             <?php esc_html_e('Enable or disable the restriction for the maximum number of passkeys per user.', 'secure-passkeys'); ?>
             <p class="help">
               <?php esc_html_e('If disabled, users can register an unlimited number of passkeys.', 'secure-passkeys'); ?>
@@ -71,22 +55,13 @@ defined('ABSPATH') || exit;
       </tr>
       <tr>
         <th>
-          <label
-            for="registration_maximum_passkeys_per_user"
-            class="inline-label"
-          >
+          <label for="registration_maximum_passkeys_per_user" class="inline-label">
             <?php esc_html_e('Number of Passkeys', 'secure-passkeys'); ?>
           </label>
         </th>
         <td>
-          <input
-            type="number"
-            id="registration_maximum_passkeys_per_user"
-            class="small-text"
-            value="3"
-            v-model="settings.registration_maximum_passkeys_per_user"
-            :disabled="submitting || isLoading"
-          />
+          <input type="number" id="registration_maximum_passkeys_per_user" class="small-text" value="3"
+            v-model="settings.registration_maximum_passkeys_per_user" :disabled="submitting || isLoading" />
           <p class="description">
             <?php esc_html_e('Set the maximum number of passkeys a user can register (if enabled).', 'secure-passkeys'); ?>
           </p>
@@ -99,23 +74,11 @@ defined('ABSPATH') || exit;
           </label>
         </th>
         <td>
-          <div
-            id="excluded_roles_registration_login"
-            class="checkbox-group"
-            :disabled="submitting || isLoading"
-          >
-            <div
-              v-for="(label, key) in defaults.roles || {}"
-              :key="key"
-              style="margin-bottom: 2px"
-            >
+          <div id="excluded_roles_registration_login" class="checkbox-group" :disabled="submitting || isLoading">
+            <div v-for="(label, key) in defaults.roles || {}" :key="key" style="margin-bottom: 2px">
               <label>
-                <input
-                  type="checkbox"
-                  :value="key"
-                  v-model="settings.excluded_roles_registration_login"
-                  :disabled="submitting || isLoading"
-                />
+                <input type="checkbox" :value="key" v-model="settings.excluded_roles_registration_login"
+                  :disabled="submitting || isLoading" />
                 {{ label }}
               </label>
             </div>
@@ -128,24 +91,17 @@ defined('ABSPATH') || exit;
           </p>
         </td>
       </tr>
-      
+
       <tr>
         <th>
-          <label for="auto_generate_security_key_name" class="inline-label"
-            ><?php esc_html_e('Auto Generate Security Key Name', 'secure-passkeys'); ?></label
-          >
+          <label for="auto_generate_security_key_name"
+            class="inline-label"><?php esc_html_e('Auto Generate Security Key Name', 'secure-passkeys'); ?></label>
         </th>
         <td>
           <label for="auto_generate_security_key_name">
-            <input
-              name="auto_generate_security_key_name"
-              type="checkbox"
-              id="auto_generate_security_key_name"
-              v-model="settings.auto_generate_security_key_name"
-              true-value="1"
-              false-value="0"
-              :disabled="submitting || isLoading"
-            />
+            <input name="auto_generate_security_key_name" type="checkbox" id="auto_generate_security_key_name"
+              v-model="settings.auto_generate_security_key_name" true-value="1" false-value="0"
+              :disabled="submitting || isLoading" />
             <?php esc_html_e('Enable or disable the automatic generation of a security key name.', 'secure-passkeys'); ?>
             <p class="help">
               <?php esc_html_e('If enabled, users will not be prompted to enter a security key name manually when registering a passkey.', 'secure-passkeys'); ?>
@@ -156,28 +112,96 @@ defined('ABSPATH') || exit;
 
       <tr>
         <th>
-            <label for="show_enable_passkeys_notice" class="inline-label">
-                <?php esc_html_e('Show Enable Passkeys Notice', 'secure-passkeys'); ?>
-            </label>
+          <label for="show_enable_passkeys_notice" class="inline-label">
+            <?php esc_html_e('Show Enable Passkeys Notice', 'secure-passkeys'); ?>
+          </label>
         </th>
         <td>
-            <label for="show_enable_passkeys_notice">
-                <input
-                    name="show_enable_passkeys_notice"
-                    type="checkbox"
-                    id="show_enable_passkeys_notice"
-                    v-model="settings.show_enable_passkeys_notice"
-                    true-value="1"
-                    false-value="0"
-                    :disabled="submitting || isLoading"
-                />
-                <?php esc_html_e('Enable or disable showing the passkeys reminder in the WordPress admin area (wp-admin) for users who have not yet enabled passkeys.', 'secure-passkeys'); ?>
-                <p class="help">
-                    <?php esc_html_e('If disabled, the notice will not appear even if the user has not enabled passkeys.', 'secure-passkeys'); ?>
-                </p>
-            </label>
+          <label for="show_enable_passkeys_notice">
+            <input name="show_enable_passkeys_notice" type="checkbox" id="show_enable_passkeys_notice"
+              v-model="settings.show_enable_passkeys_notice" true-value="1" false-value="0"
+              :disabled="submitting || isLoading" />
+            <?php esc_html_e('Enable or disable showing the passkeys reminder in the WordPress admin area (wp-admin) for users who have not yet enabled passkeys.', 'secure-passkeys'); ?>
+            <p class="help">
+              <?php esc_html_e('If disabled, the notice will not appear even if the user has not enabled passkeys.', 'secure-passkeys'); ?>
+            </p>
+          </label>
         </td>
       </tr>
+    </tbody>
+  </table>
+
+  <hr :class="{'loading-blur': isLoading}" />
+
+  <div :class="{'loading-blur': isLoading}">
+    <p class="settings-description">
+      <?php esc_html_e('Configure rate limiting for login attempts. This is useful for preventing brute-force attacks.', 'secure-passkeys'); ?>
+    </p>
+  </div>
+
+  <table class="form-table" :class="{'loading-blur': isLoading}" width="100%">
+    <tbody>
+      <tr>
+        <th>
+          <label for="login_rate_limiting_max_attempts" class="inline-label">
+            <?php esc_html_e('Maximum Attempts', 'secure-passkeys'); ?>
+          </label>
+        </th>
+        <td>
+          <input type="number" id="login_rate_limiting_max_attempts" class="small-text"
+            v-model.number="settings.login_rate_limiting_max_attempts" :disabled="submitting || isLoading" />
+          <p class="description">
+            <?php esc_html_e('Set the maximum number of failed login attempts allowed before blocking.', 'secure-passkeys'); ?>
+          </p>
+        </td>
+      </tr>
+
+      <tr>
+        <th>
+          <label for="login_rate_limiting_window_minutes" class="inline-label">
+            <?php esc_html_e('Block Window (Minutes)', 'secure-passkeys'); ?>
+          </label>
+        </th>
+        <td>
+          <input type="number" id="login_rate_limiting_window_minutes" class="small-text"
+            v-model.number="settings.login_rate_limiting_window_minutes" :disabled="submitting || isLoading" />
+          <p class="description">
+            <?php esc_html_e('Set the number of minutes the user will be blocked after reaching the maximum attempts.', 'secure-passkeys'); ?>
+          </p>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+
+  <hr :class="{'loading-blur': isLoading}" />
+
+  <div :class="{'loading-blur': isLoading}">
+    <p class="settings-description">
+      <?php esc_html_e('Configure session settings for passkey logins.', 'secure-passkeys'); ?>
+    </p>
+  </div>
+
+  <table class="form-table" :class="{'loading-blur': isLoading}" width="100%">
+    <tbody>
+      <tr>
+        <th>
+          <label for="login_remember_me" class="inline-label">
+            <?php esc_html_e('Long-lived Session', 'secure-passkeys'); ?>
+          </label>
+        </th>
+        <td>
+          <label for="login_remember_me">
+            <input name="login_remember_me" type="checkbox" id="login_remember_me" :true-value="1" :false-value="0"
+              v-model.number="settings.login_remember_me" :disabled="submitting || isLoading" />
+            <?php esc_html_e('Enable Long-lived Session', 'secure-passkeys'); ?>
+          </label>
+          <p class="description">
+            <?php esc_html_e('When enabled, passkey logins set a long-lived session cookie (same as "Remember Me"). When disabled, the session ends when the browser is closed.', 'secure-passkeys'); ?>
+          </p>
+        </td>
+      </tr>
+
     </tbody>
   </table>
 
@@ -193,23 +217,14 @@ defined('ABSPATH') || exit;
     <tbody>
       <tr>
         <th style="width: 200px">
-          <label
-            for="registration_exclude_credentials_enabled"
-            class="inline-label"
-            ><?php esc_html_e('Exclude Existing Credentials', 'secure-passkeys'); ?></label
-          >
+          <label for="registration_exclude_credentials_enabled"
+            class="inline-label"><?php esc_html_e('Exclude Existing Credentials', 'secure-passkeys'); ?></label>
         </th>
         <td>
           <label for="registration_exclude_credentials_enabled">
-            <input
-              name="registration_exclude_credentials_enabled"
-              type="checkbox"
-              id="registration_exclude_credentials_enabled"
-              v-model="settings.registration_exclude_credentials_enabled"
-              true-value="1"
-              false-value="0"
-              :disabled="submitting || isLoading"
-            />
+            <input name="registration_exclude_credentials_enabled" type="checkbox"
+              id="registration_exclude_credentials_enabled" v-model="settings.registration_exclude_credentials_enabled"
+              true-value="1" false-value="0" :disabled="submitting || isLoading" />
             <?php esc_html_e('Enable this option to prevent users from registering passkeys that are already registered (Recommended: enabled).', 'secure-passkeys'); ?>
           </label>
         </td>
@@ -221,14 +236,8 @@ defined('ABSPATH') || exit;
           </label>
         </th>
         <td>
-          <input
-            type="number"
-            id="registration_timeout"
-            class="small-text"
-            value="3"
-            v-model="settings.registration_timeout"
-            :disabled="submitting || isLoading"
-          />
+          <input type="number" id="registration_timeout" class="small-text" value="3"
+            v-model="settings.registration_timeout" :disabled="submitting || isLoading" />
           <p class="description">
             <?php esc_html_e('Set the expiration timeout for passkey registration (in minutes).', 'secure-passkeys'); ?>
           </p>
@@ -241,14 +250,8 @@ defined('ABSPATH') || exit;
           </label>
         </th>
         <td>
-          <input
-            type="number"
-            id="login_timeout"
-            class="small-text"
-            value="5"
-            v-model="settings.login_timeout"
-            :disabled="submitting || isLoading"
-          />
+          <input type="number" id="login_timeout" class="small-text" value="5" v-model="settings.login_timeout"
+            :disabled="submitting || isLoading" />
           <p class="description">
             <?php esc_html_e('Set the expiration timeout for passkey login (in minutes).', 'secure-passkeys'); ?>
           </p>
@@ -256,23 +259,14 @@ defined('ABSPATH') || exit;
       </tr>
       <tr>
         <th style="width: 200px">
-          <label
-            for="registration_user_verification_enabled"
-            class="inline-label"
-            ><?php esc_html_e('Enable User Verifications', 'secure-passkeys'); ?></label
-          >
+          <label for="registration_user_verification_enabled"
+            class="inline-label"><?php esc_html_e('Enable User Verifications', 'secure-passkeys'); ?></label>
         </th>
         <td>
           <label for="registration_user_verification_enabled">
-            <input
-              name="registration_user_verification_enabled"
-              type="checkbox"
-              id="registration_user_verification_enabled"
-              v-model="settings.registration_user_verification_enabled"
-              true-value="1"
-              false-value="0"
-              :disabled="submitting || isLoading"
-            />
+            <input name="registration_user_verification_enabled" type="checkbox"
+              id="registration_user_verification_enabled" v-model="settings.registration_user_verification_enabled"
+              true-value="1" false-value="0" :disabled="submitting || isLoading" />
             <?php esc_html_e('Choose the level of user verification required during passkey registration (Recommended: enabled).', 'secure-passkeys'); ?>
           </label>
         </td>
@@ -284,12 +278,8 @@ defined('ABSPATH') || exit;
           </label>
         </th>
         <td>
-          <select
-            id="login_user_verification"
-            class="regular-small"
-            v-model="settings.login_user_verification"
-            :disabled="submitting || isLoading"
-          >
+          <select id="login_user_verification" class="regular-small" v-model="settings.login_user_verification"
+            :disabled="submitting || isLoading">
             <option value="required">
               <?php esc_html_e('Required', 'secure-passkeys'); ?>
             </option>
@@ -305,6 +295,7 @@ defined('ABSPATH') || exit;
           </p>
         </td>
       </tr>
+
     </tbody>
   </table>
 
@@ -313,23 +304,11 @@ defined('ABSPATH') || exit;
       <tr>
         <th></th>
         <td>
-          <button
-            @click="updateSettings()"
-            type="button"
-            class="button button-primary"
-            id="submit"
-            :disabled="submitting || isLoading"
-          >
-            <i
-              v-if="submitting"
-              class="spinner is-active spin spinner-button"
-            ></i>
-            <span v-if="!submitting"
-              ><?php esc_html_e('Save Changes', 'secure-passkeys'); ?></span
-            >
-            <span v-else
-              ><?php esc_html_e('Saving...', 'secure-passkeys'); ?></span
-            >
+          <button @click="updateSettings()" type="button" class="button button-primary" id="submit"
+            :disabled="submitting || isLoading">
+            <i v-if="submitting" class="spinner is-active spin spinner-button"></i>
+            <span v-if="!submitting"><?php esc_html_e('Save Changes', 'secure-passkeys'); ?></span>
+            <span v-else><?php esc_html_e('Saving...', 'secure-passkeys'); ?></span>
           </button>
         </td>
       </tr>

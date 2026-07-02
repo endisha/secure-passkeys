@@ -24,11 +24,14 @@ class Secure_Passkeys_General_Settings extends Secure_Passkeys_Settings
             'excluded_roles_registration_login',
             'auto_generate_security_key_name',
             'show_enable_passkeys_notice',
+            'login_rate_limiting_max_attempts',
+            'login_rate_limiting_window_minutes',
             'registration_timeout',
             'registration_exclude_credentials_enabled',
             'registration_user_verification_enabled',
             'login_timeout',
-            'login_user_verification'
+            'login_user_verification',
+            'login_remember_me'
         ];
     }
 
@@ -39,11 +42,14 @@ class Secure_Passkeys_General_Settings extends Secure_Passkeys_Settings
         $excluded_roles_registration_login = map_deep(wp_unslash($_POST['settings']['excluded_roles_registration_login'] ?? []), 'sanitize_text_field');
         $auto_generate_security_key_name = intval($_POST['settings']['auto_generate_security_key_name'] ?? 0);
         $show_enable_passkeys_notice = intval($_POST['settings']['show_enable_passkeys_notice'] ?? 1);
+        $login_rate_limiting_max_attempts = intval($_POST['settings']['login_rate_limiting_max_attempts'] ?? 10);
+        $login_rate_limiting_window_minutes = intval($_POST['settings']['login_rate_limiting_window_minutes'] ?? 1);
         $registration_timeout = intval($_POST['settings']['registration_timeout'] ?? 0);
         $registration_exclude_credentials_enabled = intval($_POST['settings']['registration_exclude_credentials_enabled'] ?? 1);
         $registration_user_verification_enabled = intval($_POST['settings']['registration_user_verification_enabled'] ?? 1);
         $login_timeout = intval($_POST['settings']['login_timeout'] ?? 0);
         $login_user_verification = sanitize_text_field(wp_unslash($_POST['settings']['login_user_verification'] ?? ''));
+        $login_remember_me = intval($_POST['settings']['login_remember_me'] ?? 1);
 
         if ($registration_maximum_passkeys_enabled && $registration_maximum_passkeys_per_user <= 0) {
             return new WP_Error('error', __('The maximum number of passkeys per user must be greater than 0.', 'secure-passkeys'));
@@ -63,6 +69,14 @@ class Secure_Passkeys_General_Settings extends Secure_Passkeys_Settings
             return new WP_Error('error', __('The registration timeout must be greater than 0.', 'secure-passkeys'));
         }
 
+        if ($login_rate_limiting_max_attempts <= 0) {
+            return new WP_Error('error', __('The rate limiting max attempts must be greater than 0.', 'secure-passkeys'));
+        }
+        if ($login_rate_limiting_window_minutes <= 0) {
+            return new WP_Error('error', __('The rate limiting window must be greater than 0 minutes.', 'secure-passkeys'));
+        }
+
+
         if (trim($login_timeout) <= 0) {
             return new WP_Error('error', __('The login timeout must be greater than 0.', 'secure-passkeys'));
         }
@@ -73,11 +87,14 @@ class Secure_Passkeys_General_Settings extends Secure_Passkeys_Settings
             'excluded_roles_registration_login' => $excluded_roles_registration_login,
             'auto_generate_security_key_name' => $auto_generate_security_key_name,
             'show_enable_passkeys_notice' => $show_enable_passkeys_notice,
+            'login_rate_limiting_max_attempts' => $login_rate_limiting_max_attempts,
+            'login_rate_limiting_window_minutes' => $login_rate_limiting_window_minutes,
             'registration_timeout' => $registration_timeout,
             'registration_exclude_credentials_enabled' => $registration_exclude_credentials_enabled,
             'registration_user_verification_enabled' => $registration_user_verification_enabled,
             'login_timeout' => $login_timeout,
             'login_user_verification' => $login_user_verification,
+            'login_remember_me' => $login_remember_me,
         ];
 
         Secure_Passkeys_Helper::update_option($data);

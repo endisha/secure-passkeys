@@ -38,7 +38,6 @@ class Secure_Passkeys_Frontend_Helper
         $file = apply_filters('secure_passkeys_include_view_frontend_file', $file_path, $theme, $template, $data);
 
         if (!empty($file) && file_exists(realpath($file))) {
-            extract($data);
             if (!$load) {
                 return include realpath($file);
             }

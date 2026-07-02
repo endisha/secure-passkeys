@@ -32,13 +32,8 @@
           <?php esc_html_e('User', 'secure-passkeys'); ?>
         </label>
 
-        <input
-          type="text"
-          id="user_id"
-          style="width: 250px;"
-          class="form-control user_id"
-          placeholder="<?php echo esc_attr__('User ID, Name, or Email', 'secure-passkeys'); ?>"
-          />
+        <input type="text" id="user_id" style="width: 250px;" class="form-control user_id"
+          placeholder="<?php echo esc_attr__('User ID, Name, or Email', 'secure-passkeys'); ?>" />
       </div>
 
       <div class="alignleft">
@@ -46,12 +41,7 @@
           <?php esc_html_e('Action', 'secure-passkeys'); ?>
         </label>
 
-        <select
-          v-model="filters.log_type"
-          class="form-control"
-          id="log_type"
-          @keyup.enter="filterList"
-        >
+        <select v-model="filters.log_type" class="form-control select" id="log_type" @keyup.enter="filterList">
           <option value="">
             <?php esc_html_e('Any', 'secure-passkeys'); ?>
           </option>
@@ -81,12 +71,7 @@
           <?php esc_html_e('Action By', 'secure-passkeys'); ?>
         </label>
 
-        <select
-          v-model="filters.action_by"
-          class="form-control"
-          id="action_by"
-          @keyup.enter="filterList"
-        >
+        <select v-model="filters.action_by" class="form-control select" id="action_by" @keyup.enter="filterList">
           <option value="">
             <?php esc_html_e('Any', 'secure-passkeys'); ?>
           </option>
@@ -104,13 +89,8 @@
           <?php esc_html_e('IP Address', 'secure-passkeys'); ?>
         </label>
 
-        <input
-          type="text"
-          v-model="filters.ip_address"
-          id="ip_address"
-          class="form-control"
-          @keyup.enter="filterList()"
-        />
+        <input type="text" v-model="filters.ip_address" id="ip_address" class="form-control"
+          @keyup.enter="filterList()" />
       </div>
 
       <div class="alignleft">
@@ -118,28 +98,16 @@
           <?php esc_html_e('Created Date', 'secure-passkeys'); ?>
         </label>
 
-        <input
-          type="text"
-          v-model="filters.created_at"
-          id="created_at"
-          class="form-control created_at"
-          @keyup.enter="filterList()"
-        />
+        <input type="text" v-model="filters.created_at" id="created_at" class="form-control created_at"
+          @keyup.enter="filterList()" />
       </div>
 
       <div class="alignleft">
         <button class="button" type="button" @click="filterList()">
-          <span
-            :class="{'spinner is-active spin spinner-button': isLoading}"
-          ></span>
+          <span :class="{'spinner is-active spin spinner-button': isLoading}"></span>
           <?php esc_html_e('Filter', 'secure-passkeys'); ?>
         </button>
-        <button
-          class="button button-reset"
-          type="button"
-          @click="filterReset()"
-          v-show="hasFilters"
-        >
+        <button class="button button-reset" type="button" @click="filterReset()" v-show="hasFilters">
           <?php esc_html_e('Reset', 'secure-passkeys'); ?>
         </button>
       </div>
@@ -155,10 +123,7 @@
       ></b>
     </div>
 
-    <table
-      class="wp-list-table passkeys widefat fixed striped table-view-list"
-      width="100%"
-    >
+    <table class="wp-list-table passkeys widefat fixed striped table-view-list" width="100%">
       <thead>
         <tr>
           <th class="manage-column column-id">
@@ -185,11 +150,7 @@
         <tr v-for="item in list" :key="item.id" v-if="!isLoading">
           <td data-label="<?php esc_html_e('#', 'secure-passkeys'); ?>">{{ item.id }}</td>
           <td data-label="<?php esc_html_e('User', 'secure-passkeys'); ?>">
-          <a
-              :href="item.user.page_url"
-              target="_blank"
-              v-if="item.user?.name"
-            >
+            <a :href="item.user.page_url" target="_blank" v-if="item.user?.name">
               {{ item.user.name }}
             </a>
             <template v-else>
@@ -203,7 +164,7 @@
               -
               <a :href="item.admin?.page_url" target="_blank">{{
                 item.admin?.name
-              }}</a>
+                }}</a>
             </template>
           </td>
           <td data-label="<?php esc_html_e('Action', 'secure-passkeys'); ?>">
@@ -221,20 +182,12 @@
         </tr>
         <tr v-if="isLoading">
           <td colspan="6" class="center no-label" style="text-align: center">
-            <i
-              class="spinner is-active spin"
-              style="text-align: center; margin: auto"
-            ></i>
+            <i class="spinner is-active spin" style="text-align: center; margin: auto"></i>
           </td>
         </tr>
       </tbody>
     </table>
 
-    <paginate
-      :count="count"
-      :pages="pages"
-      :current="current"
-      @navigate="loadPage"
-    ></paginate>
+    <paginate :count="count" :pages="pages" :current="current" @navigate="loadPage"></paginate>
   </div>
 </div>

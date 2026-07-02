@@ -6,6 +6,7 @@ CREATE TABLE `{prefix}secure_passkeys_webauthns` (
     `security_key_name` VARCHAR(255) NOT NULL,
     `public_key` TEXT NOT NULL,
     `aaguid` CHAR(36) NOT NULL,
+    `sign_count` INT(11) UNSIGNED NOT NULL DEFAULT '0',
     `last_used_at` DATETIME DEFAULT NULL,
     `created_at` TIMESTAMP NULL DEFAULT NULL,
     `updated_at` TIMESTAMP NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,

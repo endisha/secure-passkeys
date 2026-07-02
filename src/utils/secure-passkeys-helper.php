@@ -2,12 +2,27 @@
 
 namespace Secure_Passkeys\Utils;
 
-use stdClass;
-
 defined('ABSPATH') || exit;
 
 class Secure_Passkeys_Helper
 {
+    public static function rate_limit(string $action, int $limit, int $seconds)
+    {
+        $ip = self::get_ip_address();
+        $transient_key = "sp_rl_{$action}_" . md5($ip);
+        $transient_key = apply_filters('secure_passkeys_rate_limit_transient_key', $transient_key, $action, $ip);
+
+        $attempts = (int) get_transient($transient_key);
+
+        if ($attempts >= $limit) {
+            return false;
+        }
+
+        set_transient($transient_key, $attempts + 1, $seconds);
+        return true;
+    }
+
+
     public static function verify_nonce(string $nonce)
     {
         return wp_verify_nonce(sanitize_text_field($nonce), SECURE_PASSKEYS_NONCE);
@@ -25,7 +40,11 @@ class Secure_Passkeys_Helper
 
     public static function login_redirect_to(): string
     {
-        return self::check_is_admin_request() || self::check_is_admin_login_request() ? admin_url() : home_url();
+        $redirect_to = isset($_POST['redirect_to'])
+            ? esc_url_raw(wp_unslash($_POST['redirect_to']))
+            : home_url();
+
+        return wp_validate_redirect($redirect_to, home_url());
     }
 
     public static function get_user_full_name($user_id)
@@ -33,7 +52,7 @@ class Secure_Passkeys_Helper
         $first_name = get_user_meta($user_id, 'first_name', true);
         $last_name = get_user_meta($user_id, 'last_name', true);
 
-        $full_name = trim($first_name.' '.$last_name);
+        $full_name = trim($first_name . ' ' . $last_name);
 
         if (empty($full_name)) {
             $full_name = get_the_author_meta('user_email', $user_id);
@@ -42,13 +61,35 @@ class Secure_Passkeys_Helper
         return trim($full_name);
     }
 
+    public static function get_generated_user_handle(?int $user_id = null)
+    {
+        $key = '_secure_passkeys_user_handle';
+        $key = apply_filters('secure_passkeys_user_handle_meta_key', $key, $user_id);
+
+        if (!$user_id) {
+            return apply_filters('secure_passkeys_user_handle_none_user_id_value', bin2hex(random_bytes(32)), $user_id);
+        }
+
+        $user_handle = get_user_meta($user_id, $key, true);
+
+        if (empty($user_handle)) {
+            $user_handle = bin2hex(random_bytes(32));
+
+            $user_handle = apply_filters('secure_passkeys_user_handle_before_update', $user_handle, $user_id);
+
+            update_user_meta($user_id, $key, $user_handle);
+        }
+
+        return apply_filters('secure_passkeys_user_handle', $user_handle, $user_id);
+    }
+
     public static function get_user_object_by_id(int $id)
     {
         if (!$id) {
             return null;
         }
 
-        $user = new stdClass();
+        $user = new \stdClass();
         $user->id = $id;
         $user->name = self::get_user_full_name($id);
         $user->page_url = get_edit_user_link($id);
@@ -150,13 +191,19 @@ class Secure_Passkeys_Helper
 
     public static function get_ip_address()
     {
-        if (! empty($_SERVER['HTTP_CLIENT_IP'])) {
-            $ip = sanitize_text_field(wp_unslash($_SERVER['HTTP_CLIENT_IP']));
-        } elseif (! empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-            $ip = rest_is_ip_address(trim(current(preg_split('/,/', sanitize_text_field(wp_unslash($_SERVER['HTTP_X_FORWARDED_FOR']))))));
-        } else {
-            $ip = sanitize_text_field(wp_unslash($_SERVER['REMOTE_ADDR'] ?? ''));
+        $ip = sanitize_text_field(wp_unslash($_SERVER['REMOTE_ADDR'] ?? ''));
+
+        $trust_proxy = apply_filters('secure_passkeys_trust_proxy_headers', false);
+
+        if ($trust_proxy && !empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+            $forwarded = sanitize_text_field(wp_unslash($_SERVER['HTTP_X_FORWARDED_FOR']));
+            $first = trim(current(preg_split('/,/', $forwarded)));
+            $validated = rest_is_ip_address($first);
+            if ($validated !== false) {
+                $ip = $validated;
+            }
         }
+
         return (string) $ip;
     }
 
@@ -218,11 +265,13 @@ class Secure_Passkeys_Helper
             $settings = get_option('secure_passkeys_settings', []);
         }
 
+        $settings = array_merge(self::get_default_settings(), is_array($settings) ? $settings : []);
+
         if (!is_null($key)) {
             return $settings[$key] ?? $default;
         }
 
-        return $settings ?? [];
+        return $settings;
     }
 
     public static function update_option(array $data = [])
@@ -254,11 +303,14 @@ class Secure_Passkeys_Helper
             'excluded_roles_registration_login' => [],
             'auto_generate_security_key_name' => 0,
             'show_enable_passkeys_notice' => 0,
+            'login_rate_limiting_max_attempts' => 10,
+            'login_rate_limiting_window_minutes' => 1,
             'registration_timeout' => 5,
             'registration_exclude_credentials_enabled' => 1,
             'registration_user_verification_enabled' => 1,
             'login_timeout' => 5,
             'login_user_verification' => 'required',
+            'login_remember_me' => 1,
             'display_passkey_theme' => 'default',
             'display_passkey_login_wp_enabled' => 1,
             'display_passkey_login_woocommerce_enabled' => 1,
@@ -335,12 +387,24 @@ class Secure_Passkeys_Helper
 
                 $results[] = [
                     'id' => $id,
-                    'text' => implode('||', $lines) ,
+                    'text' => implode('||', $lines),
                     'name' => $fullname,
                 ];
             }
         }
 
         return $results;
+    }
+
+    public static function is_upgrade_plugin_version(): bool
+    {
+        $current_version = get_option('secure_passkeys_db_version', '0.0.0');
+
+        return version_compare($current_version, SECURE_PASSKEYS_VERSION, '<');
+    }
+
+    public static function upgrade_plugin_version(): void
+    {
+        update_option('secure_passkeys_db_version', SECURE_PASSKEYS_VERSION);
     }
 }

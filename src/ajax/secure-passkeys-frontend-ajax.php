@@ -40,6 +40,10 @@ class Secure_Passkeys_Frontend_Ajax
     {
         Secure_Passkeys_Ajax_Helper::validate_frontend_ajax_request();
 
+        $max_attempts = Secure_Passkeys_Helper::get_option('login_rate_limiting_max_attempts', 10);
+        $window_seconds = Secure_Passkeys_Helper::get_option('login_rate_limiting_window_minutes', 1) * 60;
+        Secure_Passkeys_Ajax_Helper::validate_rate_limit('get_login_options', $max_attempts, $window_seconds);
+
         $challenge = (new Secure_Passkeys_Challenge())->generate_challenge('authentication');
 
         $options = (new Secure_Passkeys_Web_Authn_Login_Options_Action())->execute($challenge);
@@ -54,6 +58,10 @@ class Secure_Passkeys_Frontend_Ajax
     {
         Secure_Passkeys_Ajax_Helper::validate_frontend_ajax_request();
 
+        $max_attempts = Secure_Passkeys_Helper::get_option('login_rate_limiting_max_attempts', 10);
+        $window_seconds = Secure_Passkeys_Helper::get_option('login_rate_limiting_window_minutes', 1) * 60;
+        Secure_Passkeys_Ajax_Helper::validate_rate_limit('login', $max_attempts, $window_seconds);
+
         $params = [
             'rawId' => sanitize_text_field(wp_unslash($_POST['rawId'] ?? '')),
             'response' => map_deep(wp_unslash($_POST['response'] ?? []), 'sanitize_text_field')
@@ -62,17 +70,28 @@ class Secure_Passkeys_Frontend_Ajax
         $challenge = sanitize_text_field(wp_unslash($_POST['challenge'] ?? ''));
 
         try {
-            (new Secure_Passkeys_Challenge())->verify_challenge_or_throw_exception($challenge, 'authentication');
+            $challenge_model = new Secure_Passkeys_Challenge();
+            $challenge_model->verify_challenge_or_throw_exception($challenge, 'authentication');
+
+            if (!$challenge_model->claim_challenge($challenge)) {
+                throw new Exception('Challenge already consumed');
+            }
 
             $data = (new Secure_Passkeys_Web_Authn_Login_Action())->execute($challenge, $params);
 
             (new Secure_Passkeys_WebAuthn())->touch_last_used($data->id);
 
-            (new Secure_Passkeys_Challenge())->mark_as_used_challenge($challenge);
-
             (new Secure_Passkeys_Web_Authn_Sign_In_Action())->execute($data->user_id);
         } catch (Exception $e) {
-            wp_send_json_error(__('Passkey authentication failed. Please try again.', 'secure-passkeys'));
+            $error_message = __('Passkey authentication failed. Please try again.', 'secure-passkeys');
+
+            if ($e->getMessage() === 'INACTIVE_PASSKEY') {
+                $error_message = __('This passkey is not active. Please sign in using your username and password, or contact your administrator for assistance.', 'secure-passkeys');
+            }
+
+            $error_message = apply_filters('secure_passkeys_login_error_message', $error_message, $e->getMessage());
+
+            wp_send_json_error($error_message);
         }
 
         (new Secure_Passkeys_Log())->add_record('login', $data->user_id, $data->security_key_name, null, $data->aaguid, $data->id);
@@ -146,24 +165,7 @@ class Secure_Passkeys_Frontend_Ajax
 
         if (!$is_auto_generate_security_key_name_enabled) {
             $security_key_name = sanitize_text_field(wp_unslash($_POST['security_key_name'] ?? ''));
-        } else {
-            $security_key_name = (new DateTime())->format('YmdHis');
-            $security_key_name = apply_filters('secure_passkeys_auto_generate_security_key_name', 'Passkey-' . $security_key_name, $user_id, $security_key_name);
-        }
 
-        try {
-            (new Secure_Passkeys_Challenge())->verify_challenge_or_throw_exception($challenge, 'registration');
-
-            $data = (new Secure_Passkeys_Web_Authn_Enable_Action())->execute($user_id, $challenge, $params, $security_key_name);
-        } catch (Secure_Passkeys_Web_Authn_Reach_Maximum_Credentials_Exception $e) {
-            wp_send_json_error(__('The maximum number of registered passkeys has been reached.', 'secure-passkeys'));
-        } catch (Secure_Passkeys_Web_Authn_Already_Registered_Exception  $e) {
-            wp_send_json_error(__('This passkey is already registered. Please use a different one.', 'secure-passkeys'));
-        } catch (Exception $e) {
-            wp_send_json_error(__('Failed to register the passkey. Please try again later.', 'secure-passkeys'));
-        }
-
-        if (!$is_auto_generate_security_key_name_enabled) {
             if (empty($security_key_name)) {
                 wp_send_json_error('EMPTY_SECURITY_KEY_NAME');
             } elseif (mb_strlen($security_key_name) < 3) {
@@ -173,6 +175,26 @@ class Secure_Passkeys_Frontend_Ajax
             } elseif (!preg_match('/^[A-Za-z0-9\s\-_]+$/', $security_key_name)) {
                 wp_send_json_error(__('Please use only letters, numbers, spaces, hyphens, or underscores.', 'secure-passkeys'));
             }
+        } else {
+            $security_key_name = (new DateTime())->format('YmdHis');
+            $security_key_name = apply_filters('secure_passkeys_auto_generate_security_key_name', 'Passkey-' . $security_key_name, $user_id, $security_key_name);
+        }
+
+        try {
+            $challenge_model = new Secure_Passkeys_Challenge();
+            $challenge_model->verify_challenge_or_throw_exception($challenge, 'registration');
+
+            if (!$challenge_model->claim_challenge($challenge)) {
+                throw new Exception('Challenge already consumed');
+            }
+
+            $data = (new Secure_Passkeys_Web_Authn_Enable_Action())->execute($user_id, $challenge, $params, $security_key_name);
+        } catch (Secure_Passkeys_Web_Authn_Reach_Maximum_Credentials_Exception $e) {
+            wp_send_json_error(__('The maximum number of registered passkeys has been reached.', 'secure-passkeys'));
+        } catch (Secure_Passkeys_Web_Authn_Already_Registered_Exception $e) {
+            wp_send_json_error(__('This passkey is already registered. Please use a different one.', 'secure-passkeys'));
+        } catch (Exception $e) {
+            wp_send_json_error(__('Failed to register the passkey. Please try again later.', 'secure-passkeys'));
         }
 
         try {
@@ -185,8 +207,6 @@ class Secure_Passkeys_Frontend_Ajax
         } catch (Exception $e) {
             wp_send_json_error(__('Failed to register the passkey. Please try again later.', 'secure-passkeys'));
         }
-
-        (new Secure_Passkeys_Challenge())->mark_as_used_challenge($challenge);
 
         $webauthn_id = $wenauthn->get_last_inserted_id();
         $aaguid = $data['aaguid'];

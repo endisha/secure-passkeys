@@ -10,6 +10,10 @@
   padding-left: 10px;
 }
 
+.tablenav .form-control.select {
+  float: unset !important;
+}
+
 [dir="rtl"] .alignleft {
   padding-left: 0;
   padding-right: 10px;
@@ -28,6 +32,7 @@
   .alignleft .button {
     margin: 0px;
   }
+
   .alignleft {
     float: unset;
   }
@@ -116,6 +121,7 @@
   direction: ltr;
   text-align: left;
 }
+
 [dir="rtl"] .aligned {
   direction: rtl;
   text-align: right;
@@ -242,23 +248,28 @@ div.error {
     padding-right: inherit !important;
     padding-top: 5px;
   }
+
   .alignleft .inline-label {
     width: 100%;
     display: block;
   }
+
   .alignleft .form-control {
     width: 100% !important;
     display: block;
     max-width: 100% !important;
   }
 }
+
 @keyframes bounce-in {
   0% {
     transform: scale(1);
   }
+
   50% {
     transform: scale(1.005555);
   }
+
   100% {
     transform: scale(1);
   }
@@ -284,6 +295,7 @@ div.error {
 }
 
 @media screen and (max-width: 600px) {
+
   .nav-tab-wrapper,
   .wrap h2.nav-tab-wrapper,
   h1.nav-tab-wrapper {
@@ -292,6 +304,7 @@ div.error {
 }
 
 @media screen and (max-width: 600px) {
+
   h1 .nav-tab,
   h2 .nav-tab,
   h3 .nav-tab,

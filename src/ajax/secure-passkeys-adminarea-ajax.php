@@ -59,7 +59,7 @@ class Secure_Passkeys_Adminarea_Ajax
 
         $results = Secure_Passkeys_Helper::filter_user_by($keyword, $model);
 
-        return wp_send_json_success(['results' =>  $results]);
+        return wp_send_json_success(['results' => $results]);
     }
 
     /**
@@ -73,6 +73,8 @@ class Secure_Passkeys_Adminarea_Ajax
 
         $filters = map_deep(wp_unslash($_POST['filters'] ?? []), 'sanitize_text_field');
 
+        $page = isset($_REQUEST['page']) ? intval($_REQUEST['page']) : 1;
+
         $records = (new Secure_Passkeys_WebAuthn())->get_all_paginate([
             'id',
             'user_id',
@@ -81,7 +83,7 @@ class Secure_Passkeys_Adminarea_Ajax
             'aaguid',
             'last_used_at',
             'created_at'
-        ], 20, $filters);
+        ], 20, $filters, $page);
 
         array_map(function ($record) {
             $record->is_active = intval($record->is_active);
@@ -108,15 +110,16 @@ class Secure_Passkeys_Adminarea_Ajax
 
         $model = new Secure_Passkeys_WebAuthn();
         $record = $model->first($id);
-        $user_id = intval($record->user_id ?? 0);
-
-        Secure_Passkeys_Ajax_Helper::ensure_user_can_perform_action($user_id);
 
         if (is_null($record)) {
             wp_send_json_error([
                 'message' => __('The passkey cannot be deleted', 'secure-passkeys')
             ]);
         }
+
+        $user_id = intval($record->user_id ?? 0);
+
+        Secure_Passkeys_Ajax_Helper::ensure_user_can_perform_action($user_id);
 
         $deleted = $model->delete(['id' => $id]);
         if (!$deleted) {
@@ -227,6 +230,8 @@ class Secure_Passkeys_Adminarea_Ajax
 
         $filters = map_deep(wp_unslash($_POST['filters'] ?? []), 'sanitize_text_field');
 
+        $page = isset($_REQUEST['page']) ? intval($_REQUEST['page']) : 1;
+
         $records = (new Secure_Passkeys_Log())->get_all_paginate([
             'id',
             'user_id',
@@ -236,7 +241,7 @@ class Secure_Passkeys_Adminarea_Ajax
             'log_type',
             'ip_address',
             'created_at'
-        ], 20, $filters);
+        ], 20, $filters, $page);
 
         array_map(function ($record) {
             $aaguid_friendly_name = Secure_Passkeys_Webauthn_Helper::get_friendly_name($record->aaguid);

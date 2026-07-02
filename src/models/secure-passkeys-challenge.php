@@ -23,9 +23,9 @@ class Secure_Passkeys_Challenge extends Secure_Passkeys_Model
         $fingerprint = Secure_Passkeys_Helper::generate_fingerprint();
 
         if ($challenge_type === 'registration') {
-            $minutes = intval(Secure_Passkeys_Helper::get_option('login_timeout', 5));
-        } else {
             $minutes = intval(Secure_Passkeys_Helper::get_option('registration_timeout', 5));
+        } else {
+            $minutes = intval(Secure_Passkeys_Helper::get_option('login_timeout', 5));
         }
 
         $date = (new DateTime())->add(new DateInterval('PT' . $minutes . 'M'));
@@ -80,9 +80,17 @@ class Secure_Passkeys_Challenge extends Secure_Passkeys_Model
         }
     }
 
-    public function mark_as_used_challenge(string $challenge): void
+    public function claim_challenge(string $challenge): bool
     {
-        $this->update(['used_at' => (new DateTime())->format('Y-m-d H:i:s')], ['challenge' => $challenge]);
+        $claimed = $this->db->query(
+            $this->db->prepare(
+                "UPDATE {$this->table} SET used_at = %s WHERE challenge = %s AND used_at IS NULL",
+                current_time('mysql'),
+                $challenge
+            )
+        );
+
+        return $claimed > 0;
     }
 
     public function is_challenge_exists(?string $challenge)
