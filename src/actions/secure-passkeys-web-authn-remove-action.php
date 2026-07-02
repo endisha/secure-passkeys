@@ -4,6 +4,8 @@ namespace Secure_Passkeys\Actions;
 
 use Secure_Passkeys\Models\Secure_Passkeys_WebAuthn;
 
+defined('ABSPATH') || exit;
+
 class Secure_Passkeys_Web_Authn_Remove_Action extends Secure_Passkeys_Web_Authn_Action
 {
     public function execute(int $user_id, int $id): bool

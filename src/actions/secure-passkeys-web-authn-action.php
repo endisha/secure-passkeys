@@ -5,6 +5,8 @@ namespace Secure_Passkeys\Actions;
 use Secure_Passkeys\Models\Secure_Passkeys_WebAuthn;
 use Secure_Passkeys\Utils\Secure_Passkeys_Helper;
 
+defined('ABSPATH') || exit;
+
 class Secure_Passkeys_Web_Authn_Action
 {
     protected function excluded_credentials_for_user($user_id): array
@@ -88,6 +90,13 @@ class Secure_Passkeys_Web_Authn_Action
         $value = apply_filters('secure_passkeys_web_authn_login_user_verification', $value);
 
         return $value;
+    }
+
+    protected function is_login_user_verification_required(): bool
+    {
+        $value = $this->get_login_user_verification() === 'required';
+
+        return (bool) apply_filters('secure_passkeys_web_authn_is_login_user_verification_required', $value);
     }
 
     protected function is_user_verification_required(): bool

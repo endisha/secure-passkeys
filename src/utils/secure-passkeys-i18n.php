@@ -13,6 +13,7 @@ class Secure_Passkeys_I18n
             'failed_load_options' => __('Failed to fetch passkey login options.', 'secure-passkeys'),
             'failed_login' => __('Passkey authentication failed. Please try again if you want to proceed.', 'secure-passkeys'),
             'cancelled_login' => __('Passkey authentication cancelled. Please try again if you want to proceed.', 'secure-passkeys'),
+            'cancelled_or_no_passkey' => __('Login was cancelled, or no passkey is available for this device.', 'secure-passkeys'),
             'success_login' => __('You have successfully logged in with Passkey. Redirecting...', 'secure-passkeys'),
         ]);
     }
@@ -49,9 +50,8 @@ class Secure_Passkeys_I18n
             'failed_load_options' => __('Failed to fetch passkey registration options.', 'secure-passkeys'),
             'failed_save_passkey' => __('An error occurred while saving the passkey.', 'secure-passkeys'),
             'failed_save_passkey_name' => __('Please use only letters, numbers, spaces, hyphens, or underscores.', 'secure-passkeys'),
-            'failed_save_passkey_name_length' => __('Security key name must be at least 3 characters long.', 'secure-passkeys'),
             'success_save_passkey' => __('Passkey successfully added.', 'secure-passkeys'),
-            'no_passkeys_found' =>  __('No passkeys found.', 'secure-passkeys'),
+            'no_passkeys_found' => __('No passkeys found.', 'secure-passkeys'),
         ]);
     }
 
@@ -116,7 +116,7 @@ class Secure_Passkeys_I18n
             'failed_save_passkey' => __('An error occurred while saving the passkey.', 'secure-passkeys'),
             'failed_save_passkey_name' => __('Please use only letters, numbers, spaces, hyphens, or underscores.', 'secure-passkeys'),
             'success_save_passkey' => __('Passkey successfully added.', 'secure-passkeys'),
-            'no_passkeys_found' =>  __('No passkeys found.', 'secure-passkeys'),
+            'no_passkeys_found' => __('No passkeys found.', 'secure-passkeys'),
         ]);
     }
 }

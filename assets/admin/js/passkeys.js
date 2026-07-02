@@ -72,7 +72,7 @@ var passkeys = Vue.component("passkeys", {
                       value: item.id,
                       name: item.name,
                     };
-                  })
+                  }),
                 );
               } else {
                 response([]);
@@ -88,15 +88,13 @@ var passkeys = Vue.component("passkeys", {
         },
       })
       .autocomplete("instance")._renderItem = function (ul, item) {
-      var formattedText = item.label.replace(/\|\|/g, "<br>");
-
-      return jQuery("<li>")
-        .append(
-          "<div style='padding: 5px;font-size: 12px;'>" +
-            formattedText +
-            "</div>"
-        )
-        .appendTo(ul);
+      var parts = item.label.split("||");
+      var $div = jQuery("<div>").css({ padding: "5px", fontSize: "12px" });
+      parts.forEach(function (part, idx) {
+        if (idx > 0) $div.append(document.createElement("br"));
+        $div.append(document.createTextNode(part));
+      });
+      return jQuery("<li>").append($div).appendTo(ul);
     };
   },
   computed: {
@@ -147,7 +145,7 @@ var passkeys = Vue.component("passkeys", {
             }
           }
         },
-        "JSON"
+        "JSON",
       );
     },
     _delete(id) {
@@ -186,7 +184,7 @@ var passkeys = Vue.component("passkeys", {
             }
           }
         },
-        "JSON"
+        "JSON",
       );
     },
     _activate(id, is_active) {
@@ -235,7 +233,7 @@ var passkeys = Vue.component("passkeys", {
             }
           }
         },
-        "JSON"
+        "JSON",
       );
     },
     statusClass(item) {

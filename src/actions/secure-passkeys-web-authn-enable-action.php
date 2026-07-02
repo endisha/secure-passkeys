@@ -11,6 +11,8 @@ use Secure_Passkeys\Packages\Web_Authn\Web_Authn;
 use Secure_Passkeys\Utils\Secure_Passkeys_Helper;
 use Secure_Passkeys\Utils\Secure_Passkeys_Webauthn_Helper;
 
+defined('ABSPATH') || exit;
+
 class Secure_Passkeys_Web_Authn_Enable_Action extends Secure_Passkeys_Web_Authn_Action
 {
     public function execute(int $user_id, string $challenge, array $data, ?string $security_key = null): array
@@ -68,6 +70,7 @@ class Secure_Passkeys_Web_Authn_Enable_Action extends Secure_Passkeys_Web_Authn_
             'public_key' => $attestation->credentialPublicKey,
             'aaguid' => Secure_Passkeys_Webauthn_Helper::convert_aaguid_to_hex($attestation->AAGUID),
             'last_used_at' => null,
+            'sign_count' => intval($attestation->signatureCounter ?? 0),
         ]);
     }
 }

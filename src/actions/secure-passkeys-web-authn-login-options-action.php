@@ -2,6 +2,8 @@
 
 namespace Secure_Passkeys\Actions;
 
+defined('ABSPATH') || exit;
+
 class Secure_Passkeys_Web_Authn_Login_Options_Action extends Secure_Passkeys_Web_Authn_Action
 {
     public function execute(string $challenge): array

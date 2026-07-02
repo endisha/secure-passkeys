@@ -6,16 +6,10 @@ defined('ABSPATH') || exit;
     <a :href="'admin.php?page=secure-passkeys-settings#/'" class="nav-tab">
       <?php esc_html_e('General Settings', 'secure-passkeys'); ?>
     </a>
-    <a
-      :href="'admin.php?page=secure-passkeys-settings#/display-settings'"
-      class="nav-tab"
-    >
+    <a :href="'admin.php?page=secure-passkeys-settings#/display-settings'" class="nav-tab">
       <?php esc_html_e('Display Settings', 'secure-passkeys'); ?>
     </a>
-    <a
-      :href="'admin.php?page=secure-passkeys-settings#/advanced-settings'"
-      class="nav-tab nav-tab-active"
-    >
+    <a :href="'admin.php?page=secure-passkeys-settings#/advanced-settings'" class="nav-tab nav-tab-active">
       <?php esc_html_e('Advanced Settings', 'secure-passkeys'); ?>
     </a>
   </nav>
@@ -50,17 +44,9 @@ defined('ABSPATH') || exit;
         </th>
         <td>
           <label for="challenge_cleanup_days">
-            <select
-              name="challenge_cleanup_days"
-              id="challenge_cleanup_days"
-              v-model="settings.challenge_cleanup_days"
-              :disabled="submitting || isLoading"
-            >
-              <option
-                v-for="days in defaults.challenge_cleanup_days_periods"
-                :key="days"
-                :value="days"
-              >
+            <select name="challenge_cleanup_days" id="challenge_cleanup_days" v-model="settings.challenge_cleanup_days"
+              :disabled="submitting || isLoading">
+              <option v-for="days in defaults.challenge_cleanup_days_periods" :key="days" :value="days">
                 <template v-if="days === 0">
                   <?php esc_html_e('Never', 'secure-passkeys'); ?>
                 </template>
@@ -86,17 +72,9 @@ defined('ABSPATH') || exit;
         </th>
         <td>
           <label for="log_cleanup_days">
-            <select
-              name="log_cleanup_days"
-              id="log_cleanup_days"
-              v-model="settings.log_cleanup_days"
-              :disabled="submitting || isLoading"
-            >
-              <option
-                v-for="days in defaults.log_cleanup_days_periods"
-                :key="days"
-                :value="days"
-              >
+            <select name="log_cleanup_days" id="log_cleanup_days" v-model="settings.log_cleanup_days"
+              :disabled="submitting || isLoading">
+              <option v-for="days in defaults.log_cleanup_days_periods" :key="days" :value="days">
                 <template v-if="days === 0">
                   <?php esc_html_e('Never', 'secure-passkeys'); ?>
                 </template>
@@ -110,9 +88,8 @@ defined('ABSPATH') || exit;
             <p class="help">
               <?php esc_html_e('(Not recommended) Automatically deletes outdated log records. If set to "Never", logs will not be removed.', 'secure-passkeys'); ?>
               <br />
-              <span style="text-decoration: underline"
-                ><?php esc_html_e('This results in the loss of activity log history.', 'secure-passkeys'); ?></span
-              >
+              <span
+                style="text-decoration: underline"><?php esc_html_e('This results in the loss of activity log history.', 'secure-passkeys'); ?></span>
             </p>
           </label>
         </td>
@@ -126,15 +103,9 @@ defined('ABSPATH') || exit;
         </th>
         <td>
           <label for="stop_log_records_enabled">
-            <input
-              name="stop_log_records_enabled"
-              type="checkbox"
-              id="stop_log_records_enabled"
-              v-model="settings.stop_log_records_enabled"
-              true-value="1"
-              false-value="0"
-              :disabled="submitting || isLoading"
-            />
+            <input name="stop_log_records_enabled" type="checkbox" id="stop_log_records_enabled"
+              v-model="settings.stop_log_records_enabled" true-value="1" false-value="0"
+              :disabled="submitting || isLoading" />
             <?php esc_html_e('Disable the creation of new activity log records.', 'secure-passkeys'); ?>
             <p class="help">
               <?php esc_html_e('This will prevent new activity log records from being created.', 'secure-passkeys'); ?>
@@ -150,23 +121,11 @@ defined('ABSPATH') || exit;
       <tr>
         <th></th>
         <td>
-          <button
-            @click="updateSettings()"
-            type="button"
-            class="button button-primary"
-            id="submit"
-            :disabled="submitting || isLoading"
-          >
-            <i
-              v-if="submitting"
-              class="spinner is-active spin spinner-button"
-            ></i>
-            <span v-if="!submitting"
-              ><?php esc_html_e('Save Changes', 'secure-passkeys'); ?></span
-            >
-            <span v-else
-              ><?php esc_html_e('Saving...', 'secure-passkeys'); ?></span
-            >
+          <button @click="updateSettings()" type="button" class="button button-primary" id="submit"
+            :disabled="submitting || isLoading">
+            <i v-if="submitting" class="spinner is-active spin spinner-button"></i>
+            <span v-if="!submitting"><?php esc_html_e('Save Changes', 'secure-passkeys'); ?></span>
+            <span v-else><?php esc_html_e('Saving...', 'secure-passkeys'); ?></span>
           </button>
         </td>
       </tr>

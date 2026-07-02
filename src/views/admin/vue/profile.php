@@ -20,13 +20,8 @@ defined('ABSPATH') || exit;
             <p>{{ successMessage }}</p>
           </div>
 
-          <button
-            :disabled="isLoading || addingPasskey || waitingAddPasskey || showSecurityKeyName || deletingPasskey"
-            class="button add"
-            v-if="is_owner"
-            @click.prevent="addPasskey"
-            @keydown.enter.prevent
-          >
+          <button :disabled="isLoading || addingPasskey || waitingAddPasskey || showSecurityKeyName || deletingPasskey"
+            class="button add" v-if="is_owner" @click.prevent="addPasskey" @keydown.enter.prevent>
             <template v-if="addingPasskey">
               <i class="spinner is-active spin spinner-button"></i>
               {{ i18n.add_waiting_button }}
@@ -36,22 +31,17 @@ defined('ABSPATH') || exit;
               {{ i18n.add_passkey_button }}
             </template>
             <template v-else>
-              <span
-                class="dashicons dashicons-plus"
-                style="vertical-align: middle"
-              ></span>
+              <span class="dashicons dashicons-plus" style="vertical-align: middle;line-height: 1;"></span>
               {{ i18n.add_passkey_button }}
             </template>
           </button>
 
-          <div
-            :class="[
+          <div :class="[
                           {
                               'your-passkeys-text': is_owner,
                               'your-passkeys-text remove-margin': !is_owner,
                           },
-                      ]"
-          >
+                      ]">
             <template v-if="is_owner">
               {{ i18n.your_passkeys }}
             </template>
@@ -66,13 +56,10 @@ defined('ABSPATH') || exit;
               <span class="available-passkeys">
                 <template v-if="credentials_allowed_count !== null">
                   (<strong>{{ list?.length ?? 0 }}</strong> {{ i18n.out_of }}
-                  <strong>{{ credentials_allowed_count }}</strong
-                  >)
+                  <strong>{{ credentials_allowed_count }}</strong>)
                 </template>
                 <template v-else>
-                  (<strong>{{ list?.length ?? 0 }}</strong
-                  >)</template
-                >
+                  (<strong>{{ list?.length ?? 0 }}</strong>)</template>
               </span>
             </template>
           </div>
@@ -87,35 +74,21 @@ defined('ABSPATH') || exit;
                     <span v-text="i18n.security_key_description" class="multiline-text"></span>
                   </p>
                   <div class="input-wrapper">
-                    <input
-                      v-model="securityKeyNameInput"
-                      type="input"
-                      :disabled="creatingPasskey"
-                      :placeholder="i18n.security_key_name_placeholder"
-                      class="regular-text"
-                      @keyup.enter="createPasskey"
-                      @input="validateInput"
-                      autofocus
-                    />
-                    <button
-                      class="button margin-right"
-                      :disabled="creatingPasskey || invaldInput"
-                      @click="createPasskey"
-                    >
+                    <input v-model="securityKeyNameInput" type="text" :disabled="creatingPasskey"
+                      :placeholder="i18n.security_key_name_placeholder" class="regular-text"
+                      @keyup.enter="createPasskey" @input="validateInput" autofocus />
+                    <button class="button margin-right" :disabled="creatingPasskey || invaldInput"
+                      @click="createPasskey">
                       <template v-if="!creatingPasskey">
-                        <span class="dashicons dashicons-plus"></span>
+                        <span class="dashicons dashicons-plus" style="vertical-align: middle;line-height: 1;"></span>
                         {{ i18n.add_button }}
                       </template>
                       <template v-else>
-                        <div class="spinner is-active spin"></div>
+                        <div class="spinner is-active spin" style="vertical-align: middle;line-height: 1;"></div>
                       </template>
                     </button>
-                    <button
-                      class="button button-cancel"
-                      :disabled="creatingPasskey"
-                      @click="cancelPasskey"
-                    >
-                      <span class="dashicons dashicons-remove"></span>
+                    <button class="button button-cancel" :disabled="creatingPasskey" @click="cancelPasskey">
+                      <span class="dashicons dashicons-remove" style="vertical-align: middle;line-height: 1;"></span>
                       {{ i18n.cancel_button }}
                     </button>
                     <div v-if="inputError" class="text-danger input-error">
@@ -128,10 +101,7 @@ defined('ABSPATH') || exit;
           </div>
 
           <div>
-            <table
-              class="wp-list-table passkeys widefat striped table-view-list"
-              width="100%"
-            >
+            <table class="wp-list-table passkeys widefat striped table-view-list" width="100%">
               <thead>
                 <tr>
                   <th>{{ i18n.security_key_name_column }}</th>
@@ -151,45 +121,28 @@ defined('ABSPATH') || exit;
                   </td>
                   <td :data-label="i18n.authenticator_column">
                     <template v-if="item.aaguid">
-                      <img
-                        :src="item.aaguid.icon"
-                        style="width: 15px"
-                        class="authenticator-icon"
-                      />
+                      <img :src="item.aaguid.icon" style="width: 15px" class="authenticator-icon" />
                       {{ item.aaguid.name }}
                     </template>
                     <template v-else> - </template>
                   </td>
                   <td :data-label="i18n.active_column">
-                    <span
-                      class="dashicons dashicons-yes text-active"
-                      v-if="item.is_active"
-                    ></span>
-                    <span
-                      class="dashicons dashicons-no text-inactive"
-                      v-else
-                    ></span>
+                    <span class="dashicons dashicons-yes text-active" v-if="item.is_active"></span>
+                    <span class="dashicons dashicons-no text-inactive" v-else></span>
                   </td>
                   <td :data-label="i18n.last_used_column">
                     {{ item.last_used_at || "-" }}
                     <template v-if="item.last_used_on">
                       <span class="label label-last-used-on">{{
                         item.last_used_on
-                      }}</span>
+                        }}</span>
                     </template>
                   </td>
                   <td :data-label="i18n.created_at_column">
                     {{ item.created_at }}
                   </td>
-                  <td
-                    :date-label="i18n.actions_column"
-                    v-if="is_owner || has_access"
-                  >
-                    <a
-                      href="#"
-                      @click.prevent="deletePasskey(item.id)"
-                      v-if="!deletingPasskey"
-                    >
+                  <td :date-label="i18n.actions_column" v-if="is_owner || has_access">
+                    <a href="#" @click.prevent="deletePasskey(item.id)" v-if="!deletingPasskey">
                       {{ i18n.delete }}
                     </a>
                     <span v-if="deletingPasskey && deletingId == item.id">
@@ -198,28 +151,18 @@ defined('ABSPATH') || exit;
 
                     <template v-if="!is_owner && has_access">
                       |
-                      <a
-                        href="#"
-                        @click.prevent="activateDeactivatePasskey(item.id, false)"
-                        v-if="!item.is_active && !actionProcessing"
-                      >
+                      <a href="#" @click.prevent="activateDeactivatePasskey(item.id, false)"
+                        v-if="!item.is_active && !actionProcessing">
                         <?php esc_html_e('Activate', 'secure-passkeys'); ?>
                       </a>
-                      <a
-                        href="#"
-                        @click.prevent="activateDeactivatePasskey(item.id, true)"
-                        v-if="item.is_active && !actionProcessing"
-                      >
+                      <a href="#" @click.prevent="activateDeactivatePasskey(item.id, true)"
+                        v-if="item.is_active && !actionProcessing">
                         <?php esc_html_e('Deactivate', 'secure-passkeys'); ?>
                       </a>
-                      <span
-                        v-if="actionProcessing && actionProcessingId == item.id"
-                      >
+                      <span v-if="actionProcessing && actionProcessingId == item.id">
                         <?php esc_html_e('Processing...', 'secure-passkeys'); ?>
                       </span>
-                      <span
-                        v-if="actionProcessing && actionProcessingId != item.id"
-                      >
+                      <span v-if="actionProcessing && actionProcessingId != item.id">
                         <template v-if="!item.is_active">
                           <?php esc_html_e('Activate', 'secure-passkeys'); ?>
                         </template>
@@ -236,15 +179,8 @@ defined('ABSPATH') || exit;
                   </td>
                 </tr>
                 <tr v-if="isLoading">
-                  <td
-                    :colspan="is_owner || has_access ? 6 : 5"
-                    class="center warning"
-                    style="text-align: center"
-                  >
-                    <i
-                      class="spinner is-active spin"
-                      style="text-align: center; margin: auto"
-                    ></i>
+                  <td :colspan="is_owner || has_access ? 6 : 5" class="center warning" style="text-align: center">
+                    <i class="spinner is-active spin" style="text-align: center; margin: auto"></i>
                   </td>
                 </tr>
               </tbody>

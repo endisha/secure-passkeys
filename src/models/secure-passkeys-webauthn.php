@@ -181,4 +181,12 @@ class Secure_Passkeys_WebAuthn extends Secure_Passkeys_Model
             ['id' => $id]
         );
     }
+
+    public function update_signature_counter(int $id, int $sign_count)
+    {
+        return $this->update(
+            ['sign_count' => $sign_count, 'updated_at' => current_time('mysql')],
+            ['id' => $id]
+        );
+    }
 }
