@@ -1,0 +1,26 @@
+{
+    "name": "endisha/secure-passkeys",
+    "description": "Secure Passkeys is a powerful WordPress plugin that enables passwordless authentication using WebAuthn technology.",
+    "type": "wordpress-plugin",
+    "license": "GPL-2.0-or-later",
+    "require": {
+        "php": ">=7.4",
+        "ext-openssl": "*",
+        "ext-mbstring": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.6 || ^10.5 || ^11.5"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Secure_Passkeys\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true
+    }
+}
