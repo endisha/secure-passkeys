@@ -9,9 +9,11 @@ composer install
 composer test          # or: vendor/bin/phpunit
 ```
 
-Requires PHP 8.1+ with the `openssl` and `mbstring` extensions. (The plugin
-itself runs on PHP 7.4+; the test suite targets a modern PHPUnit and so needs a
-newer PHP than the plugin's runtime floor.)
+Requires PHP 8.2+ with the `openssl` and `mbstring` extensions (the committed
+`composer.lock` pins PHPUnit 11, which needs PHP 8.2). The plugin itself runs on
+PHP 7.4+; the test suite simply targets a modern PHPUnit, so it needs a newer
+PHP than the plugin's runtime floor. CI lints the shipped code on 7.4–8.4 and
+runs this suite on 8.2–8.4.
 
 ## What is covered
 
