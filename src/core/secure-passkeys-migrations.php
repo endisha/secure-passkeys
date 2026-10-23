@@ -6,7 +6,7 @@ defined('ABSPATH') || exit;
 
 class Secure_Passkeys_Migrations
 {
-    public function booting(string $path = ''): void
+    public function booting(): void
     {
         $file = $this->file();
         if (!is_null($file)) {
