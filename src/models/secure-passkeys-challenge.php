@@ -53,7 +53,7 @@ class Secure_Passkeys_Challenge extends Secure_Passkeys_Model
         return $challenge;
     }
 
-    public function verify_challenge_or_throw_exception(string $challenge, string $challenge_type, ?string $ip_address = null): void
+    public function verify_challenge_or_throw_exception(string $challenge, string $challenge_type, ?int $user_id = null, ?string $ip_address = null): void
     {
         $fingerprint = Secure_Passkeys_Helper::generate_fingerprint();
 
@@ -69,6 +69,14 @@ class Secure_Passkeys_Challenge extends Secure_Passkeys_Model
 
         if ($record->challenge_type !== $challenge_type) {
             throw new Exception('Invalid challenge type');
+        }
+
+        // Ensure the challenge was issued to the same user that is now
+        // consuming it. Challenges minted for registration carry the user id;
+        // authentication challenges are anonymous, so this is only enforced
+        // when a user id is supplied by the caller.
+        if (!is_null($user_id) && intval($record->user_id) !== $user_id) {
+            throw new Exception('Invalid challenge user');
         }
 
         if ($record->fingerprint !== $fingerprint) {

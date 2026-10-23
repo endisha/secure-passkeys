@@ -16,6 +16,12 @@ class Secure_Passkeys_Web_Authn_Sign_In_Action extends Secure_Passkeys_Web_Authn
             return false;
         }
 
+        // Block spammed or deleted accounts. These properties only exist on
+        // multisite; on single-site installs they are absent, so this is a no-op.
+        if (!empty($user->spam) || !empty($user->deleted)) {
+            return false;
+        }
+
         $validate = apply_filters('secure_passkeys_web_authn_validate_user_sign_in', true, $user);
 
         if (!$validate) {
@@ -31,7 +37,7 @@ class Secure_Passkeys_Web_Authn_Sign_In_Action extends Secure_Passkeys_Web_Authn
 
         wp_set_auth_cookie($user_id, $remember);
 
-        $enabled = apply_filters('secure_passkeys_web_authn_validate_user_sign_in_enable_wp_login', false, $user);
+        $enabled = apply_filters('secure_passkeys_web_authn_validate_user_sign_in_enable_wp_login', true, $user);
 
         if ($enabled) {
             do_action('wp_login', $user->user_login, $user);
