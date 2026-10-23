@@ -12,6 +12,20 @@ class Secure_Passkeys_Helper
         $transient_key = "sp_rl_{$action}_" . md5($ip);
         $transient_key = apply_filters('secure_passkeys_rate_limit_transient_key', $transient_key, $action, $ip);
 
+        // When a persistent object cache is available, use its atomic counter.
+        // This avoids the get-then-set race in the transient fallback below
+        // (concurrent requests could otherwise read the same count and each be
+        // allowed through) and keeps a fixed window: the expiry is set once by
+        // wp_cache_add and preserved by subsequent increments.
+        if (wp_using_ext_object_cache()) {
+            $group = 'secure_passkeys_rate_limit';
+
+            wp_cache_add($transient_key, 0, $group, $seconds);
+            $attempts = (int) wp_cache_incr($transient_key, 1, $group);
+
+            return $attempts <= $limit;
+        }
+
         $attempts = (int) get_transient($transient_key);
 
         if ($attempts >= $limit) {

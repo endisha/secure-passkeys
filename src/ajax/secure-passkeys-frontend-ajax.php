@@ -182,7 +182,7 @@ class Secure_Passkeys_Frontend_Ajax
 
         try {
             $challenge_model = new Secure_Passkeys_Challenge();
-            $challenge_model->verify_challenge_or_throw_exception($challenge, 'registration');
+            $challenge_model->verify_challenge_or_throw_exception($challenge, 'registration', $user_id);
 
             if (!$challenge_model->claim_challenge($challenge)) {
                 throw new Exception('Challenge already consumed');
