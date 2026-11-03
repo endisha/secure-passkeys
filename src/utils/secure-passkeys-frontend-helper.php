@@ -39,15 +39,34 @@ class Secure_Passkeys_Frontend_Helper
 
         if (!empty($file) && file_exists(realpath($file))) {
             if (!$load) {
-                return include realpath($file);
+                return self::render_view(realpath($file), (array) $data);
             }
 
             ob_start();
-            require realpath($file);
+            self::render_view(realpath($file), (array) $data);
             return ob_get_clean();
         }
 
         return '';
+    }
+
+    /**
+     * Render a view file with the given data exposed as variables in its scope.
+     *
+     * Templates reference the data keys directly (for example the shortcode atts
+     * $extra_wrapper_classes and $extra_button_classes in login.shortcode). The
+     * parameters are underscore-prefixed and EXTR_SKIP is used so a data key can
+     * never overwrite the file path.
+     *
+     * @param string $__file Absolute path to the view file.
+     * @param array  $__data Variables to expose to the view.
+     * @return mixed The view file's return value (for include-style callers).
+     */
+    protected static function render_view(string $__file, array $__data)
+    {
+        extract($__data, EXTR_SKIP);
+
+        return include $__file;
     }
 
     public static function get_frontend_themes()
